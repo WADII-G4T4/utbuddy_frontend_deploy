@@ -619,7 +619,7 @@ export default {
   async mounted() {
     try {
       
-      const res = await API.token(token);
+      
       this.i18n = this.$i18n;
       this.getRandomDatapoints();
       this.getRandomDatapointssmall();

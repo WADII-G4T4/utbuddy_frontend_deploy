@@ -42,7 +42,13 @@ export default {
   },
   async mounted(){
     const token = window.localStorage.getItem("token");
-    
+    try {
+      123
+      const res = await API.token(token);
+    } catch(err){
+      window.localStorage.clear()
+      this.$router.push("/")
+    }
     try {
       
       const res1 = await API.findProfile(token)

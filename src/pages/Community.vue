@@ -161,9 +161,7 @@ export default {
   async mounted(){
     this.isLoading = true;
     const token = window.localStorage.getItem("token");
-    try {
-      
-      const res = await API.token(token);
+    
       try {
         
         const result = await API.findPost(token);
@@ -182,11 +180,7 @@ export default {
       }
     this.isLoading = false;
 
-    } catch(err){
-      window.localStorage.clear()
-      this.$router.push("/")
-    }
-      
+    
   }
 };
 </script>

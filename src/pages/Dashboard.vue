@@ -460,14 +460,7 @@ export default {
     this.isLoading = true;
     this.getBillMonth();
     const token = window.localStorage.getItem("token")
-    try {
-      
-      const res = await API.token(token);
-
-    } catch(err){
-      window.localStorage.clear()
-      this.$router.push("/")
-    }
+    
     try {
       
       const result = await API.stripe(token);

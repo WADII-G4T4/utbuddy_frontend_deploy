@@ -45,14 +45,7 @@ export default {
   },
   async mounted() {
     const token = window.localStorage.getItem("token");
-    try {
-      const token = window.localStorage.getItem("token");
-      const res = await API.token(token);
-
-    } catch(err){
-      window.localStorage.clear()
-      this.$router.push("/")
-    }
+    
     try {
       const result = await API.stripe(token);
       this.isLoading = true;
