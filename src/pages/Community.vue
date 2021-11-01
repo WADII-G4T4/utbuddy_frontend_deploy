@@ -46,6 +46,9 @@
           <button type='button' @click='addPost()'>Submit Post</button>
       </Modal> -->
         </div>
+        <div v-if="isLoading" class="loading">
+            <vue-simple-spinner message="Please wait while we retrieve your bills"></vue-simple-spinner>
+          </div>
         <div class="table relative">
           <base-table
             :data="posts"
@@ -56,7 +59,7 @@
         </div>
       </card>
     </div>
-    <div class="container h">
+    <div class="buttons-bar h">
       <button
         type="button"
         class="btn-outline-primary mr-1 navigation"
@@ -91,6 +94,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       error: false,
       posttext: "",
       xModal: false,
@@ -98,105 +102,6 @@ export default {
         title: "Forum Discussion",
         columns: [...tableColumns],
         data: [
-          {
-            
-            thread: "why is my gas bill so high?",
-            username: "kendricklamar",
-            replies: "7"
-          },
-          {
-            
-            thread: "which appliances to use less to save water?",
-            username: "angela",
-            replies: "15"
-          },
-          {
-            
-            thread: "how do I pay my bills on this application?",
-            username: "carlbruner",
-            replies: "3"
-          },
-          {
-            
-            thread:
-              "Can I save more electricity by increasing the temperature of the air-con? ",
-            username: "timotheechalamet",
-            replies: "5"
-          },
-          ,
-          {
-            
-            thread: "I can't find my bill? ",
-            username: "arianagrande123",
-            replies: "27"
-          },
-          {
-            
-            thread: "How can I save more electricity? ",
-            username: "doraemon66",
-            replies: "88"
-          },
-          {
-            
-            thread: "Can I pay my bill on the application? ",
-            username: "harrystyles",
-            replies: "51"
-          },
-          {
-            
-            thread: "What are the payment methods available on this platform? ",
-            username: "tomhiddleston",
-            replies: "3"
-          },
-          {
-            
-            thread:
-              "I have save 30% of my total bill thanks to this app! Will share with my friends about UT Buddy! ",
-            username: "makkie",
-            replies: "10"
-          },
-          {
-            
-            thread: "is the app accurate? ",
-            username: "david",
-            replies: "9"
-          },
-          {
-            
-            thread: "is the app accurate? ",
-            username: "david",
-            replies: "9"
-          },
-          {
-            
-            thread: "is the app accurate? ",
-            username: "david",
-            replies: "9"
-          },
-          {
-            
-            thread: "is the app accurate? ",
-            username: "david",
-            replies: "9"
-          },
-          {
-            
-            thread: "is the app accurate? ",
-            username: "david",
-            replies: "9"
-          },
-          {
-            
-            thread: "is the app accurate? ",
-            username: "",
-            replies: "9"
-          },
-          {
-            
-            thread: "is the app accurate? ",
-            username: "david",
-            replies: "9"
-          }
         ]
       },
       page: 1
@@ -217,26 +122,29 @@ export default {
       this.page = index;
     },
     addone() {
-      this.page += 1;
+      if (this.page + 1 < Math.ceil(this.table1.data/10)){
+        this.page += 1;
+      }
+      
+
     },
     async addPost() {
       var t = this.posttext;
       var date = new Date();
-
+      const random = Math.ceil(Math.random()* 101)
       const token = window.localStorage.getItem("token");
       try {
         const res1 = await API.findProfile(token)
         const {name} = res1.data[0]
         var username = name.split(" ")[0]
         
-        this.table1.data.unshift({thread: t, username, replies: "0"})
+        this.table1.data.unshift({thread: t, username, replies: random})
       } catch (error) {
         console.log(error)
       }
       try {
-        console.log(date);
-        console.log(username)
-        const result = await API.addPost({ date, post: t, username, replies:0 }, token);
+        const random = Math.ceil(Math.random()* 101)
+        const result = await API.addPost({ date, post: t, username, replies:random }, token);
       } catch (error) {
         this.error = true;
       }
@@ -251,11 +159,13 @@ export default {
     }
   },
   async mounted(){
+    this.isLoading = true;
     const token = window.localStorage.getItem("token");
     try {
       
       const res = await API.token(token);
       try {
+        
         const result = await API.findPost(token);
         var data = result.data
         
@@ -266,9 +176,11 @@ export default {
           this.table1.data.unshift({thread: data[i].post, username: data[i].username, replies: String(data[i].replies)})
         }
         
+      
       } catch (error) {
         this.error = true;
       }
+    this.isLoading = false;
 
     } catch(err){
       window.localStorage.clear()
@@ -288,15 +200,17 @@ export default {
   cursor: pointer;
 }
 
-.relative {
-  position: relative;
-}
-
-.modal .modal-dialog {
-  margin-bottom: 5cm !important;
+.loading{
+  position: absolute;
+  top: 170%;
+  left: 42%;
 }
 
 .add {
   background-color: purple;
+}
+
+.buttons-bar{
+  margin: auto;
 }
 </style>
