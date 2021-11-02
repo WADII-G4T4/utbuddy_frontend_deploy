@@ -7,14 +7,9 @@ const Dashboard = () =>
   import(/* webpackChunkName: "dashboard" */ "@/pages/Dashboard.vue");
 const Profile = () =>
   import(/* webpackChunkName: "common" */ "@/pages/Profile.vue");
-const Notifications = () =>
-  import(/* webpackChunkName: "common" */ "@/pages/Notifications.vue");
-const Icons = () =>
-  import(/* webpackChunkName: "common" */ "@/pages/Icons.vue");
 
 
-const TableList = () =>
-  import(/* webpackChunkName: "common" */ "@/pages/TableList.vue");
+
 const Login = () =>
   import(/* webpackChunkName: "common" */ "@/pages/Login.vue");
 const Register = () =>
@@ -51,21 +46,6 @@ const routes = [
         path: "profile",
         name: "profile",
         component: Profile
-      },
-      {
-        path: "notifications",
-        name: "notifications",
-        component: Notifications
-      },
-      {
-        path: "icons",
-        name: "icons",
-        component: Icons
-      },
-      {
-        path: "table-list",
-        name: "table-list",
-        component: TableList
       },
       {
         path: "live-tracking",
