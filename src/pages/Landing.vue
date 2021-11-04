@@ -5,7 +5,7 @@
       class="background-image-part"
       style="background-image:  linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.2)), url('/img/bg1.jpg');"
     >
-      <div class="content">
+      <div class="landing">
         <div class="container">
           <div class="card card-plain card-login">
             <!----><!----><!----><!---->
@@ -35,7 +35,7 @@
 </template>
 
 <style>
-.content {
+.landing {
   margin-top: 12%;
   text-align: center;
   margin-bottom: 50px;

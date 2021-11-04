@@ -4,7 +4,7 @@
     :type="tag === 'button' ? nativeType : ''"
     :disabled="disabled=='true' || loading"
     @click="handleClick"
-    class="btn"
+    class="btn length"
     :class="[
       {'btn-round': round},
       {'btn-block': block},
@@ -67,4 +67,8 @@ export default {
 };
 </script>
 <style>
+  .length{
+    width: 125px;
+    
+  }
 </style>

@@ -8,6 +8,7 @@
         :address="address"
         :zip="zip"
         :email="email"
+        :description="description"
       >
       </edit-profile-form>
     </div>
@@ -16,6 +17,7 @@
         :name="name"
         :occupation="occupation"
         :gender="gender"
+        :status="status"
       ></user-card>
     </div>
   </div>
@@ -31,22 +33,7 @@ export default {
   },
   data() {
     return {
-      /* model: {
-          company: 'Creative Code Inc.',
-          email: 'mike@email.com',
-          username: 'michael23',
-          firstName: 'Mike',
-          lastName: 'Andrew',
-          address: 'Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09',
-          city: 'Melbourne',
-          country: 'Australia',
-          about: 'Lamborghini Mercy, Your chick she so thirsty, I\'m in that two seat Lambo.'
-        },
-        user: {
-          fullName: 'Mike Andrew',
-          title: 'Ceo/Co-Founder',
-          description: `Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...`,
-        } */
+      
       tips: [],
       firstName: null,
       lastName: null,
@@ -55,7 +42,9 @@ export default {
       email: null,
       name: null,
       occupation: null,
-      gender: null
+      gender: null,
+      status: null,
+      description: null
     };
   },
   async mounted() {
@@ -73,7 +62,8 @@ export default {
     try {
       const res1 = await API.findProfile(token);
 
-      const { name, address, zip, email, occupation, gender } = res1.data[0];
+      const { name, address, zip, email, occupation, gender, status, description } = res1.data[0];
+
       this.firstName = name.split(" ")[0];
       this.lastName = name.split(" ")[1];
       this.address = address;
@@ -82,7 +72,9 @@ export default {
       this.name = name;
       this.occupation = occupation;
       this.gender = gender;
-      console.log(this.gender);
+      this.status = status;
+      this.description = description
+      
     } catch (error) {
       console.log(error);
     }

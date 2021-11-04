@@ -54,9 +54,33 @@
             :data="posts"
             :columns="table1.columns"
             thead-classes="text-primary"
+            @modal="openUserInfo"
           >
           </base-table>
         </div>
+        <modal
+            :show.sync="userInfo"
+            class="modal-search"
+            id="searchModal"
+            :centered="false"
+            :show-close="true"
+          >
+            <template v-slot:header>
+              <span style="color:black; font-size: 25px">User Information</span>
+            </template>
+            <div>
+              <h4 style="color:black;">User: {{name}}, {{occupation}}</h4>
+              <p style="color:black;">{{status}}</p>
+              <p style="color:black;">Description:</p>
+              <p style="color:black;">{{description}}</p>
+              <p style="color:black;">Tips</p>
+              <ul style="color:black;">
+                <li style="color:black;" v-for="(tip, index) in tips" :key="index">
+                  {{tip.words}}
+                </li>
+              </ul>
+            </div>
+          </modal>
       </card>
     </div>
     <div class="buttons-bar h">
@@ -104,7 +128,13 @@ export default {
         data: [
         ]
       },
-      page: 1
+      page: 1,
+      userInfo: false,
+      name: null,
+      occupation: null,
+      status: null,
+      description: null,
+      tips: null
     };
   },
   computed: {
@@ -118,6 +148,31 @@ export default {
     }
   },
   methods: {
+    async openUserInfo(item){
+      const token = window.localStorage.getItem("token");
+      this.userInfo = true;
+      try {
+        const res1 = await API.specialProfile({id: item.id}, token)
+        const { name, occupation, status, description } = res1.data[0];
+        this.name = ""
+        this.occupation = ""
+        this.status = ""
+        this.description = ""
+        this.name = name;
+        this.occupation = occupation;
+        this.status = status;
+        this.description = description
+
+        } catch (error) {
+          console.log(error)
+        }
+      try {
+        const res = await API.specialTips({id: item.id}, token);
+        this.tips = [];
+        this.tips = res.data[0].tips;
+        
+      } catch (error) {}
+    },
     next(index) {
       this.page = index;
     },
@@ -171,8 +226,10 @@ export default {
         
         for (var i=0;i<data.length;i++){
           
-          this.table1.data.unshift({thread: data[i].post, username: data[i].username, replies: String(data[i].replies)})
+          this.table1.data.unshift({thread: data[i].post, username: data[i].username, replies: String(data[i].replies), id: data[i].userId})
         }
+        
+        
         
       
       } catch (error) {
@@ -207,4 +264,6 @@ export default {
 .buttons-bar{
   margin: auto;
 }
+
+
 </style>

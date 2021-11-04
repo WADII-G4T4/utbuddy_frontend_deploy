@@ -20,6 +20,7 @@ import API from './api/API'
       }
     },
     async mounted() {
+      
       this.$watch('$route', this.disableRTL, { immediate: true });
       this.$watch('$sidebar.showSidebar', this.toggleNavOpen)
       

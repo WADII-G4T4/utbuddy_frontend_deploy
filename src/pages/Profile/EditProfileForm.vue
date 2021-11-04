@@ -1,6 +1,6 @@
 <template>
   <card>
-    <h5 slot="header" class="title">Edit Profile</h5>
+    <h3 slot="header" class="title">Edit Profile</h3>
     <div class="row">
       <div class="col-md-6 pr-md-1">
         <base-input
@@ -31,7 +31,7 @@
         </base-input>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-md-12">
         <base-input
@@ -44,14 +44,30 @@
     </div>
     <div class="row">
       <div class="col-md-4 pr-md-1">
-        <base-input label="Postal Code" placeholder="ZIP Code" v-model="zip"> </base-input>
+        <base-input label="Postal Code" placeholder="ZIP Code" v-model="zip">
+        </base-input>
       </div>
     </div>
+    <div class="row mb-2">
+      <div class="col-md-9 pr-md-1">
+        <label class="control-label">
+          About
+        </label>
+        <textarea
+          class="form-control w-100 textbox"
+          cols="2"
+          rows="3"
+          placeholder="Describe yourself"
+          v-model="description"
+        >
+        </textarea>
+      </div>
+    </div>
+    <label class="control-label">
+      Tips
+    </label>
     <div class="row" v-for="(tip, index) in tips" :key="index">
       <div class="col-md-8">
-        <base-input>
-          <label>Tips</label>
-        </base-input>
         <ul>
           <li>
             <textarea
@@ -62,24 +78,26 @@
               v-model="tip.words"
             >
             </textarea>
-            
           </li>
         </ul>
-
-        
       </div>
       <div class="col-md-4">
-        <i class="tim-icons icon-trash-simple add m-auto" @click="remove(index)"></i>
+        <i
+          class="tim-icons icon-trash-simple add m-auto"
+          @click="remove(index)"
+        ></i>
       </div>
     </div>
     <button @click="addTip" class="btn btn-black btn-sm">
-          <i class="tim-icons icon-simple-add add m-auto" ></i>
+      <i class="tim-icons icon-simple-add add m-auto"></i>
     </button>
-    <base-button slot="footer" type="primary" fill @click="save">Save</base-button>
+    <base-button slot="footer" type="primary" fill @click="save"
+      >{{Save}}</base-button
+    >
   </card>
 </template>
 <script>
-import API from '../../api/API'
+import API from "../../api/API";
 export default {
   props: {
     tips: [],
@@ -87,41 +105,56 @@ export default {
     lastName: null,
     address: null,
     zip: null,
-    email: null
+    email: null,
+    description: null
   },
   data() {
     return {
-      
+      Save: "Save"
     };
   },
-  
+
   methods: {
     addTip() {
-      this.tips.push({words: ""})
+      this.tips.push({ words: "" });
     },
-    async save(){
+    async save() {
+      
       const token = window.localStorage.getItem("token");
-      var name = this.firstName + ' ' + this.lastName
+      var name = this.firstName + " " + this.lastName;
       var address = this.address;
-      var zip = this.zip
+      var zip = this.zip;
+      var description = this.description;
       try {
-        const res1 = await API.updateProfile( {name, address, zip}, token)
-        const res = await API.addTip({tips: this.tips}, token)
-      } catch(err){
-        console.log(err)
+        const res1 = await API.updateProfile(
+          { name, address, zip, description },
+          token
+        );
+        const res = await API.addTip({ tips: this.tips }, token);
+        this.Save = "Saved!"
+      } catch (err) {
+        console.log(err);
       }
     },
-    remove(val){
-      
-      this.tips.splice(val, 1)
+    remove(val) {
+      this.tips.splice(val, 1);
     }
-  },
-  
+  }
 };
 </script>
 <style>
 .add {
   color: white;
   cursor: pointer;
+}
+
+.textbox {
+  border: 1px solid #2b3553 !important;
+  border-radius: 6px !important;
+  padding-left: 17px !important;
+}
+
+label {
+  font-size: 15px !important;
 }
 </style>

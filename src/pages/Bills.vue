@@ -11,6 +11,7 @@
             :data="table1.data"
             :columns="table1.columns"
             thead-classes="text-primary"
+            type="hover"
           >
           </base-table>
         </div>
@@ -23,7 +24,7 @@
 import { BaseTable } from "@/components";
 import API from "../api/API";
 
-const tableColumns = ["Name", "Amount", "Status"];
+const tableColumns = ["Name", "Amount", "Status", "Date Paid"];
 
 export default {
   components: {
@@ -63,6 +64,7 @@ export default {
           this.table1.data.push(result.data.extracted[index])
         }
       }
+      console.log(this.table1.data)
       this.table1.data = this.table1.data.reverse()
     } catch (error) {
       console.log(error)

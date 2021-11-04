@@ -1,5 +1,6 @@
 import axios from 'axios'
-const origin = "https://utility-backend-app.herokuapp.com"
+/* const origin = "https://utility-backend-app.herokuapp.com" */
+const origin = "http://localhost:4000"
 
 const setHeader = (token)=>{
     return {
@@ -11,30 +12,6 @@ const setHeader = (token)=>{
 }
 
 const API = {};
-
-/* API.getAll = async (token)=>{
-    return await axios.get(`${origin}/find`, setHeader(token));
-}
-
-API.getByDate = async (data)=>{
-    return await axios.post(`${origin}/find/date`, data, setHeader(token));
-}
-
-API.getByTask = async (data)=>{
-    return await axios.post(`${origin}/find/todo`, data, setHeader(token));
-}
-
-API.addTask = async (data, token)=>{
-    return await axios.post(`${origin}/add`, data, setHeader(token));
-}
-
-API.deleteTask = async (data, token)=>{
-    return await axios.post(`${origin}/delete`, data, setHeader(token));
-}
-
-API.updateTask = async (data, token)=>{
-    return await axios.post(`${origin}/update`, data, setHeader(token));
-} */
 
 API.updateProfile = async (data, token)=>{
     return await axios.post(`${origin}/update/profile`, data, setHeader(token));
@@ -69,6 +46,10 @@ API.occupation = async (data, token) => {
     return await axios.post(`${origin}/update/profile/occupation`, data, setHeader(token))
 }
 
+API.status = async (data, token) => {
+    return await axios.post(`${origin}/update/profile/status`, data, setHeader(token))
+}
+
 API.stripe = async (token) => {
     return await axios.get(`${origin}/stripe`, setHeader(token))
 }
@@ -87,6 +68,14 @@ API.addPost = async (data, token) => {
 
 API.findPost = async (token) => {
     return await axios.get(`${origin}/find/post`, setHeader(token))
+}
+
+API.specialProfile = async (data, token) => {
+    return await axios.post(`${origin}/find/special`, data, setHeader(token))
+}
+
+API.specialTips = async (data, token) => {
+    return await axios.post(`${origin}/find/special/tips`, data, setHeader(token))
 }
 
 
