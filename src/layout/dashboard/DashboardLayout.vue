@@ -48,7 +48,7 @@ export default {
       const res = await API.token(token);
     } catch(err){
       window.localStorage.clear()
-      this.$router.push("/")
+      this.$router.push("/login")
     }
     try {
       const token = window.localStorage.getItem("token");

@@ -50,12 +50,6 @@ export default {
   async mounted() {
     const token = window.localStorage.getItem("token");
     try {
-      const res = await API.token(token);
-    } catch (err) {
-      window.localStorage.clear();
-      this.$router.push("/");
-    }
-    try {
       const res = await API.findTip(token);
       this.tips = res.data[0].tips;
     } catch (error) {}

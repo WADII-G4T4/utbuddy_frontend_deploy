@@ -62,7 +62,7 @@
             v-if="!occupation"
           >
             Please fill in this field </label
-          ><br>
+          ><br v-if="!occupation">
           <label class="control-label">
             Gender
           </label>
@@ -129,7 +129,7 @@
             {{ error }}
           </p>
           <u
-            ><router-link to="/"
+            ><router-link to="/login"
               >Already have an account? Login here</router-link
             ></u
           >
@@ -198,9 +198,11 @@ export default {
           window.localStorage.setItem("token", token);
           this.$router.push("/home/dashboard");
         } catch (error) {
+          this.isLoading = false
           this.error = error.response.data.message;
         }
       } else {
+        this.isLoading = false
         this.error = "You have not filled in all of the required details yet";
       }
     },

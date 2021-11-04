@@ -153,7 +153,7 @@
       },
       logout(){
         window.localStorage.clear()
-        this.$router.push("/")
+        this.$router.push("/login")
       }
     }
   };

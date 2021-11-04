@@ -640,8 +640,7 @@ export default {
       this.initGreenChart3(0);
 
     } catch(err){
-      window.localStorage.clear()
-      this.$router.push("/")
+      console.log(err)
     }
     
 
