@@ -3,6 +3,9 @@ import DashboardLayout from "@/layout/dashboard/DashboardLayout.vue";
 import NotFound from "@/pages/NotFoundPage.vue";
 
 // Admin pages
+
+const Landing = () =>
+  import(/* webpackChunkName: "common" */ "@/pages/Landing.vue");
 const Dashboard = () =>
   import(/* webpackChunkName: "dashboard" */ "@/pages/Dashboard.vue");
 const Profile = () =>
@@ -24,6 +27,11 @@ const Bills = () =>
 const routes = [
   {
     path: "/",
+    name: "landing",
+    component: Landing
+  },
+  {
+    path: "/login",
     name: "login",
     component: Login
   },

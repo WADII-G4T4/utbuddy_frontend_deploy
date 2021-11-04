@@ -7,22 +7,23 @@
             <div class="row">
               <div class="col-3">
                 <div class="icon-big text-center">
-                  <i class="tim-icons icon-money-coins text-success" style="font-size: 35px;"></i>
+                  <i
+                    class="tim-icons icon-money-coins text-success"
+                    style="font-size: 35px"
+                  ></i>
                 </div>
               </div>
               <div class="col-9">
                 <div class="numbers">
-                  <p>Outstanding Bill ({{billMonth}})</p>
-                  <h3 style="margin-bottom:0px">{{billAmount}}</h3>
+                  <p>Outstanding Bill ({{ billMonth }})</p>
+                  <h3 style="margin-bottom: 0px">{{ billAmount }}</h3>
                 </div>
               </div>
             </div>
             <div>
               <hr />
               <div class="stats">
-                <span>
-                  Updated as of {{currTime}}
-                </span>
+                <span> Updated as of {{ currTime }} </span>
               </div>
             </div>
           </div>
@@ -34,20 +35,29 @@
             <div class="row">
               <div class="col-3">
                 <div class="icon-big text-center">
-                  <i class="fas fa-bolt text-success" style="font-size: 35px;"></i>
+                  <i
+                    class="fas fa-bolt text-success"
+                    style="font-size: 35px"
+                  ></i>
                 </div>
               </div>
               <div class="col-9">
                 <div class="numbers">
                   <p>Electricity Consumption</p>
-                  <h3 style="margin-bottom:0px">{{kpi1}}</h3>
+                  <h3 style="margin-bottom: 0px">{{ kpi1 }}</h3>
                 </div>
               </div>
             </div>
-            <div >
-              <hr class="mb-0"/>
-              <div class="stats" >
-                <button id="elecBtn" type="button" class="btn btn-outline-success btn-sm" :disabled="elecDis" @click="elecKPI" >
+            <div>
+              <hr class="mb-0" />
+              <div class="stats">
+                <button
+                  id="elecBtn"
+                  type="button"
+                  class="btn btn-outline-success btn-sm"
+                  :disabled="elecDis"
+                  @click="elecKPI"
+                >
                   <i class="tim-icons icon-refresh-01"></i> Update now
                 </button>
               </div>
@@ -61,20 +71,29 @@
             <div class="row">
               <div class="col-3">
                 <div class="icon-big text-center">
-                  <i class="fas fa-tint text-success" style="font-size: 35px;"></i>
+                  <i
+                    class="fas fa-tint text-success"
+                    style="font-size: 35px"
+                  ></i>
                 </div>
               </div>
               <div class="col-9">
                 <div class="numbers">
                   <p>Water Consumption</p>
-                  <h3 style="margin-bottom:0px">{{kpi2}}</h3>
+                  <h3 style="margin-bottom: 0px">{{ kpi2 }}</h3>
                 </div>
               </div>
             </div>
             <div>
-              <hr class="mb-0"/>
+              <hr class="mb-0" />
               <div class="stats">
-                <button type="button" id="waterBtn" class="btn btn-outline-success btn-sm" :disabled="waterDis" @click="waterKPI">
+                <button
+                  type="button"
+                  id="waterBtn"
+                  class="btn btn-outline-success btn-sm"
+                  :disabled="waterDis"
+                  @click="waterKPI"
+                >
                   <i class="tim-icons icon-refresh-01"></i> Update now
                 </button>
               </div>
@@ -88,20 +107,29 @@
             <div class="row">
               <div class="col-3">
                 <div class="icon-big text-center">
-                  <i class="fas fa-burn text-success" style="font-size: 40px;"></i>
+                  <i
+                    class="fas fa-burn text-success"
+                    style="font-size: 40px"
+                  ></i>
                 </div>
               </div>
               <div class="col-9">
                 <div class="numbers">
                   <p>Gas Consumption</p>
-                  <h3 style="margin-bottom:0px">{{kpi3}}</h3>
+                  <h3 style="margin-bottom: 0px">{{ kpi3 }}</h3>
                 </div>
               </div>
             </div>
             <div>
-              <hr class="mb-0"/>
+              <hr class="mb-0" />
               <div class="stats">
-                <button type="button" id="gasBtn" class="btn btn-outline-success btn-sm" :disabled="gasDis" @click="gasKPI">
+                <button
+                  type="button"
+                  id="gasBtn"
+                  class="btn btn-outline-success btn-sm"
+                  :disabled="gasDis"
+                  @click="gasKPI"
+                >
                   <i class="tim-icons icon-refresh-01"></i> Update now
                 </button>
               </div>
@@ -116,17 +144,22 @@
           <template slot="header">
             <div class="row chart">
               <div v-if="isLoading" class="loader">
-                <vue-simple-spinner message="Please wait while we retrieve your information"></vue-simple-spinner>
+                <vue-simple-spinner
+                  message="Please wait while we retrieve your information"
+                ></vue-simple-spinner>
               </div>
               <div class="col-sm-6 text-left">
-                <h2 class="card-title">{{ $t("dashboard.monthlyConsumption") }}</h2>
+                <h2 class="card-title">
+                  {{ $t("dashboard.monthlyConsumption") }}
+                </h2>
               </div>
               <div class="col-sm-6">
                 <div
                   class="btn-group btn-group-toggle float-right"
                   data-toggle="buttons"
                 >
-                  <label v-for="(option, index) in bigBarChartCategories"
+                  <label
+                    v-for="(option, index) in bigBarChartCategories"
                     :key="option"
                     class="btn btn-sm btn-primary btn-simple"
                     :class="{ active: bigBarChart.activeIndex === index }"
@@ -165,7 +198,7 @@
         <card type="chart" class="bdchart">
           <template slot="header">
             <h3 class="card-title">
-              <i class="fas fa-bolt text-success" style="font-size: 20px;"></i>
+              <i class="fas fa-bolt text-success" style="font-size: 20px"></i>
               {{ $t("dashboard.electricityBreakdown") }}
             </h3>
           </template>
@@ -184,7 +217,7 @@
         <card type="chart" class="bdchart">
           <template slot="header">
             <h3 class="card-title">
-              <i class="fas fa-tint text-success" style="font-size: 20px;"></i>
+              <i class="fas fa-tint text-success" style="font-size: 20px"></i>
               {{ $t("dashboard.waterBreakdown") }}
             </h3>
           </template>
@@ -203,7 +236,7 @@
         <card type="chart" class="bdchart">
           <template slot="header">
             <h3 class="card-title">
-              <i class="fas fa-burn text-success" style="font-size: 20px;"></i>
+              <i class="fas fa-burn text-success" style="font-size: 20px"></i>
               {{ $t("dashboard.gasBreakdown") }}
             </h3>
           </template>
@@ -311,7 +344,7 @@ export default {
         activeIndex: 0,
         chartData: {
           datasets: [{}],
-          labels: []
+          labels: [],
         },
         extraOptions: chartConfigs.bigBarChartOptions,
         gradientColors: config.colors.primaryGradient,
@@ -331,8 +364,8 @@ export default {
       return this.$t("dashboard.chartCategories");
     },
     async stripe() {
-      const token = window.localStorage.getItem("token")
-      console.log(token)
+      const token = window.localStorage.getItem("token");
+      console.log(token);
       try {
         const res1 = await API.stripe(token);
         console.log(res1);
@@ -342,21 +375,22 @@ export default {
     },
   },
   methods: {
-    setBigChartData(bills){
-      var numData = [[],[],[]];
-      for (var i=0;i<(this.prevMonthNum+1);i++){
-        var amount = parseInt(String(bills[i].price).slice(0,-2));
-        for (var j=0;j<numData.length;j++){
-          if (j==numData.length-1){
+    setBigChartData(bills) {
+      var numData = [[], [], []];
+      for (var i = 0; i < this.prevMonthNum + 1; i++) {
+        var amount = parseInt(String(bills[i].price).slice(0, -2));
+        for (var j = 0; j < numData.length; j++) {
+          if (j == numData.length - 1) {
             numData[j].push(amount);
+          } else {
+            var temp = parseFloat(
+              Math.floor(Math.random() * ((amount / 100) * 70)).toFixed(2)
+            );
+            numData[j].push(temp);
+            amount = amount - temp;
           }
-          else{
-            var temp = parseFloat((Math.floor(Math.random() * (amount/100*70))).toFixed(2));
-            numData[j].push(temp)
-            amount = amount - temp 
-          }
-        };
-      };
+        }
+      }
       this.bigBarChart.allData = numData;
     },
     initBigChart(index) {
@@ -375,9 +409,9 @@ export default {
         "DEC",
       ];
       var monthLabels = [];
-      for (var i=0;i<(this.prevMonthNum+1);i++){
+      for (var i = 0; i < this.prevMonthNum + 1; i++) {
         monthLabels.push(monthsData[i]);
-      };
+      }
       let chartData = {
         datasets: [
           {
@@ -420,35 +454,37 @@ export default {
       var d = new Date();
       this.prevMonthNum = parseInt(d.getMonth() - 1);
       this.billMonth = monthNames[d.getMonth() - 1];
-      this.currTime = String(d).slice(0,String(d).indexOf("GMT"));
+      this.currTime = String(d).slice(0, String(d).indexOf("GMT"));
     },
     calBill(bills) {
       if (bills[this.prevMonthNum].paid == false) {
-        this.billAmount = "$" + String(bills[this.prevMonthNum].price).slice(0,-2) + "." + String(bills[this.prevMonthNum].price).slice(-2);
-      }
-      else {
+        this.billAmount =
+          "$" +
+          String(bills[this.prevMonthNum].price).slice(0, -2) +
+          "." +
+          String(bills[this.prevMonthNum].price).slice(-2);
+      } else {
         this.billAmount = "$" + 0;
         this.billMonth = "Paid";
       }
     },
     elecKPI() {
       this.elecDis = true;
-      setTimeout(() => this.elecDis = null, 3000);
+      setTimeout(() => (this.elecDis = null), 3000);
       var elec_list = [423, 467, 541, 392, 453];
       var random = Math.floor(Math.random() * elec_list.length);
       this.kpi1 = elec_list[random] + " kWh";
     },
     waterKPI() {
       this.waterDis = true;
-      setTimeout(() => this.waterDis = null, 3000);
+      setTimeout(() => (this.waterDis = null), 3000);
       var water_list = [4230, 4670, 5410, 3920, 4530];
       var random = Math.floor(Math.random() * water_list.length);
       this.kpi2 = water_list[random] + " L";
-      
     },
     gasKPI() {
       this.gasDis = true;
-      setTimeout(() => this.gasDis = null, 3000);
+      setTimeout(() => (this.gasDis = null), 3000);
       var gas_list = [270123, 284032, 210203, 252123, 192830];
       var random = Math.floor(Math.random() * gas_list.length);
       this.kpi3 =
@@ -459,15 +495,14 @@ export default {
   async mounted() {
     this.isLoading = true;
     this.getBillMonth();
-    const token = window.localStorage.getItem("token")
-    
+    const token = window.localStorage.getItem("token");
+
     try {
-      
       const result = await API.stripe(token);
-      this.calBill(result.data.extracted);      
+      this.calBill(result.data.extracted);
       this.setBigChartData(result.data.extracted);
       this.initBigChart(0);
-      this.isLoading = false; 
+      this.isLoading = false;
     } catch (error) {
       console.log(error);
     }
@@ -480,10 +515,10 @@ export default {
 };
 </script>
 <style>
-.chart{
+.chart {
   position: relative;
 }
-.loader{
+.loader {
   position: absolute;
   top: 250%;
 }
