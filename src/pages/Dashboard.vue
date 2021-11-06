@@ -1,5 +1,25 @@
 <template>
   <div>
+    <div v-if="xModal">
+          <modal class="my-modal"
+            :show.sync="xModal"
+            :centered="false"
+            :show-close="true"
+          >
+            <template v-slot:header class='bg-gradient-dark'>
+              
+            </template>
+              <h2 class='text-success'>This is the Main Dashboard</h2>
+
+            <h4>Under this page, you will be able to view the breakdown of your bills and utility consumption.</h4>
+            
+            <br>
+            <h4 class='text-primary'>Click anywhere to continue </h4>
+                      
+            <template v-slot:close-button>
+            </template>
+          </modal>
+           </div>
     <div class="row">
       <div class="col-xl-3">
         <card class="card-body kpi-card">
@@ -262,6 +282,7 @@ import TaskList from "./Dashboard/TaskList";
 import UserTable from "./Dashboard/UserTable";
 import config from "@/config";
 import API from "../api/API";
+import { Modal } from "@/components";
 
 export default {
   components: {
@@ -269,9 +290,11 @@ export default {
     TaskList,
     UserTable,
     DoughnutChart,
+    Modal
   },
   data() {
     return {
+      xModal: false,
       elecDis: true,
       waterDis: true,
       gasDis: true,
@@ -491,8 +514,18 @@ export default {
         gas_list[random].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
         " BTU";
     },
+
+    showModal() {
+      this.xModal = true;
+    },
+    closeModal() {
+      this.xModal = false;
+    }
+    
+
   },
   async mounted() {
+    this.xModal = true
     this.isLoading = true;
     this.getBillMonth();
     const token = window.localStorage.getItem("token");
