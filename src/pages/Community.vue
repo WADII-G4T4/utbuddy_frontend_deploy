@@ -1,4 +1,26 @@
 <template>
+<div>
+
+ <div v-if="popModal">
+          <modal class="my-modal"
+            :show.sync="popModal"
+            :centered="false"
+            :show-close="true"
+          >
+            <template v-slot:header class='bg-gradient-dark'>
+              
+            </template>
+              <h2 class='text-success'>Welcome to the Community Page</h2>
+
+            <h4>Under this page, you will be view what the other users have to share</h4>
+            
+            <br>
+            <h4 class='text-primary'>Click anywhere to continue </h4>
+                      
+            <template v-slot:close-button>
+            </template>
+          </modal>
+           </div>
   <div class="row">
     <div class="col-12">
       <card>
@@ -10,7 +32,7 @@
             </button>
           </div>
         </template>
-        <div v-if="xModal">
+        <div v-if="xModal" class='text-light'>
           <modal
             :show.sync="xModal"
             class="modal-search"
@@ -23,7 +45,7 @@
             </template>
             <div class="form-floating">
               <textarea
-                class="form-control border-dark border rounded-1"
+                class="form-control border-dark border rounded-1 text-light"
                 placeholder="Leave your post here"
                 v-model="posttext"
                 id="floatingTextarea"
@@ -53,7 +75,7 @@
           <base-table
             :data="posts"
             :columns="table1.columns"
-            thead-classes="text-primary"
+            thead-classes="text-light"
             @modal="openUserInfo"
             @delete="removePost"
           >
@@ -67,16 +89,16 @@
             :show-close="true"
           >
             <template v-slot:header>
-              <span style="color:black; font-size: 25px">User Information</span>
+              <span style="color:white; font-size: 25px">User Information</span>
             </template>
             <div>
-              <h4 style="color:black;">User: {{name}}, {{occupation}}</h4>
-              <p style="color:black;">{{status}}</p>
-              <p style="color:black;">Description:</p>
-              <p style="color:black;">{{description}}</p>
-              <p style="color:black;">Tips</p>
-              <ul style="color:black;">
-                <li style="color:black;" v-for="(tip, index) in tips" :key="index">
+              <h4 style="color:white;">User: {{name}}, {{occupation}}</h4>
+              <p style="color:white;">{{status}}</p>
+              <p style="color:white;">Description:</p>
+              <p style="color:white;">{{description}}</p>
+              <p style="color:white;">Tips</p>
+              <ul style="color:white;">
+                <li style="color:white;" v-for="(tip, index) in tips" :key="index">
                   {{tip.words}}
                 </li>
               </ul>
@@ -104,6 +126,8 @@
       </button>
     </div>
   </div>
+</div>
+
 </template>
 
 <script>
@@ -119,6 +143,7 @@ export default {
   },
   data() {
     return {
+      popModal :false,
       isLoading: false,
       error: false,
       posttext: "",
@@ -226,6 +251,9 @@ export default {
     },
     closeModal() {
       this.xModal = false;
+    },
+    closeModalpop() {
+      this.popModal = false;
     }
   },
   async mounted(){
@@ -250,6 +278,7 @@ export default {
         this.error = true;
       }
     this.isLoading = false;
+    this.popModal = true
 
     
   }

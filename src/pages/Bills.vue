@@ -1,4 +1,27 @@
 <template>
+
+<div>
+<div v-if="xModal">
+          <modal class="my-modal"
+            :show.sync="xModal"
+            :centered="false"
+            :show-close="true"
+          >
+            <template v-slot:header class='bg-gradient-dark'>
+              
+            </template>
+              <h2 class='text-success'>This is the Main Dashboard</h2>
+
+            <h4>Under this page, you will be able to view the breakdown of your bills and utility consumption.</h4>
+            
+            <br>
+            <h4 class='text-primary'>Click anywhere to continue </h4>
+                      
+            <template v-slot:close-button>
+            </template>
+          </modal>
+           </div>
+
   <div class="row">
     <div class="col-12">
       <card :title="table1.title" class="relative">
@@ -19,20 +42,25 @@
       </card>
     </div>
   </div>
+</div>
+
 </template>
 
 <script>
 import { BaseTable } from "@/components";
 import API from "../api/API";
+import { Modal } from "@/components";
 
 const tableColumns = ["Name", "Amount", "Status", "Date Paid"];
 
 export default {
   components: {
-    BaseTable
+    BaseTable, 
+    Modal
   },
   data() {
     return {
+       xModal: false,
       table1: {
         title: "Bills",
         columns: [...tableColumns],
@@ -43,6 +71,7 @@ export default {
     };
   },
   methods: {
+<<<<<<< HEAD
     async goTo(item) {
       const token = window.localStorage.getItem("token");
       item.paid = true;
@@ -68,8 +97,18 @@ export default {
 
       window.open(item.link);
     }
+=======
+    showModal() {
+      this.xModal = true;
+    },
+    closeModal() {
+      this.xModal = false;
+    }
+    
+>>>>>>> 18abacd1173d31a147d8c73797f19e1eedf2a41d
   },
   async mounted() {
+     this.xModal = true
     const token = window.localStorage.getItem("token");
     
     try {

@@ -1,6 +1,6 @@
 <template>
   <SlideYUpTransition :duration="animationDuration">
-    <div class="modal fade"
+    <div class="modal fade text-light"
          @click.self="closeModal"
          :class="[{'show d-block': show}, {'d-none': !show}, {'modal-mini': type === 'mini'}]"
          v-show="show"
@@ -8,9 +8,9 @@
          role="dialog"
          :aria-hidden="!show">
 
-      <div class="modal-dialog"
+      <div class="modal-dialog text-light"
            :class="[{'modal-notice': type === 'notice'}, {'modal-dialog-centered': centered}, modalClasses]">
-        <div class="modal-content" :class="[gradient ? `bg-gradient-${gradient}` : '',modalContentClasses]">
+        <div class="modal-content bg-dark text-light" :class="[gradient ? `bg-gradient-${gradient}` : '',modalContentClasses]">
 
           <div class="modal-header" :class="[headerClasses]" v-if="$slots.header">
             <slot name="header"></slot>
@@ -117,5 +117,6 @@ export default {
 <style>
 .modal.show {
   background-color: rgba(0, 0, 0, 0.3);
+  color:white;
 }
 </style>
