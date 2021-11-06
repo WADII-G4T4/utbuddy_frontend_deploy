@@ -19,7 +19,7 @@
                   slot="footer"
                   type="primary"
                   v-if="!item.paid"
-                  @click="goTo(item)"
+                  @click="bills(item)"
                   >Pay</base-button
                 >
                 <base-button slot="footer" type="primary" v-else disabled="true"
@@ -38,11 +38,23 @@
                   class="btn btn-secondary"
                   @click="emit(item)"
                 >
-                  {{column}}
+                  {{ column }}
                 </button>
               </span>
-              <span v-else-if="index == 'thread' || index == 'replies'">
+              <span v-else-if="index == 'replies'">
                 {{ column }}
+              </span>
+              <span v-else-if="index == 'thread'">
+                {{column}}
+                <span v-if="item.isUser"
+                  > <i
+                    class="tim-icons icon-trash-simple add ml-4"
+                    style="cursor: pointer"
+                    @click="remove(item)"
+                  ></i
+                ></span>
+                
+                
               </span>
             </span>
           </td>
@@ -65,9 +77,15 @@
   </table>
 </template>
 <script>
-import API from "../api/API";
+const token = window.localStorage.getItem("token");
+
 export default {
   name: "base-table",
+  data() {
+    return {
+      token: token
+    };
+  },
   props: {
     columns: {
       type: Array,
@@ -100,10 +118,10 @@ export default {
       return this.type && `table-${this.type}`;
     }
   },
-  
+
   methods: {
-    emit(item){
-      this.$emit("modal", item)
+    emit(item) {
+      this.$emit("modal", item);
     },
     hasValue(item, column) {
       return item[column.toLowerCase()] !== "undefined";
@@ -111,28 +129,11 @@ export default {
     itemValue(item, column) {
       return item[column.toLowerCase()];
     },
-    async goTo(item) {
-      const token = window.localStorage.getItem("token");
-      item.paid = true;
-      var count = 0;
-      var data = this.data.slice().reverse();
-      for (var arr of data) {
-        if (arr.name == item.name) {
-          break;
-        }
-        count += 1;
-      }
-
-      const date = new Date();
-      var string_date = String(date).substring(4, 24);
-      console.log(string_date);
-      try {
-        const result = API.stripeupdate({ count, date: string_date }, token);
-      } catch (error) {
-        console.log(error);
-      }
-
-      window.open(item.link);
+    bills(item) {
+      this.$emit("goTo", item);
+    },
+    remove(item){
+      this.$emit("delete", item)
     }
   }
 };

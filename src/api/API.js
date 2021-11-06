@@ -1,6 +1,6 @@
 import axios from 'axios'
-const origin = "https://utility-backend-app.herokuapp.com"
-/* const origin = "http://localhost:4000" */
+/* const origin = "https://utility-backend-app.herokuapp.com" */
+const origin = "http://localhost:4000"
 
 const setHeader = (token)=>{
     return {
@@ -76,6 +76,10 @@ API.specialProfile = async (data, token) => {
 
 API.specialTips = async (data, token) => {
     return await axios.post(`${origin}/find/special/tips`, data, setHeader(token))
+}
+
+API.deletePost = async (data, token) => {
+    return await axios.post(`${origin}/delete/post`, data, setHeader(token))
 }
 
 

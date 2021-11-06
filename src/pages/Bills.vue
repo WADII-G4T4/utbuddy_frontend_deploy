@@ -12,6 +12,7 @@
             :columns="table1.columns"
             thead-classes="text-primary"
             type="hover"
+            @bills="goTo"
           >
           </base-table>
         </div>
@@ -42,7 +43,31 @@ export default {
     };
   },
   methods: {
-    
+    async goTo(item) {
+      const token = window.localStorage.getItem("token");
+      item.paid = true;
+      var count = 0;
+      var data = this.table1.data.slice().reverse();
+      const date = new Date();
+      var string_date = String(date).substring(4, 24);
+      for (var arr of data) {
+        if (arr.name == item.name) {
+          arr.date = string_date;
+          break;
+        }
+        count += 1;
+      }
+
+      
+      
+      try {
+        const result = API.stripeupdate({ count, date: string_date }, token);
+      } catch (error) {
+        console.log(error);
+      }
+
+      window.open(item.link);
+    }
   },
   async mounted() {
     const token = window.localStorage.getItem("token");

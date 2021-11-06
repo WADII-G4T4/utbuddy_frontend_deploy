@@ -55,6 +55,7 @@
             :columns="table1.columns"
             thead-classes="text-primary"
             @modal="openUserInfo"
+            @delete="removePost"
           >
           </base-table>
         </div>
@@ -148,6 +149,20 @@ export default {
     }
   },
   methods: {
+    async removePost(item){
+      const token = window.localStorage.getItem("token");
+      
+      for (var index in this.table1.data){
+        if (this.table1.data[index].post_id == item.post_id){
+          this.table1.data.splice(index, 1)
+        }
+      }
+      try {
+        const res1 = await API.deletePost({id: item.post_id}, token)
+        } catch (error) {
+          console.log(error)
+        }
+    },
     async openUserInfo(item){
       const token = window.localStorage.getItem("token");
       this.userInfo = true;
@@ -222,16 +237,15 @@ export default {
         const result = await API.findPost(token);
         var data = result.data
         
+        
         data.sort(function(a, b){return b.date - a.date});
         
         for (var i=0;i<data.length;i++){
           
-          this.table1.data.unshift({thread: data[i].post, username: data[i].username, replies: String(data[i].replies), id: data[i].userId})
+          this.table1.data.unshift({thread: data[i].thread, username: data[i].username, replies: String(data[i].replies), id: data[i].id, isUser: data[i].isUser, post_id: data[i].post_id})
         }
+        console.log(this.table1.data)
         
-        
-        
-      
       } catch (error) {
         this.error = true;
       }
