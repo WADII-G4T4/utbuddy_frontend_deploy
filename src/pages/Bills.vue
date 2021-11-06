@@ -71,7 +71,6 @@ export default {
     };
   },
   methods: {
-<<<<<<< HEAD
     async goTo(item) {
       const token = window.localStorage.getItem("token");
       item.paid = true;
@@ -96,8 +95,7 @@ export default {
       }
 
       window.open(item.link);
-    }
-=======
+    },
     showModal() {
       this.xModal = true;
     },
@@ -105,7 +103,6 @@ export default {
       this.xModal = false;
     }
     
->>>>>>> 18abacd1173d31a147d8c73797f19e1eedf2a41d
   },
   async mounted() {
      this.xModal = true
