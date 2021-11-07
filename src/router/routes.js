@@ -10,9 +10,6 @@ const Dashboard = () =>
   import(/* webpackChunkName: "dashboard" */ "@/pages/Dashboard.vue");
 const Profile = () =>
   import(/* webpackChunkName: "common" */ "@/pages/Profile.vue");
-
-
-
 const Login = () =>
   import(/* webpackChunkName: "common" */ "@/pages/Login.vue");
 const Register = () =>
