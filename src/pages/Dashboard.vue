@@ -299,6 +299,7 @@ export default {
       waterDis: true,
       gasDis: true,
       isLoading: false,
+      currYear: 0,
       currTime: "",
       bills: "",
       prevMonthNum: "",
@@ -400,6 +401,20 @@ export default {
   methods: {
     setBigChartData(bills) {
       var numData = [[], [], []];
+      for (var i = this.prevMonthNum + 1; i < 12; i++){
+        var amount = parseInt(String(bills[i].price).slice(0, -2));
+        for (var j = 0; j < numData.length; j++) {
+          if (j == numData.length - 1) {
+            numData[j].push(amount);
+          } else {
+            var temp = parseFloat(
+              Math.floor(Math.random() * ((amount / 100) * 70)).toFixed(2)
+            );
+            numData[j].push(temp);
+            amount = amount - temp;
+          }
+        }
+      }
       for (var i = 0; i < this.prevMonthNum + 1; i++) {
         var amount = parseInt(String(bills[i].price).slice(0, -2));
         for (var j = 0; j < numData.length; j++) {
@@ -414,6 +429,7 @@ export default {
           }
         }
       }
+      
       this.bigBarChart.allData = numData;
     },
     initBigChart(index) {
@@ -432,9 +448,15 @@ export default {
         "DEC",
       ];
       var monthLabels = [];
-      for (var i = 0; i < this.prevMonthNum + 1; i++) {
-        monthLabels.push(monthsData[i]);
+      for (var i = this.prevMonthNum + 1 ; i < 12; i++) {
+        var month = monthsData[i] + " " + String(this.currYear-1);
+        monthLabels.push(month);
       }
+      for (var i = 0; i < this.prevMonthNum + 1; i++) {
+        var month = monthsData[i] + " " + String(this.currYear);
+        monthLabels.push(month);
+      }
+      
       let chartData = {
         datasets: [
           {
@@ -478,6 +500,7 @@ export default {
       this.prevMonthNum = parseInt(d.getMonth() - 1);
       this.billMonth = monthNames[d.getMonth() - 1];
       this.currTime = String(d).slice(0, String(d).indexOf("GMT"));
+      this.currYear = d.getFullYear();
     },
     calBill(bills) {
       if (bills[this.prevMonthNum].paid == false) {
