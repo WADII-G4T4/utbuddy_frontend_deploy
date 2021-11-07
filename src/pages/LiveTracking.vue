@@ -28,7 +28,7 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-big text-center">
-                  <i class="tim-icons tim-icons-32 icon-atom text-success"></i>
+                  <i class="tim-icons tim-icons-32 icon-atom text-primary"></i>
                 </div>
               </div>
               <div class="col-7">
@@ -54,7 +54,7 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-big text-center">
-                  <i class="tim-icons tim-icons-32 icon-mobile text-success"></i>
+                  <i class="tim-icons tim-icons-32 icon-mobile text-primary"></i>
                 </div>
               </div>
               <div class="col-7">
@@ -77,7 +77,7 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-large text-center">
-                  <i class="tim-icons tim-icons-32 icon-spaceship text-success "></i>
+                  <i class="tim-icons tim-icons-32 icon-spaceship text-primary "></i>
                 </div>
               </div>
               <div class="col-7 ">
@@ -100,7 +100,7 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-big text-center">
-                  <i class="tim-icons tim-icons-32 icon-laptop text-success"></i>
+                  <i class="tim-icons tim-icons-32 icon-laptop text-primary"></i>
                 </div>
               </div>
               <div class="col-7">
@@ -253,7 +253,10 @@ export default {
   },
   data() {
     return {
+      timeLabel :[],
+      smalltimeLabel :[],
       randomData:[],
+      timeLabel :[],
       smallrandomData:[],
       smallrandomData2:[],
       smallrandomData3:[],
@@ -301,6 +304,8 @@ export default {
           labels: ["", "", "", "", ""],
           datasets: [
             {
+              lineTension :0,
+              bezierCurve: false, 
               label: "My First dataset",
               fill: true,
               borderColor: config.colors.danger,
@@ -409,6 +414,8 @@ export default {
       let chartData = {
         datasets: [
           {
+            lineTension :0,
+            bezierCurve: false, 
             fill: true,
             borderColor: config.colors.primary,
             borderWidth: 2,
@@ -420,24 +427,11 @@ export default {
             pointBorderWidth: 20,
             pointHoverRadius: 4,
             pointHoverBorderWidth: 15,
-            pointRadius: 4,
-            data:this.randomData,
+            pointRadius: 1,
+            data:this.randomData
           },
         ],
-        labels: [
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-        ],
+        labels: this.timeLabel
       };
       // this.$refs.bigChart.updateGradients(chartData);
       this.bigLineChart.chartData = chartData;
@@ -452,22 +446,24 @@ export default {
         
           datasets: [
             {
+              lineTension :0,
+            bezierCurve: false, 
               label: "My First dataset",
               fill: true,
-              borderColor: config.colors.danger,
+              borderColor: config.colors.primary,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.danger,
+              pointBackgroundColor: config.colors.primary,
               pointBorderColor: "rgba(255,255,255,0)",
               pointHoverBackgroundColor: config.colors.danger,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
-              pointRadius: 4,
+              pointRadius: 1,
               data:this.smallrandomData,
             },
-          ],
+          ],labels: this.smalltimeLabel
         }
             // this.$refs.bigChart.updateGradients(chartData);
       this.greenLineChart1.chartData = chartData;
@@ -481,22 +477,24 @@ export default {
         
           datasets: [
             {
+              lineTension :0,
+            bezierCurve: false, 
               label: "My First dataset",
               fill: true,
-              borderColor: config.colors.danger,
+              borderColor: config.colors.primary,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.danger,
+              pointBackgroundColor: config.colors.primary,
               pointBorderColor: "rgba(255,255,255,0)",
               pointHoverBackgroundColor: config.colors.danger,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
-              pointRadius: 4,
+              pointRadius: 1,
               data:this.smallrandomData2,
             },
-          ],
+          ],labels: this.smalltimeLabel
         }
             // this.$refs.bigChart.updateGradients(chartData);
       this.greenLineChart2.chartData = chartData;
@@ -510,9 +508,11 @@ export default {
         
           datasets: [
             {
+              lineTension :0,
+            bezierCurve: false, 
               label: "My First dataset",
               fill: true,
-              borderColor: config.colors.danger,
+              borderColor: config.colors.primary,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
@@ -522,10 +522,10 @@ export default {
               pointBorderWidth: 20,
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
-              pointRadius: 4,
-              data:this.smallrandomData,
+              pointRadius: 1,
+              data:this.smallrandomData3,
             },
-          ],
+          ],labels: this.smalltimeLabel
         }
             // this.$refs.bigChart.updateGradients(chartData);
       this.greenLineChart3.chartData = chartData;
@@ -574,65 +574,64 @@ export default {
     },
 
     getRandomDatapoints(){
+     
+      let randnum =0
+      this.randomData =[]
+      // while (this.randomData.length <10){
       setInterval(() => {
-      let i =0; 
-      this.randomData =[];
-      for(i =0 ; i<12 ; i++)
-      {
-        let randnum = Math.floor(Math.random()*10000)
-        this.randomData.push(randnum);
-      }
-  
+        
+           randnum = Math.floor(Math.random()*100);
+           this.randomData.push(randnum)
+        
       // console.log((this.randomData))
-      }, 2000);
-
+      }, 1100)}
       
-    },
+      // this.randomData =[]}
+      
+    ,
 
     getRandomDatapointssmall(){
+      let randnum =0
+      this.smallrandomData =[]
+      // while (this.randomData.length <10){
       setInterval(() => {
-      let i =0; 
-      this.smallrandomData =[];
-      for(i =0 ; i<6 ; i++)
-      {
-        let randnum = Math.floor(Math.random()*100)
-        this.smallrandomData.push(randnum);
-      }
-  
+        
+           randnum = Math.floor(Math.random()*100);
+           this.smallrandomData.push(randnum)
+        
       // console.log((this.randomData))
-      }, 2000);
+      }, 1100)}
 
       
-    },
+    ,
 
     getRandomDatapointssmall2(){
+      let randnum =0
+      this.smallrandomData2 =[]
+      // while (this.randomData.length <10){
       setInterval(() => {
-      let i =0; 
-      this.smallrandomData2 =[];
-      for(i =0 ; i<6 ; i++)
-      {
-        let randnum = Math.floor(Math.random()*100)
-        this.smallrandomData2.push(randnum);
-      }
-  
+        
+           randnum = Math.floor(Math.random()*100);
+           this.smallrandomData2.push(randnum)
+        
       // console.log((this.randomData))
-      }, 2000);
+      }, 1100);
 
       
     },
 
     getRandomDatapointssmall3(){
+    
+      let randnum =0
+      this.smallrandomData3 =[]
+      // while (this.randomData.length <10){
       setInterval(() => {
-      let i =0; 
-      this.smallrandomData3 =[];
-      for(i =0 ; i<6 ; i++)
-      {
-        let randnum = Math.floor(Math.random()*100)
-        this.smallrandomData3.push(randnum);
-      }
-  
+        
+           randnum = Math.floor(Math.random()*100);
+           this.smallrandomData3.push(randnum)
+        
       // console.log((this.randomData))
-      }, 2000);
+      }, 1100)
 
     },
 
@@ -643,7 +642,37 @@ export default {
       this.xModal = false;
 
       
-    }
+    },
+
+
+    getTimeLabel(){
+      this.timeLabel =[]
+      // randnum = 0
+
+      // while (this.randomData.length <10){
+      setInterval(() => {
+        var today = new Date()
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+        this.timeLabel.push(time)
+      
+      // console.log((this.randomData))
+      }, 1100)},
+
+
+
+    getSmallTimeLabel(){
+      this.smalltimeLabel =[]
+      // randnum = 0
+
+      // while (this.randomData.length <10){
+      setInterval(() => {
+        var today = new Date()
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+        this.smalltimeLabel.push(time)
+      
+      // console.log((this.randomData))
+      }, 1100)},
+      
 
 
 
@@ -672,6 +701,8 @@ export default {
       this.getRandomDatapointssmall();
       this.getRandomDatapointssmall2();
       this.getRandomDatapointssmall3();
+      this.getTimeLabel();
+      this.getSmallTimeLabel();
       this.getUsage1();
       this.getTotal();
       this.getUsage2();

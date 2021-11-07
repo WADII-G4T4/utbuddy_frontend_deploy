@@ -87,6 +87,7 @@ export let bigBarChartOptions = {
     mode: "nearest",
     intersect: 0,
     position: "nearest",
+    
     // Include dollar sign for tooltip
     callbacks: {
       label: function(tooltipItems, data) {
