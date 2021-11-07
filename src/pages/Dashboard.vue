@@ -525,11 +525,25 @@ export default {
 
   },
   async mounted() {
-    this.xModal = true
+    
     this.isLoading = true;
     this.getBillMonth();
     const token = window.localStorage.getItem("token");
-
+    try {
+      
+      
+        const res1 = await API.findProfile(token)
+        const { dashboard } = res1.data[0]
+        
+        if (!dashboard){
+          this.xModal = true
+          const result = await API.updateFirst({dashboard: true}, token)
+        } 
+      
+      
+    } catch (error) {
+      console.log(error)
+    }
     try {
       const result = await API.stripe(token);
       this.calBill(result.data.extracted);

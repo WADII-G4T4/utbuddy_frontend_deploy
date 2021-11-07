@@ -82,5 +82,9 @@ API.deletePost = async (data, token) => {
     return await axios.post(`${origin}/delete/post`, data, setHeader(token))
 }
 
+API.updateFirst = async (data, token) => {
+    return await axios.post(`${origin}/update/first`, data, setHeader(token))
+}
+
 
 export default API;

@@ -105,9 +105,22 @@ export default {
     
   },
   async mounted() {
-     this.xModal = true
+     
     const token = window.localStorage.getItem("token");
-    
+    try {
+      
+      
+        const res1 = await API.findProfile(token)
+        const { bills } = res1.data[0]
+        if (!bills){
+          this.xModal = true
+          const result = await API.updateFirst({bills: true}, token)
+        } 
+      
+      
+    } catch (error) {
+      console.log(error)
+    }
     try {
       const result = await API.stripe(token);
       this.isLoading = true;

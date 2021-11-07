@@ -1,5 +1,6 @@
 <template>
   <card>
+    
     <h3 slot="header" class="title">Edit Profile</h3>
     <div class="row">
       <div class="col-md-6 pr-md-1">
@@ -110,7 +111,9 @@ export default {
   },
   data() {
     return {
-      Save: "Save"
+      Save: "Save",
+     
+      
     };
   },
 
@@ -131,8 +134,13 @@ export default {
           token
         );
         const res = await API.addTip({ tips: this.tips }, token);
+        
         this.Save = "Saved!"
+        this.$emit("modal", "Successfully Saved!")
+        
       } catch (err) {
+        this.$emit("modal", "Error has occurred. Please try again")
+        
         console.log(err);
       }
     },

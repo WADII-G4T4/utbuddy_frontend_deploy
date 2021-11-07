@@ -259,7 +259,20 @@ export default {
   async mounted(){
     this.isLoading = true;
     const token = window.localStorage.getItem("token");
-    
+    try {
+      
+      
+        const res1 = await API.findProfile(token)
+        const { community } = res1.data[0]
+        if (!community){
+          this.popModal = true
+          const result = await API.updateFirst({community: true}, token)
+        } 
+      
+      
+    } catch (error) {
+      console.log(error)
+    }
       try {
         
         const result = await API.findPost(token);
@@ -278,7 +291,7 @@ export default {
         this.error = true;
       }
     this.isLoading = false;
-    this.popModal = true
+    
 
     
   }

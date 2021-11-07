@@ -81,13 +81,15 @@ export default {
           this.$router.push("/home/dashboard");
         } catch (error) {
           this.error = true;
+          this.isLoading = false;
         }
       } else {
+        this.isLoading = false;
         this.error = true;
       }
     },
     verify(response) {
-      this.isLoading = false;
+      
       this.recaptcha = response;
     }
   }

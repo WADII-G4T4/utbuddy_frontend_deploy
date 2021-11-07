@@ -232,6 +232,7 @@
   </div>
 </template>
 <script>
+import API from '../api/API'
 import LineChart from "@/components/Charts/LineChart";
 import BarChart from "@/components/Charts/BarChart";
 import * as chartConfigs from "@/components/Charts/config";
@@ -648,9 +649,24 @@ export default {
 
   },
   async mounted() {
+    const token = window.localStorage.getItem("token");
     try {
       
-      this.xModal = true;
+      
+        const res1 = await API.findProfile(token)
+        const { live } = res1.data[0]
+        if (!live){
+          this.xModal = true
+          const result = await API.updateFirst({live: true}, token)
+        } 
+      
+      
+    } catch (error) {
+      console.log(error)
+    }
+    try {
+      
+      
       this.i18n = this.$i18n;
       this.getRandomDatapoints();
       this.getRandomDatapointssmall();

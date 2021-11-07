@@ -53,10 +53,12 @@ export default {
     try {
       const token = window.localStorage.getItem("token");
       const res1 = await API.findProfile(token)
-      
       const { gender } = res1.data[0]
-      
       this.gender = gender
+      
+      
+      
+      
       
     } catch (error) {
       console.log(error)
