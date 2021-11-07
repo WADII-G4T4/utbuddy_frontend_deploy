@@ -321,5 +321,11 @@ export default {
   margin: auto;
 }
 
+div {
+font-weight: 400;
+font-size: 13px;
+color: #c0c1c2;
+}
+
 
 </style>
