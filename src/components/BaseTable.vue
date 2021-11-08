@@ -12,13 +12,8 @@
     <tbody :class="tbodyClasses">
       <tr v-for="(item, index) in data" class="text-center" :key="index">
         <slot :row="item">
-<<<<<<< HEAD
           <td v-for="(column, index) in item" :key="index">
             
-=======
-          <td v-for="(column, index) in item" :key="index" style="word-wrap:break-word;  width: 100%">
-            <span v-if="index !== 'paid'">
->>>>>>> 7c22cea02cd56cf0010b1bcfab0ee9cbfd3e662d
               <span v-if="index == 'link'">
                 <base-button
                   slot="footer"

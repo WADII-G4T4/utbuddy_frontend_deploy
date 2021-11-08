@@ -1,6 +1,6 @@
 import axios from 'axios'
-/* const origin = "https://utility-backend-app.herokuapp.com" */
-const origin = "http://localhost:4000"
+const origin = "https://utility-backend-app.herokuapp.com"
+/* const origin = "http://localhost:4000" */
 
 const setHeader = (token)=>{
     return {
