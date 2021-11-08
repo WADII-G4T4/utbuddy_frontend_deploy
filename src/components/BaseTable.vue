@@ -1,9 +1,9 @@
 <template>
-  <table style="table-layout:fixed; width: 100%" class="table tablesorter" :class="tableClass">
+  <table style="table-layout:fixed;" class="table tablesorter" :class="tableClass">
     <thead :class="theadClasses">
       <tr>
         <slot name="columns">
-          <th v-for="column in columns" class="text-center col" :key="column" style="width:auto !important">
+          <th v-for="column in columns" class="text-center col" :key="column" >
             {{ column }}
           </th>
         </slot>
