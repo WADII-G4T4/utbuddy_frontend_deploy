@@ -10,7 +10,7 @@
         <img
           class="avatar"
           v-if="gender == 'M'"
-          src="img/anime3.png"
+          :src="image"
           alt="..."
         />
         <img class="avatar" v-else src="img/anime6.png" alt="..." /><br />
@@ -35,7 +35,7 @@
             slot="footer"
             type="primary"
             fill
-            @click="save_picture"
+            @click.prevent="save_picture"
             >Upload</base-button
           >
         </form>
@@ -126,15 +126,13 @@ export default {
       change_status: null,
       edit_photo: false,
       images: null,
-      image_name: null
+      image_name: null,
+      image: null
     };
   },
   methods: {
     uploadFile() {
       this.images = this.$refs.file.files[0];
-      console.log(this.images);
-      const token = window.localStorage.getItem("token");
-      this.images.name = token + this.images.name.split(".")[0];
       this.image_name = this.images.name;
     },
     async save_occupation() {
@@ -175,7 +173,10 @@ export default {
       const token = window.localStorage.getItem("token");
       try {
         const res = await API.getPic({ name: "Profile Picture.jpg" }, token);
-        console.log(res);
+        
+        console.log(res.data)
+        this.image = 'data:image/png;base64,' + btoa(unescape(encodeURIComponent(res.data)));
+        console.log(this.image)
       } catch (err) {
         console.log(err);
       }

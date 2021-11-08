@@ -13,7 +13,7 @@
       <tr v-for="(item, index) in data" class="text-center" :key="index">
         <slot :row="item">
           <td v-for="(column, index) in item" :key="index">
-            <span v-if="index !== 'paid'">
+            
               <span v-if="index == 'link'">
                 <base-button
                   slot="footer"
@@ -56,7 +56,7 @@
                 
                 
               </span>
-            </span>
+            
           </td>
           <!-- <td>
           {{item.name}}

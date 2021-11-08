@@ -34,7 +34,7 @@
             :data="table1.data"
             :columns="table1.columns"
             thead-classes="text-primary"
-            type="hover"
+            
             @goTo="goTo"
           >
           </base-table>
@@ -138,7 +138,17 @@ export default {
           this.table1.data.push(result.data.extracted[index])
         }
       }
-      console.log(this.table1.data)
+      var last_year = result.data.extracted.splice(month, 12-month)
+      last_year = last_year.reverse()
+      for (var i in last_year){
+        
+          var price = String(last_year[i].price);
+          price = "$" + price.substring(0,price.length-2) + "." + price.substr(price.length-2, 2)
+          last_year[i].price = price
+          this.table1.data.unshift(last_year[i])
+        
+      }
+      
       this.table1.data = this.table1.data.reverse()
     } catch (error) {
       console.log(error)
