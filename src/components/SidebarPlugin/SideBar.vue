@@ -40,7 +40,7 @@
       },
       backgroundColor: {
         type: String,
-        default: "vue"
+        default: "primary"
       },
       activeColor: {
         type: String,

@@ -1,5 +1,5 @@
 <template>
-  <table class="table tablesorter" :class="tableClass">
+  <table class="table tablesorter w-100" :class="tableClass">
     <thead :class="theadClasses">
       <tr>
         <slot name="columns">
@@ -35,7 +35,7 @@
               <span v-else-if="index == 'username'">
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  class="btn btn-"
                   @click="emit(item)"
                 >
                   {{ column }}

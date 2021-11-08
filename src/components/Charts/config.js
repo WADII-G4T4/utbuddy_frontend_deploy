@@ -18,7 +18,7 @@ export let blueChartOptions = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
-    titleFontColor: '#333',
+    titleFontColor: '#f5f5f5',
     bodyFontColor: '#666',
     bodySpacing: 4,
     xPadding: 12,
@@ -38,7 +38,7 @@ export let blueChartOptions = {
         suggestedMin: 60,
         suggestedMax: 125,
         padding: 20,
-        fontColor: "#2380f7"
+        fontColor: "#FFFFFF"
       }
     }],
 
@@ -51,7 +51,7 @@ export let blueChartOptions = {
       },
       ticks: {
         padding: 20,
-        fontColor: "#2380f7"
+        fontColor: "#FFFFFF"
       }
     }]
   }
@@ -64,15 +64,25 @@ export let doughnutChartOptions = {
     titleFontColor: '#333',
     bodyFontColor: '#666',
     bodySpacing: 4,
-    xPadding: 12,
+    xPadding: 5,
     mode: "nearest",
     intersect: 0,
     position: "nearest"
   },
   legend: {
+     display:true,
+    position: 'right',    
     labels: {
-        fontColor: "white"
-    }
+      usePointStyle: true,
+      fontColor: "#FFFFFF"
+    },
+
+    item:{
+      paddingY: 10,
+      
+    },
+
+    
   },
 }
 
@@ -102,8 +112,18 @@ export let bigBarChartOptions = {
           callback: function(value, index, values) {
             return '$' + value;
           },
-          beginAtZero: true
+          beginAtZero: true,
+
+          fontColor: "#FFFFFF"
         }
+    }],
+
+    xAxes: [{
+     
+      ticks: {
+        padding: 20,
+        fontColor: "#FFFFFF"
+      }
     }]
   }
 }
@@ -112,7 +132,7 @@ export let purpleChartOptions = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
-    titleFontColor: '#333',
+    titleFontColor: '#f5f5f5',
     bodyFontColor: '#666',
     bodySpacing: 4,
     xPadding: 12,
@@ -132,7 +152,7 @@ export let purpleChartOptions = {
         suggestedMin: 60,
         suggestedMax: 125,
         padding: 20,
-        fontColor: "#9a9a9a"
+        fontColor: "#FFFFFF"
       }
     }],
 
@@ -145,7 +165,7 @@ export let purpleChartOptions = {
       },
       ticks: {
         padding: 20,
-        fontColor: "#9a9a9a"
+        fontColor: "#FFFFFF"
       }
     }]
   }
@@ -188,7 +208,7 @@ export let orangeChartOptions = {
       },
       ticks: {
         padding: 20,
-        fontColor: "#ff8a76"
+        fontColor: "#FFFFFF"
       }
     }]
   }
@@ -198,8 +218,8 @@ export let greenChartOptions = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
-    titleFontColor: '#333',
-    bodyFontColor: '#666',
+    titleFontColor: '#f5f5f5',
+    bodyFontColor: '#f5f5f5',
     bodySpacing: 4,
     xPadding: 12,
     mode: "nearest",
@@ -218,7 +238,7 @@ export let greenChartOptions = {
         suggestedMin: 50,
         suggestedMax: 125,
         padding: 20,
-        fontColor: "#9e9e9e"
+        fontColor: "#FFFFFF"
       }
     }],
 
@@ -231,7 +251,7 @@ export let greenChartOptions = {
       },
       ticks: {
         padding: 20,
-        fontColor: "#9e9e9e"
+        fontColor: "#FFFFFF"
       }
     }]
   }
@@ -254,14 +274,14 @@ export let barChartOptions = {
 
       gridLines: {
         drawBorder: false,
-        color: 'rgba(29,140,248,0.1)',
+        color: '#FFFFFF',
         zeroLineColor: "transparent",
       },
       ticks: {
         suggestedMin: 60,
         suggestedMax: 120,
         padding: 20,
-        fontColor: "#9e9e9e"
+        fontColor: "#FFFFFF"
       }
     }],
     xAxes: [{
@@ -273,7 +293,7 @@ export let barChartOptions = {
       },
       ticks: {
         padding: 20,
-        fontColor: "#9e9e9e"
+        fontColor: "#FFFFFF"
       }
     }]
   }

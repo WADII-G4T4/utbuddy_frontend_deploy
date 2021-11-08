@@ -35,7 +35,10 @@
               <!-- <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal">
                 <i class="tim-icons icon-zoom-split"></i>
               </button> -->
+<<<<<<< HEAD
               <div style="align-items: center; margin: auto; font-size: 20px; color: white;">Welcome, {{firstName}}</div>
+=======
+>>>>>>> 11125f8dd9da279e79039a51739d74a4ecbfae4f
               <!-- You can choose types of search input -->
             </div>
             <modal :show.sync="searchModalVisible"
