@@ -1,9 +1,9 @@
 <template>
-  <table class="table tablesorter w-100" :class="tableClass">
+  <table style="table-layout:fixed;" class="table tablesorter" :class="tableClass">
     <thead :class="theadClasses">
       <tr>
         <slot name="columns">
-          <th v-for="column in columns" class="text-center" :key="column">
+          <th v-for="column in columns" class="text-center col" :key="column" >
             {{ column }}
           </th>
         </slot>
@@ -12,7 +12,7 @@
     <tbody :class="tbodyClasses">
       <tr v-for="(item, index) in data" class="text-center" :key="index">
         <slot :row="item">
-          <td v-for="(column, index) in item" :key="index">
+          <td v-for="(column, index) in item" :key="index" style="word-wrap:break-word;  width: 100%">
             <span v-if="index !== 'paid'">
               <span v-if="index == 'link'">
                 <base-button
@@ -45,7 +45,9 @@
                 {{ column }}
               </span>
               <span v-else-if="index == 'thread'">
+              
                 {{column}}
+                
                 <span v-if="item.isUser"
                   > <i
                     class="tim-icons icon-trash-simple add ml-4"
@@ -53,7 +55,6 @@
                     @click="remove(item)"
                   ></i
                 ></span>
-                
                 
               </span>
             </span>
