@@ -22,17 +22,17 @@
           </modal>
            </div>
     <div class="row">
-      <div class="col-xl-3 col-md-6 d-flex">
+      <div class="col-xl-3 col-md-6 d-flex text-white">
         <card class="card-body flex-fill">
           <div>
             <div class="row">
               <div class="col-5">
-                <div class="icon-big text-center">
-                  <i class="tim-icons tim-icons-32 icon-atom text-primary"></i>
+                <div class="icon-big text-success">
+                  <i class="tim-icons tim-icons-32 icon-atom text-success"></i>
                 </div>
               </div>
               <div class="col-7">
-                <div class="numbers">
+                <div class="numbers text-white">
                   <p>Television</p>
                   {{usage1}} kwH
                 </div>
@@ -40,7 +40,7 @@
             </div>
             <div>
               <hr />
-              <div class="stats">
+              <div class="stats text-white">
             
                 <i class="tim-icons icon-refresh-02"></i> Updating Live</div>
               
@@ -48,13 +48,13 @@
           </div>
         </card>
       </div>
-      <div class="col-xl-3 col-md-6 d-flex">
+      <div class="col-xl-3 col-md-6 d-flex text-white ">
         <card class="card-body flex-fill">
           <div>
             <div class="row">
               <div class="col-5">
                 <div class="icon-big text-center">
-                  <i class="tim-icons tim-icons-32 icon-mobile text-primary"></i>
+                  <i class="tim-icons tim-icons-32 icon-mobile text-success"></i>
                 </div>
               </div>
               <div class="col-7">
@@ -71,13 +71,13 @@
           </div>
         </card>
       </div>
-      <div class="col-xl-3 col-md-6 d-flex" >
+      <div class="col-xl-3 col-md-6 d-flex text-white" >
         <card class="card-body flex-fill" >
           <div>
             <div class="row">
               <div class="col-5">
                 <div class="icon-large text-center">
-                  <i class="tim-icons tim-icons-32 icon-spaceship text-primary "></i>
+                  <i class="tim-icons tim-icons-32 icon-spaceship text-success "></i>
                 </div>
               </div>
               <div class="col-7 ">
@@ -94,13 +94,13 @@
           </div>
         </card>
       </div>
-      <div class="col-xl-3 col-md-6 d-flex">
+      <div class="col-xl-3 col-md-6 d-flex text-white">
         <card class="card-body flex-fill ">
           <div>
             <div class="row">
               <div class="col-5">
                 <div class="icon-big text-center">
-                  <i class="tim-icons tim-icons-32 icon-laptop text-primary"></i>
+                  <i class="tim-icons tim-icons-32 icon-laptop text-success"></i>
                 </div>
               </div>
               <div class="col-7">
@@ -125,7 +125,7 @@
             <div class="row">
               <!-- big line graph -->
               <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
-                <h5 class="card-category">
+                <h5 class="card-category text-white">
                   {{ $t("dashboard.totalShipments") }}
                 </h5>
                 <h2 class="card-title">{{ $t("dashboard.monthlyUtilConsumption") }}: {{total}} </h2>
@@ -160,12 +160,12 @@
     </div>
     <div class="row">
 <!-- first mini line graph -->
-      <div class="col-xl-4 col-md-12" :class="{ 'text-right': isRTL }">
+      <div class="col-xl-4 col-md-12 " :class="{ 'text-right': isRTL }">
         <card type="chart">
           <template slot="header">
-            <h5 class="card-category">{{ $t("dashboard.electricityBreakdown") }}</h5>
-            <h3 class="card-title">
-              <i class="tim-icons icon-bell-55 text-primary"></i> {{usage1}}
+            <h5 class="card-category text-white">{{ $t("dashboard.electricityBreakdown") }}</h5>
+            <h3 class="card-title ">
+              <i class="fas fa-bolt text-success"></i> {{usage1}}
             </h3>
           </template>
           <div class="chart-area">
@@ -186,9 +186,9 @@
       <div class="col-xl-4 col-md-12" :class="{ 'text-right': isRTL }">
         <card type="chart">
           <template slot="header">
-            <h5 class="card-category">{{ $t("dashboard.waterBreakdown") }}</h5>
+            <h5 class="card-category text-white">{{ $t("dashboard.waterBreakdown") }}</h5>
             <h3 class="card-title">
-              <i class="tim-icons icon-video-66 text-primary"></i> {{usage2}}
+              <i class="fa fa-tint text-success"></i> {{usage2}}
             </h3>
           </template>
           <div class="chart-area">
@@ -206,12 +206,12 @@
 
 <!-- third mini line graph-->
 
-      <div class="col-xl-4 col-md-12" :class="{ 'text-right': isRTL }">
-        <card type="chart">
+      <div class="col-xl-4 col-md-12 " :class="{ 'text-right': isRTL }">
+        <card type="chart ">
           <template slot="header">
-            <h5 class="card-category">{{ $t("dashboard.gasBreakdown") }}</h5>
+            <h5 class="card-category text-white">{{ $t("dashboard.gasBreakdown") }}</h5>
             <h3 class="card-title">
-              <i class="tim-icons icon-atom text-primary"></i> {{usage3}}
+              <i class="fas fa-burn text-success"></i> {{usage3}}
             </h3>
           </template>
 
@@ -308,17 +308,17 @@ export default {
               bezierCurve: false, 
               label: "My First dataset",
               fill: true,
-              borderColor: config.colors.danger,
+              borderColor: config.colors.secondary,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.danger,
+              pointBackgroundColor: config.colors.secondary,
               pointBorderColor: "rgba(255,255,255,0)",
-              pointHoverBackgroundColor: config.colors.danger,
+              pointHoverBackgroundColor: config.colors.secondary,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
-              pointRadius: 4,
+              pointRadius: 0,
               data: [90, 27, 60, 12, 80],
             },
           ],
@@ -339,13 +339,13 @@ export default {
             {
               label: "My First dataset",
               fill: true,
-              borderColor: config.colors.danger,
+              borderColor: config.colors.secondary,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.danger,
+              pointBackgroundColor: config.colors.secondary,
               pointBorderColor: "rgba(255,255,255,0)",
-              pointHoverBackgroundColor: config.colors.danger,
+              pointHoverBackgroundColor: config.colors.secondary,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
@@ -370,13 +370,13 @@ export default {
             {
               label: "My First dataset",
               fill: true,
-              borderColor: config.colors.danger,
+              borderColor: config.colors.secondary,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.danger,
+              pointBackgroundColor: config.colors.secondary,
               pointBorderColor: "rgba(255,255,255,0)",
-              pointHoverBackgroundColor: config.colors.danger,
+              pointHoverBackgroundColor: config.colors.secondary,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
@@ -417,13 +417,13 @@ export default {
             lineTension :0,
             bezierCurve: false, 
             fill: true,
-            borderColor: config.colors.primary,
+            borderColor: config.colors.secondary,
             borderWidth: 2,
             borderDash: [],
             borderDashOffset: 0.0,
-            pointBackgroundColor: config.colors.primary,
+            pointBackgroundColor: config.colors.secondary,
             pointBorderColor: "rgba(255,255,255,0)",
-            pointHoverBackgroundColor: config.colors.primary,
+            pointHoverBackgroundColor: config.colors.secondary,
             pointBorderWidth: 20,
             pointHoverRadius: 4,
             pointHoverBorderWidth: 15,
@@ -450,13 +450,13 @@ export default {
             bezierCurve: false, 
               label: "My First dataset",
               fill: true,
-              borderColor: config.colors.primary,
+              borderColor: config.colors.secondary,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.primary,
+              pointBackgroundColor: config.colors.secondary,
               pointBorderColor: "rgba(255,255,255,0)",
-              pointHoverBackgroundColor: config.colors.danger,
+              pointHoverBackgroundColor: config.colors.secondary,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
@@ -481,13 +481,13 @@ export default {
             bezierCurve: false, 
               label: "My First dataset",
               fill: true,
-              borderColor: config.colors.primary,
+              borderColor: config.colors.secondary,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.primary,
+              pointBackgroundColor: config.colors.secondary,
               pointBorderColor: "rgba(255,255,255,0)",
-              pointHoverBackgroundColor: config.colors.danger,
+              pointHoverBackgroundColor: config.colors.secondary,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
@@ -512,13 +512,13 @@ export default {
             bezierCurve: false, 
               label: "My First dataset",
               fill: true,
-              borderColor: config.colors.primary,
+              borderColor: config.colors.secondary,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.danger,
+              pointBackgroundColor: config.colors.secondary,
               pointBorderColor: "rgba(255,255,255,0)",
-              pointHoverBackgroundColor: config.colors.danger,
+              pointHoverBackgroundColor: config.colors.secondary,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,

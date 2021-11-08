@@ -109,7 +109,7 @@
     <div class="buttons-bar h">
       <button
         type="button"
-        class="btn-outline-primary mr-1 navigation"
+        class=" btn-secondary  mr-1 navigation "
         v-for="index in pages"
         :key="index"
         @click="next(index)"
@@ -119,7 +119,7 @@
 
       <button
         type="button"
-        class="btn-outline-primary mr-1 navigation"
+        class="btn-secondary mr-1 navigation"
         @click="addone"
       >
         >

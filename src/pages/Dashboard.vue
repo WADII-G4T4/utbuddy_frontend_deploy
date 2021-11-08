@@ -42,7 +42,7 @@
             </div>
             <div>
               <hr />
-              <div class="stats">
+              <div class="stats text-white">
                 <span> Updated as of {{ currTime }} </span>
               </div>
             </div>
@@ -74,7 +74,7 @@
                 <button
                   id="elecBtn"
                   type="button"
-                  class="btn btn-outline-success btn-sm"
+                  class="btn btn-warning  btn-outline-success btn-sm "
                   :disabled="elecDis"
                   @click="elecKPI"
                 >
@@ -110,7 +110,7 @@
                 <button
                   type="button"
                   id="waterBtn"
-                  class="btn btn-outline-success btn-sm"
+                  class="btn  btn-warning btn-outline-success btn-sm"
                   :disabled="waterDis"
                   @click="waterKPI"
                 >
@@ -146,7 +146,7 @@
                 <button
                   type="button"
                   id="gasBtn"
-                  class="btn btn-outline-success btn-sm"
+                  class="btn btn-warning btn-outline-success btn-sm"
                   :disabled="gasDis"
                   @click="gasKPI"
                 >
@@ -461,7 +461,7 @@ export default {
         datasets: [
           {
             fill: true,
-            borderColor: config.colors.primary,
+            borderColor: config.colors.secondary,
             borderWidth: 2,
             borderDash: [],
             borderDashOffset: 0.0,
