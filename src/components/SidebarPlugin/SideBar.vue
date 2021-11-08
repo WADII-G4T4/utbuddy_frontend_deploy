@@ -9,7 +9,7 @@
     <div class="sidebar-wrapper" id="style-3">
       <div class="logo">
         <a href="/home/dashboard" class="simple-text logo-normal">
-        <img src="img/ut_buddy_logo.png">
+        <img src="img/icons/ut_buddy_logo.png">
         </a>
       </div>
       <slot>
