@@ -16,7 +16,7 @@
         </form>
         <vue-recaptcha :sitekey="site" @verify="verify"></vue-recaptcha>
         <label
-          class="card-title label text-danger form-label"
+          class="card-title label text-white form-label"
           v-if="!recaptcha"
         >
           Not yet verified </label
@@ -31,12 +31,12 @@
         >
         </div>
         <div class="card-text">
-          <p v-if="error" class="text-danger label">
+          <p v-if="error" class="text-white label">
             Please check that you have done the verification. If yes, you have
             entered an incorrect email/password. Please try again.
           </p>
           <u
-            ><router-link to="/register"
+            ><router-link to="/register" class="text-white"
               >Haven't made an account? Register here</router-link
             ></u
           >
