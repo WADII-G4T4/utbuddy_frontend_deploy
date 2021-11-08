@@ -32,9 +32,10 @@
             <div class="search-bar input-group" @click="searchModalVisible = true">
               <!-- <input type="text" class="form-control" placeholder="Search...">
               <div class="input-group-addon"><i class="tim-icons icon-zoom-split"></i></div> -->
-              <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal">
+              <!-- <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal">
                 <i class="tim-icons icon-zoom-split"></i>
-              </button>
+              </button> -->
+              <div style="align-items: center; margin: auto; font-size: 20px; color: white;">Welcome, {{firstName}}</div>
               <!-- You can choose types of search input -->
             </div>
             <modal :show.sync="searchModalVisible"
@@ -109,7 +110,8 @@
       Modal
     },
     props:{
-      gender: null
+      gender: null,
+      firstName: null
     },
     computed: {
       routeName() {

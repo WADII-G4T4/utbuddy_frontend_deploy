@@ -10,7 +10,7 @@
             <template v-slot:header class='bg-gradient-dark'>
               
             </template>
-              <h2 class='text-success'>This is the Main Dashboard</h2>
+              <h2 class='text-success'>This is the Bills Page</h2>
 
             <h4>Under this page, you will be able to view the breakdown of your bills and utility consumption.</h4>
             
@@ -35,7 +35,7 @@
             :columns="table1.columns"
             thead-classes="text-primary"
             type="hover"
-            @bills="goTo"
+            @goTo="goTo"
           >
           </base-table>
         </div>

@@ -1,6 +1,6 @@
 import axios from 'axios'
-const origin = "https://utility-backend-app.herokuapp.com"
-/* const origin = "http://localhost:4000" */
+/* const origin = "https://utility-backend-app.herokuapp.com" */
+const origin = "http://localhost:4000"
 
 const setHeader = (token)=>{
     return {
@@ -84,6 +84,26 @@ API.deletePost = async (data, token) => {
 
 API.updateFirst = async (data, token) => {
     return await axios.post(`${origin}/update/first`, data, setHeader(token))
+}
+
+API.uploadPic = async (data, token) => {
+    const set = (token)=>{
+        return {
+          headers:{
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': 'Bearer '+ token
+                  }
+        }
+    }
+    return await axios.post(`${origin}/upload`, data, set(token))
+}
+
+API.updatePic = async (data, token) => {
+    return await axios.post(`${origin}/update/pic`, data, setHeader(token))
+}
+
+API.getPic = async (data, token) => {
+    return await axios.post(`${origin}/upload/download`, data, setHeader(token))
 }
 
 

@@ -39,6 +39,7 @@
           :occupation="occupation"
           :gender="gender"
           :status="status"
+          :email="email"
         ></user-card>
       </div>
     </div>

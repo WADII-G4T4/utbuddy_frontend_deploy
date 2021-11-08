@@ -92,9 +92,15 @@
     <button @click="addTip" class="btn btn-black btn-sm">
       <i class="tim-icons icon-simple-add add m-auto"></i>
     </button>
-    <base-button slot="footer" type="primary" fill @click="save"
-      >{{Save}}</base-button
-    >
+    <div @click="save" class="mt-4" >
+        <vue-loading-button
+          :loading="isLoading"
+          style="font-size: 18px;"
+          class="btn btn-primary "
+          
+          >{{Save}}</vue-loading-button
+        >
+        </div>
   </card>
 </template>
 <script>
@@ -112,7 +118,7 @@ export default {
   data() {
     return {
       Save: "Save",
-     
+      isLoading: false
       
     };
   },
@@ -122,7 +128,7 @@ export default {
       this.tips.push({ words: "" });
     },
     async save() {
-      
+      this.isLoading = true;
       const token = window.localStorage.getItem("token");
       var name = this.firstName + " " + this.lastName;
       var address = this.address;
@@ -137,7 +143,7 @@ export default {
         
         this.Save = "Saved!"
         this.$emit("modal", "Successfully Saved!")
-        
+        this.isLoading = false;
       } catch (err) {
         this.$emit("modal", "Error has occurred. Please try again")
         

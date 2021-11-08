@@ -45,7 +45,7 @@
             </template>
             <div class="form-floating">
               <textarea
-                class="form-control border-dark border rounded-1 text-light"
+                class="form-control border-dark border rounded-1"
                 placeholder="Leave your post here"
                 v-model="posttext"
                 id="floatingTextarea"
@@ -59,14 +59,7 @@
               Error has occurred
             </p>
           </modal>
-          <!-- <Modal class="modal" :show.sync="xModal" @close='closeModal()'>
-        <template v-slot:header>
-        Upload a New Post
-          </template>
-          <textarea rows='4' cols='50' v-model='posttext'></textarea>
-          <template v-slot:close-button></template>
-          <button type='button' @click='addPost()'>Submit Post</button>
-      </Modal> -->
+          
         </div>
         <div v-if="isLoading" class="loading">
             <vue-simple-spinner message="Please wait while we retrieve your bills"></vue-simple-spinner>
@@ -89,16 +82,16 @@
             :show-close="true"
           >
             <template v-slot:header>
-              <span style="color:white; font-size: 25px">User Information</span>
+              <span style="color:black; font-size: 25px">User Information</span>
             </template>
             <div>
-              <h4 style="color:white;">User: {{name}}, {{occupation}}</h4>
-              <p style="color:white;">{{status}}</p>
-              <p style="color:white;">Description:</p>
-              <p style="color:white;">{{description}}</p>
-              <p style="color:white;">Tips</p>
-              <ul style="color:white;">
-                <li style="color:white;" v-for="(tip, index) in tips" :key="index">
+              <h4 style="color:black;">User: {{name}}, {{occupation}}</h4>
+              <p style="color:black;">{{status}}</p>
+              <p style="color:black;">Description:</p>
+              <p style="color:black;">{{description}}</p>
+              <p style="color:black;">Tips</p>
+              <ul style="color:black;">
+                <li style="color:black;" v-for="(tip, index) in tips" :key="index">
                   {{tip.words}}
                 </li>
               </ul>
@@ -326,6 +319,8 @@ font-weight: 400;
 font-size: 13px;
 color: #c0c1c2;
 }
+
+
 
 
 </style>
