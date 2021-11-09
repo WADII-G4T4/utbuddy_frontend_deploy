@@ -70,7 +70,7 @@
           <label class="control-label">
             Gender
           </label>
-          <select class="form-select w-100 mb-3 select" v-model="gender">
+          <select class="form-select w-100 mb-3 select bg-transparent" v-model="gender">
             <option value="M" selected>Male</option>
             <option value="F">Female</option>
           </select>
