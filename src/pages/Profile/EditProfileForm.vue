@@ -163,7 +163,7 @@ export default {
 }
 
 .textbox {
-  border: 1px solid #2b3553 !important;
+  border: 1px solid #aadf9f !important;
   border-radius: 6px !important;
   padding-left: 17px !important;
 }

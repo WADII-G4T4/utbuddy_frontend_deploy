@@ -26,6 +26,7 @@ import i18n from "./i18n"
 import './registerServiceWorker'
 import Spinner from 'vue-simple-spinner'
 import VueLoadingButton from 'vue-loading-button'
+import Cloudinary from "cloudinary-vue";
 
 Vue.component( 'vue-recaptcha', VueRecaptcha)
 Vue.component('vue-simple-spinner', Spinner)
@@ -39,6 +40,12 @@ Vue.use(VueRecaptcha, {
     useRecaptchaNet: true
   }
 })
+
+Vue.use(Cloudinary, {
+  configuration: { 
+    cloudName: "decos9hrk",
+    secure: true }
+});
 
 /* eslint-disable no-new */
 new Vue({

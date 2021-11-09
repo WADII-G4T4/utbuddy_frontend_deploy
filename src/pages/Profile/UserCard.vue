@@ -7,20 +7,28 @@
       <div class="block block-three"></div>
       <div class="block block-four"></div>
       <a href="#">
-        <img
+        <!-- <img
           class="avatar"
           v-if="gender == 'M'"
-          :src="image"
+          src="img/anime3.png"
           alt="..."
         />
-        <img class="avatar" v-else src="img/anime6.png" alt="..." /><br />
-        <form @submit.prevent="save_picture" enctype="multipart/form-data">
+        <img class="avatar" v-else src="img/anime6.png" alt="..." /><br /> -->
+        <img
+          class="avatar"
+          
+          :src="url"
+          alt="..."
+        /><br>
+
+        
           <input
             v-if="edit_photo"
             class="mx-auto pl-5 text-center"
             @change="uploadFile"
             ref="file"
             type="file"
+            name="image"
           />
           <base-button
             v-if="!edit_photo"
@@ -38,10 +46,7 @@
             @click.prevent="save_picture"
             >Upload</base-button
           >
-        </form>
-        <base-button slot="footer" type="primary" fill @click="get"
-          >Upload</base-button
-        >
+        
         <h3 class="title">{{ name }}</h3>
       </a>
 
@@ -107,16 +112,19 @@
 <script>
 import API from "../../api/API";
 import BaseButton from "../../components/BaseButton.vue";
+import { CldImage } from "cloudinary-vue";
 export default {
   components: {
-    BaseButton
+    BaseButton,
+    CldImage
   },
   props: {
     name: null,
     occupation: null,
     gender: null,
     status: null,
-    email: null
+    email: null,
+    url: null
   },
   data() {
     return {
@@ -127,12 +135,14 @@ export default {
       edit_photo: false,
       images: null,
       image_name: null,
-      image: null
+      image: null,
+      
     };
   },
   methods: {
     uploadFile() {
       this.images = this.$refs.file.files[0];
+      console.log(this.images)
       this.image_name = this.images.name;
     },
     async save_occupation() {
@@ -158,16 +168,37 @@ export default {
       }
     },
     async save_picture() {
+      /* console.log("HI")
       const formData = new FormData();
-      formData.append("file", this.images);
+      formData.append("file", this.images); */
 
       const token = window.localStorage.getItem("token");
-      try {
+      /* try {
         const res = await API.uploadPic(formData, token);
         const res1 = await API.updatePic({ picture: this.image_name }, token);
       } catch (err) {
         console.log(err);
+      } */
+      console.log("HELLO THERE")
+      
+      console.log("HII")
+      console.log(this.images)
+      if (this.images){
+        const reader = new FileReader();
+        reader.readAsDataURL(this.images);
+        reader.onloadend = async () => {
+          try {
+            const res = await API.uploadPic({data: reader.result}, token);
+            
+          } catch (err) {
+            console.log(err);
+          }
+        
+        };
       }
+      
+      
+        
     },
     async get() {
       const token = window.localStorage.getItem("token");
@@ -181,11 +212,13 @@ export default {
         console.log(err);
       }
     }
-  }
+  },
+  
 };
 </script>
 <style>
 .pencil {
   cursor: pointer;
 }
+
 </style>

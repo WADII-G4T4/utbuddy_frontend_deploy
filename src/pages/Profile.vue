@@ -40,6 +40,7 @@
           :gender="gender"
           :status="status"
           :email="email"
+          :url="url"
         ></user-card>
       </div>
     </div>
@@ -70,7 +71,9 @@ export default {
       status: null,
       description: null,
       popModal: false,
-      message: null
+      message: null,
+      picture: null,
+      url: null
     };
   },
   methods:{
@@ -98,7 +101,8 @@ export default {
         occupation,
         gender,
         status,
-        description
+        description,
+        picture
       } = res1.data[0];
 
       this.firstName = name.split(" ")[0];
@@ -111,9 +115,20 @@ export default {
       this.gender = gender;
       this.status = status;
       this.description = description;
+      this.picture = picture
+      
     } catch (error) {
       console.log(error);
     }
+    try {
+        
+        const res = await API.getPic({ id: this.picture }, token);
+        
+        this.url = res.data[0].url
+        
+      } catch (err) {
+        console.log(err);
+      }
   }
 };
 </script>

@@ -46,8 +46,7 @@ API.occupation = async (data, token) => {
     return await axios.post(`${origin}/update/profile/occupation`, data, setHeader(token))
 }
 
-API.status = async (data, token) => {
-    return await axios.post(`${origin}/update/profile/status`, data, setHeader(token))
+API.status = async (data, token) => {    return await axios.post(`${origin}/update/profile/status`, data, setHeader(token))
 }
 
 API.stripe = async (token) => {
@@ -87,15 +86,8 @@ API.updateFirst = async (data, token) => {
 }
 
 API.uploadPic = async (data, token) => {
-    const set = (token)=>{
-        return {
-          headers:{
-                    'Content-Type': 'multipart/form-data',
-                    'Authorization': 'Bearer '+ token
-                  }
-        }
-    }
-    return await axios.post(`${origin}/upload`, data, set(token))
+
+    return await axios.post(`${origin}/upload`, data, setHeader(token))
 }
 
 API.updatePic = async (data, token) => {
@@ -103,7 +95,7 @@ API.updatePic = async (data, token) => {
 }
 
 API.getPic = async (data, token) => {
-    return await axios.post(`${origin}/upload/download`, data, setHeader(token))
+    return await axios.post(`${origin}/upload/image`, data, setHeader(token))
 }
 
 
