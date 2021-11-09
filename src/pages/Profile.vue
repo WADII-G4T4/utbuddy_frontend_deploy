@@ -19,6 +19,25 @@
             </template>
           </modal>
            </div>
+    <div v-if="uploadedModal">
+          <modal class="my-modal"
+            :show.sync="uploadedModal"
+            :centered="false"
+            :show-close="true"
+            
+          >
+            <template v-slot:header class='bg-gradient-dark'>
+              
+            </template>
+              <h2 class='text-success'>{{ message }}</h2>
+
+            
+            <h4 class='text-primary'>Click anywhere to continue </h4>
+                      
+            <template v-slot:close-button>
+            </template>
+          </modal>
+           </div>
     <div class="row">
       <div class="col-md-8">
         <edit-profile-form
@@ -41,6 +60,7 @@
           :status="status"
           :email="email"
           :url="url"
+          @uploaded="showUploaded"
         ></user-card>
       </div>
     </div>
@@ -73,13 +93,19 @@ export default {
       popModal: false,
       message: null,
       picture: null,
-      url: null
+      url: null,
+      uploadedModal: false
     };
   },
   methods:{
     showModal(message){
       
       this.popModal = true
+      this.message = message
+    },
+    showUploaded(message){
+      
+      this.uploadedModal = true
       this.message = message
     }
   },
@@ -115,20 +141,13 @@ export default {
       this.gender = gender;
       this.status = status;
       this.description = description;
-      this.picture = picture
+      this.url = picture
+      
       
     } catch (error) {
       console.log(error);
     }
-    try {
-        
-        const res = await API.getPic({ id: this.picture }, token);
-        
-        this.url = res.data[0].url
-        
-      } catch (err) {
-        console.log(err);
-      }
+    
   }
 };
 </script>

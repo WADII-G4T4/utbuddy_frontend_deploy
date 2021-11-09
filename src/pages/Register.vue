@@ -13,8 +13,9 @@
               >
               </base-input>
               <label
-                class="card-title label text-danger form-label"
+                class="card-title label form-label"
                 v-if="!firstName"
+                style="color: red;"
               >
                 Please fill in this field
               </label>
@@ -27,8 +28,9 @@
               >
               </base-input>
               <label
-                class="card-title label text-danger form-label"
+                class="card-title label  form-label"
                 v-if="!lastName"
+                style="color: red;"
               >
                 Please fill in this field
               </label>
@@ -37,8 +39,9 @@
           <base-input label="Address" placeholder="Address" v-model="address">
           </base-input>
           <label
-            class="card-title label text-danger form-label"
+            class="card-title label  form-label"
             v-if="!address"
+            style="color: red;"
           >
             Please fill in this field </label
           >
@@ -48,7 +51,7 @@
             v-model="zip"
           >
           </base-input>
-          <label class="card-title label text-danger form-label" v-if="!zip">
+          <label class="card-title label  form-label" v-if="!zip" style="color: red;">
             Please fill in this field </label
           >
           <base-input
@@ -58,8 +61,9 @@
           >
           </base-input>
           <label
-            class="card-title label text-danger form-label"
+            class="card-title label  form-label"
             v-if="!occupation"
+            style="color: red;"
           >
             Please fill in this field </label
           ><br v-if="!occupation">
@@ -71,14 +75,15 @@
             <option value="F">Female</option>
           </select>
           <label
-            class="card-title label text-danger form-label"
+            class="card-title label  form-label"
             v-if="!gender"
+            style="color: red;"
           >
             Please fill in this field </label
           >
           <base-input label="Email" placeholder="Email" v-model="email">
           </base-input>
-          <label class="card-title label text-danger form-label" v-if="!email">
+          <label class="card-title label  form-label" v-if="!email" style="color: red;">
             Please fill in this field </label
           >
           <base-input
@@ -89,8 +94,9 @@
           >
           </base-input>
           <label
-            class="card-title label text-danger form-label"
+            class="card-title label  form-label"
             v-if="!password"
+            style="color: red;"
           >
             Please fill in this field </label
           >
@@ -102,16 +108,18 @@
           >
           </base-input>
           <label
-            class="card-title label text-danger form-label"
+            class="card-title label form-label"
             v-if="!re_password"
+            style="color: red;"
           >
             Please fill in this field </label
           >
         </form>
         <vue-recaptcha :sitekey="site" @verify="verify"></vue-recaptcha>
         <label
-          class="card-title label text-danger form-label"
+          class="card-title label form-label"
           v-if="!recaptcha"
+          style="color: red;"
         >
           Not yet verified </label
         >
@@ -125,11 +133,11 @@
         >
         </div>
         <div class="card-text">
-          <p v-if="error" class="text-danger label">
+          <p v-if="error" class=" label" style="color: red;">
             {{ error }}
           </p>
           <u
-            ><router-link to="/login"
+            ><router-link to="/login" class="text-white"
               >Already have an account? Login here</router-link
             ></u
           >
@@ -224,10 +232,10 @@ export default {
   width: 100%;
 }
 .select{
-  background-color: rgb(39,41,59);
+  background-color: #aadf9f;
   color: rgba(255, 255, 255, 0.8);
   border-radius: 6px;
-  border-color: #2b3553;
+  border-color: #aadf9f;
   height: 39px;
   padding-left: 13px;
   font-size: 0.75rem;

@@ -14,49 +14,46 @@
           alt="..."
         />
         <img class="avatar" v-else src="img/anime6.png" alt="..." /><br /> -->
-        <span v-if="url"><img
-          class="avatar"
-          
-          :src="url"
-          alt="..."
-        /></span>
+        <span v-if="url"><img class="avatar" :src="url" alt="..."/></span>
         <span v-else>
           <img
-          class="avatar"
-          v-if="gender == 'M'"
-          src="img/anime3.png"
-          alt="..."
-        />
-        <img class="avatar" v-else src="img/anime6.png" alt="..." />
-        </span>
-        <br>
-
-        
-          <input
-            v-if="edit_photo"
-            class="mx-auto pl-5 text-center"
-            @change="uploadFile"
-            ref="file"
-            type="file"
-            name="image"
+            class="avatar"
+            v-if="gender == 'M'"
+            src="img/anime3.png"
+            alt="..."
           />
-          <base-button
-            v-if="!edit_photo"
-            slot="footer"
-            type="primary"
-            fill
-            @click.prevent="edit_photo = true"
-            >Upload</base-button
+          <img class="avatar" v-else src="img/anime6.png" alt="..." />
+        </span>
+        <br />
+
+        <input
+          v-if="edit_photo"
+          class="mx-auto pl-5 text-center text-white"
+          @change="uploadFile"
+          ref="file"
+          type="file"
+          name="image"
+        />
+        <br v-if="edit_photo" />
+        <span v-if="edit_photo" style="color: red;"
+          >Ensure that your picture is square</span
+        ><br v-if="edit_photo" />
+        <div @click="edit_photo = true" v-if="!edit_photo" class="mt-4">
+          <vue-loading-button
+            style="font-size: 18px;"
+            class="btn btn-primary "
+            >Upload</vue-loading-button
           >
-          <base-button
-            v-if="edit_photo"
-            slot="footer"
-            type="primary"
-            fill
-            @click.prevent="save_picture"
-            >Upload</base-button
+        </div>
+        <div @click="save_picture" v-if="edit_photo">
+          <vue-loading-button
+            :loading="isLoading"
+            style="font-size: 18px;"
+            class="btn btn-primary "
+            >Upload</vue-loading-button
           >
-        
+        </div>
+
         <h3 class="title">{{ name }}</h3>
       </a>
 
@@ -146,13 +143,13 @@ export default {
       images: null,
       image_name: null,
       image: null,
-      
+      isLoading: false
     };
   },
   methods: {
     uploadFile() {
       this.images = this.$refs.file.files[0];
-      console.log(this.images)
+      console.log(this.images);
       this.image_name = this.images.name;
     },
     async save_occupation() {
@@ -178,57 +175,29 @@ export default {
       }
     },
     async save_picture() {
-      /* console.log("HI")
-      const formData = new FormData();
-      formData.append("file", this.images); */
-
+      this.isLoading = true
       const token = window.localStorage.getItem("token");
-      /* try {
-        const res = await API.uploadPic(formData, token);
-        const res1 = await API.updatePic({ picture: this.image_name }, token);
-      } catch (err) {
-        console.log(err);
-      } */
-      console.log("HELLO THERE")
-      
-      console.log("HII")
-      console.log(this.images)
-      if (this.images){
+      if (this.images) {
         const reader = new FileReader();
         reader.readAsDataURL(this.images);
         reader.onloadend = async () => {
           try {
-            const res = await API.uploadPic({data: reader.result}, token);
-            
+            const res = await API.uploadPic({ data: reader.result }, token);
+            this.url = res.data.url;
+            this.$emit("uploaded", "Image successfully uploaded");
+            this.edit_photo = false;
+            this.isLoading = false;
           } catch (err) {
             console.log(err);
           }
-        
         };
       }
-      
-      
-        
-    },
-    async get() {
-      const token = window.localStorage.getItem("token");
-      try {
-        const res = await API.getPic({ name: "Profile Picture.jpg" }, token);
-        
-        console.log(res.data)
-        this.image = 'data:image/png;base64,' + btoa(unescape(encodeURIComponent(res.data)));
-        console.log(this.image)
-      } catch (err) {
-        console.log(err);
-      }
     }
-  },
-  
+  }
 };
 </script>
 <style>
 .pencil {
   cursor: pointer;
 }
-
 </style>

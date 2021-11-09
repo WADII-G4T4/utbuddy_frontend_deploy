@@ -68,7 +68,7 @@
       Tips
     </label>
     <div class="row" v-for="(tip, index) in tips" :key="index">
-      <div class="col-md-8">
+      <div class="col-8">
         <ul>
           <li>
             <textarea
@@ -82,7 +82,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-md-4">
+      <div class="col-4">
         <i
           class="tim-icons icon-trash-simple add m-auto"
           @click="remove(index)"

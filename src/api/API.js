@@ -94,9 +94,7 @@ API.updatePic = async (data, token) => {
     return await axios.post(`${origin}/update/pic`, data, setHeader(token))
 }
 
-API.getPic = async (data, token) => {
-    return await axios.post(`${origin}/upload/image`, data, setHeader(token))
-}
+
 
 
 export default API;

@@ -9,7 +9,7 @@
       </template>
     </side-bar>
     <div class="main-panel">
-      <top-navbar :gender="gender" :firstName="firstName"></top-navbar>
+      <top-navbar :gender="gender" :firstName="firstName" :url="url"></top-navbar>
       <dashboard-content @click.native="toggleSidebar">
       </dashboard-content>
     </div>
@@ -31,7 +31,8 @@ export default {
   data(){
     return {
       gender: null,
-      firstName: null
+      firstName: null,
+      url: null
     }
   },
   methods: {
@@ -54,10 +55,10 @@ export default {
     try {
       const token = window.localStorage.getItem("token");
       const res1 = await API.findProfile(token)
-      const { gender, name } = res1.data[0]
+      const { gender, name, picture } = res1.data[0]
       this.gender = gender
       this.firstName = name.split(" ")[0];
-      
+      this.url = picture
       
       
       
