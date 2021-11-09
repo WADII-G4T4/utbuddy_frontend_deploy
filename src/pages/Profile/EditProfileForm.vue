@@ -3,7 +3,7 @@
     
     <h3 slot="header" class="title">Edit Profile</h3>
     <div class="row">
-      <div class="col-md-6 pr-md-1">
+      <div class="col-md-6 pr-md-1 ">
         <base-input
           label="Email address"
           type="email"
