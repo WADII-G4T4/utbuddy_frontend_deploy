@@ -14,12 +14,22 @@
           alt="..."
         />
         <img class="avatar" v-else src="img/anime6.png" alt="..." /><br /> -->
-        <img
+        <span v-if="url"><img
           class="avatar"
           
           :src="url"
           alt="..."
-        /><br>
+        /></span>
+        <span v-else>
+          <img
+          class="avatar"
+          v-if="gender == 'M'"
+          src="img/anime3.png"
+          alt="..."
+        />
+        <img class="avatar" v-else src="img/anime6.png" alt="..." />
+        </span>
+        <br>
 
         
           <input
