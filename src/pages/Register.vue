@@ -12,13 +12,7 @@
                 v-model="firstName"
               >
               </base-input>
-              <label
-                class="card-title label form-label"
-                v-if="!firstName"
-                style="color: red;"
-              >
-                Please fill in this field
-              </label>
+              
             </div>
             <div class="col-lg-6 col-12">
               <base-input
@@ -27,46 +21,26 @@
                 v-model="lastName"
               >
               </base-input>
-              <label
-                class="card-title label  form-label"
-                v-if="!lastName"
-                style="color: red;"
-              >
-                Please fill in this field
-              </label>
+              
             </div>
           </div>
           <base-input label="Address" placeholder="Address" v-model="address">
           </base-input>
-          <label
-            class="card-title label  form-label"
-            v-if="!address"
-            style="color: red;"
-          >
-            Please fill in this field </label
-          >
+          
           <base-input
             label="Postal Code"
             placeholder="Postal Code"
             v-model="zip"
           >
           </base-input>
-          <label class="card-title label  form-label" v-if="!zip" style="color: red;">
-            Please fill in this field </label
-          >
+          
           <base-input
             label="Occupation"
             placeholder="Occupation"
             v-model="occupation"
           >
           </base-input>
-          <label
-            class="card-title label  form-label"
-            v-if="!occupation"
-            style="color: red;"
-          >
-            Please fill in this field </label
-          ><br v-if="!occupation">
+          <br v-if="!occupation">
           <label class="control-label">
             Gender
           </label>
@@ -74,18 +48,10 @@
             <option value="M" selected>Male</option>
             <option value="F">Female</option>
           </select>
-          <label
-            class="card-title label  form-label"
-            v-if="!gender"
-            style="color: red;"
-          >
-            Please fill in this field </label
-          >
+          
           <base-input label="Email" placeholder="Email" v-model="email">
           </base-input>
-          <label class="card-title label  form-label" v-if="!email" style="color: red;">
-            Please fill in this field </label
-          >
+          
           <base-input
             label="Password"
             placeholder="Password"
@@ -93,13 +59,7 @@
             type="password"
           >
           </base-input>
-          <label
-            class="card-title label  form-label"
-            v-if="!password"
-            style="color: red;"
-          >
-            Please fill in this field </label
-          >
+          
           <base-input
             label="Re-confirm Password"
             placeholder="Re-confirm Password"
@@ -107,13 +67,7 @@
             type="password"
           >
           </base-input>
-          <label
-            class="card-title label form-label"
-            v-if="!re_password"
-            style="color: red;"
-          >
-            Please fill in this field </label
-          >
+          
         </form>
         <vue-recaptcha :sitekey="site" @verify="verify"></vue-recaptcha>
         <label
