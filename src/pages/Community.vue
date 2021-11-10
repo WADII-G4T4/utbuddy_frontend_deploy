@@ -165,7 +165,8 @@ export default {
       status: null,
       description: null,
       tips: null,
-      url: null
+      url: null,
+      gender: null
     };
   },
   computed: {
@@ -198,7 +199,7 @@ export default {
       this.userInfo = true;
       try {
         const res1 = await API.specialProfile({ id: item.id }, token);
-        const { name, occupation, status, description, picture } = res1.data[0];
+        const { name, occupation, status, description, picture, gender } = res1.data[0];
         this.name = "";
         this.occupation = "";
         this.status = "";
@@ -208,6 +209,7 @@ export default {
         this.status = status;
         this.description = description;
         this.url = picture;
+        this.gender = gender
       } catch (error) {
         console.log(error);
       }
@@ -292,7 +294,7 @@ export default {
           post_id: data[i].post_id
         });
       }
-      console.log(this.table1.data);
+      
     } catch (error) {
       this.error = true;
     }
