@@ -566,9 +566,7 @@ export default {
 
     getTotal(){
       setInterval(() => {
-      var total_list = [1075, 2043, 3423, 4411, 3423, 2324, 2427, 3424, 34242, 4322, 3434];
-     var random =  Math.floor(Math.random() * total_list.length);
-      this.total = total_list[random];
+            this.total =  Math.floor(Math.random()*1000);
        }, 1100);
     },
 
@@ -579,7 +577,7 @@ export default {
       // while (this.randomData.length <10){
       setInterval(() => {
         
-           randnum = Math.floor(Math.random()*100);
+           randnum = Math.floor(Math.random()*1000);
            this.randomData.push(randnum)
         
       // console.log((this.randomData))

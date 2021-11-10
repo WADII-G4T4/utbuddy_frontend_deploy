@@ -107,21 +107,41 @@ export let bigBarChartOptions = {
   },
   scales: {
     yAxes: [{
+       gridLines: {
+          display: true,
+          drawBorder: true,
+          zeroLineWidth: 1,
+          lineWidth: 0,
+          drawTicks: false,
+          drawOnChartArea: true,
+          color: ['rgba(0, 0, 0, 0)'],
+          zeroLineColor: 'rgba(0, 0, 0, 0.5)',
+          borderWidth: 0},
         ticks: {
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
             return '$' + value;
           },
           beginAtZero: true,
-
+          padding: 10,
           fontColor: "#FFFFFF"
         }
     }],
 
     xAxes: [{
-     
+      gridLines: {
+        display: true,
+        drawBorder: true,
+        zeroLineWidth:1,
+        lineWidth: 0,
+        drawTicks: false,
+        drawOnChartArea: true,
+        color: ['rgba(0, 0, 0, 0)'],
+        zeroLineColor: 'rgba(0, 0, 0, 0.4)',
+        borderWidth: 0},
+
       ticks: {
-        padding: 20,
+        padding: 10,
         fontColor: "#FFFFFF"
       }
     }]
@@ -274,12 +294,13 @@ export let barChartOptions = {
 
       gridLines: {
         drawBorder: false,
-        color: '#FFFFFF',
+        display:false, 
         zeroLineColor: "transparent",
       },
       ticks: {
         suggestedMin: 60,
         suggestedMax: 120,
+
         padding: 20,
         fontColor: "#FFFFFF"
       }
@@ -288,6 +309,7 @@ export let barChartOptions = {
 
       gridLines: {
         drawBorder: false,
+        display:false,
         color: 'rgba(29,140,248,0.1)',
         zeroLineColor: "transparent",
       },
