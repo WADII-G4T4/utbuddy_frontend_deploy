@@ -276,20 +276,20 @@ export default {
         ],
         // activeIndex: 0,
         chartData: {
-          datasets: [{}],
+          labels: ["", "", "", "", ""],
+          datasets: [{data: [90, 27, 60, 12, 80,100,20,19,40,80,19,50]}],
           labels: [
-            "JAN",
-            "FEB",
-            "MAR",
-            "APR",
-            "MAY",
-            "JUN",
-            "JUL",
-            "AUG",
-            "SEP",
-            "OCT",
-            "NOV",
-            "DEC",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
           ],
         },
         extraOptions: chartConfigs.purpleChartOptions,
@@ -304,8 +304,7 @@ export default {
           labels: ["", "", "", "", ""],
           datasets: [
             {
-              lineTension :0,
-              bezierCurve: false, 
+              
               label: "My First dataset",
               fill: true,
               borderColor: config.colors.secondary,
@@ -334,7 +333,7 @@ export default {
       greenLineChart2: {
         extraOptions: chartConfigs.greenChartOptions,
         chartData: {
-          labels: ["", "", "", "", "git"],
+          labels: ["", "", "", "", ""],
           datasets: [
             {
               label: "My First dataset",

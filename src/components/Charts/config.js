@@ -18,8 +18,8 @@ export let blueChartOptions = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
-    titleFontColor: '#f5f5f5',
-    bodyFontColor: '#666',
+    titleFontColor: '#000000',
+    bodyFontColor: '#000000',
     bodySpacing: 4,
     xPadding: 12,
     mode: "nearest",
@@ -132,7 +132,7 @@ export let purpleChartOptions = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
-    titleFontColor: '#f5f5f5',
+    titleFontColor: '#000000',
     bodyFontColor: '#666',
     bodySpacing: 4,
     xPadding: 12,
@@ -218,8 +218,8 @@ export let greenChartOptions = {
   ...basicOptions,
   tooltips: {
     backgroundColor: '#f5f5f5',
-    titleFontColor: '#f5f5f5',
-    bodyFontColor: '#f5f5f5',
+    titleFontColor: '#000000',
+    bodyFontColor: '#000000',
     bodySpacing: 4,
     xPadding: 12,
     mode: "nearest",
