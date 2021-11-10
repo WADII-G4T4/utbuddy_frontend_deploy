@@ -107,6 +107,7 @@ export let bigBarChartOptions = {
   },
   scales: {
     yAxes: [{
+     
        gridLines: {
           display: true,
           drawBorder: true,
@@ -248,6 +249,9 @@ export let greenChartOptions = {
   },
   scales: {
     yAxes: [{
+      scaleLabel: {
+        display: true
+        },
       barPercentage: 1.6,
       gridLines: {
         drawBorder: false,

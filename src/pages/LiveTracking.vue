@@ -461,6 +461,7 @@ export default {
               pointHoverBorderWidth: 15,
               pointRadius: 1,
               data:this.smallrandomData,
+               labelString: 'Date'
             },
           ],labels: this.smalltimeLabel
         }
@@ -477,7 +478,7 @@ export default {
           datasets: [
             {
               lineTension :0,
-            bezierCurve: false, 
+              bezierCurve: false, 
               label: "My First dataset",
               fill: true,
               borderColor: config.colors.secondary,
@@ -492,6 +493,7 @@ export default {
               pointHoverBorderWidth: 15,
               pointRadius: 1,
               data:this.smallrandomData2,
+              
             },
           ],labels: this.smalltimeLabel
         }
@@ -532,53 +534,21 @@ export default {
        }, 1100);
     },
 
-
-
-    getUsage1(){
-      setInterval(() => {
-      var usage_list = [100, 200, 3000, 400, 550, 300, 400, 700, 676, 765, 233];
-      var random =  Math.floor(Math.random() * usage_list.length);
-      this.usage1 = usage_list[random];
-       }, 1100);
-    },
-    getUsage2(){
-      setInterval(() => {
-      var usage_list = [100, 200, 3000, 400, 550, 300, 400, 700, 676, 765, 233];
-      var random =  Math.floor(Math.random() * usage_list.length);
-      this.usage2 = usage_list[random];
-       }, 1100);
-    },
-    getUsage3(){
-      setInterval(() => {
-      var usage_list = [100, 200, 3000, 400, 550, 300, 400, 700, 676, 765, 233, 5000, 670, 563, 5498, 3874, 2763, 465, 579,];
-      var random =  Math.floor(Math.random() * usage_list.length);
-      this.usage3 = usage_list[random];
-       }, 1100);
-    },
     
-    getUsage4(){
-      setInterval(() => {
-      var usage_list = [100, 200, 3000, 400, 550, 300, 400, 700, 676, 765, 233];
-      var random =  Math.floor(Math.random() * usage_list.length);
-      this.usage4 = usage_list[random];
-       }, 1100);
-    },
+    // 
 
-    getTotal(){
-      setInterval(() => {
-            this.total =  Math.floor(Math.random()*1000);
-       }, 1100);
-    },
+   
 
     getRandomDatapoints(){
      
-      let randnum =0
+      // let randnum =0
       this.randomData =[]
       // while (this.randomData.length <10){
       setInterval(() => {
         
-           randnum = Math.floor(Math.random()*1000);
-           this.randomData.push(randnum)
+          //  randnum = Math.floor(Math.random()*1000);
+           this.randomData.push(this.usage1+ this.usage2 + this.usage3)
+           this.total = this.usage1+ this.usage2 + this.usage3
         
       // console.log((this.randomData))
       }, 1100)}
@@ -595,6 +565,7 @@ export default {
         
            randnum = Math.floor(Math.random()*100);
            this.smallrandomData.push(randnum)
+           this.usage1 = randnum
         
       // console.log((this.randomData))
       }, 1100)}
@@ -610,6 +581,7 @@ export default {
         
            randnum = Math.floor(Math.random()*100);
            this.smallrandomData2.push(randnum)
+           this.usage2 = randnum
         
       // console.log((this.randomData))
       }, 1100);
@@ -626,6 +598,7 @@ export default {
         
            randnum = Math.floor(Math.random()*100);
            this.smallrandomData3.push(randnum)
+           this.usage3 =randnum
         
       // console.log((this.randomData))
       }, 1100)
@@ -640,7 +613,6 @@ export default {
 
       
     },
-
 
     getTimeLabel(){
       this.timeLabel =[]
@@ -700,11 +672,6 @@ export default {
       this.getRandomDatapointssmall3();
       this.getTimeLabel();
       this.getSmallTimeLabel();
-      this.getUsage1();
-      this.getTotal();
-      this.getUsage2();
-      this.getUsage3();
-      this.getUsage4();
       if (this.enableRTL) {
         this.i18n.locale = "ar";
         this.$rtl.enableRTL();
