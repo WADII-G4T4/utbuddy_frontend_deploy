@@ -32,7 +32,7 @@
                 <h3 class="card-category text-white">
                   Current Consumption
                 </h3>
-                <h2 class="card-title">Electricity : {{total}} kwH</h2>
+                <h2 class="card-title"> <i class="fas fa-bolt text-success"></i>Electricity : {{total}} kWh</h2>
               </div>
               <div class="col-sm-6">
                 <div
@@ -76,7 +76,7 @@
               <div class="col-7">
                 <div class="numbers text-white">
                   <p>Television</p>
-                  {{usage1}} kwH
+                  {{usage1}} kWh
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@
               <div class="col-7">
                 <div class="numbers">
                   <p>Electrical Stove</p>
-                  {{usage2}} kwH
+                  {{usage2}} kWh
                 </div>
               </div>
             </div>
@@ -125,7 +125,7 @@
               <div class="col-7 ">
                 <div class="numbers ">
                   <p>Oven</p>
-                  {{usage3}} kwH
+                  {{usage3}} kWh
                 </div>
               </div>
             </div>
@@ -148,7 +148,7 @@
               <div class="col-7">
                 <div class="numbers">
                   <p>Air-Conditioner</p>
-                  {{usage4}} kwH
+                  {{usage4}} kWh
                 </div>
               </div>
             </div>
@@ -172,7 +172,7 @@
           <template slot="header">
             <h5 class="card-category text-white">{{ $t("dashboard.waterBreakdown") }}</h5>
             <h3 class="card-title">
-              <i class="fa fa-tint text-success"></i> {{usage2}}
+              <i class="fa fa-tint text-success"></i> {{usage1 +usage2}}
             </h3>
           </template>
           <div class="chart-area">
@@ -195,7 +195,7 @@
           <template slot="header">
             <h5 class="card-category text-white">{{ $t("dashboard.gasBreakdown") }}</h5>
             <h3 class="card-title">
-              <i class="fas fa-burn text-success"></i> {{usage3}}
+              <i class="fas fa-burn text-success"></i> {{usage3 +usage4}}
             </h3>
           </template>
 
@@ -213,6 +213,8 @@
       </div>
     </div>
 
+
+<!-- the card row for water breakdown and gas breakdown  -->
     
     <div class="row">
       <div class="col-xl-3 col-md-6 d-flex text-white">
@@ -226,8 +228,8 @@
               </div>
               <div class="col-7">
                 <div class="numbers text-white">
-                  <p>Television</p>
-                  {{usage1}} kwH
+                  <p>Bathroom 1</p>
+                  {{usage1}} m3
                 </div>
               </div>
             </div>
@@ -235,7 +237,7 @@
               <hr />
               <div class="stats text-white">
             
-                <i class="tim-icons icon-refresh-02"></i> Updating Live</div>
+                <i class="tim-icons icon-refresh-02"></i> Detecting Water Pressure </div>
               
             </div>
           </div>
@@ -252,14 +254,14 @@
               </div>
               <div class="col-7">
                 <div class="numbers">
-                  <p>Electrical Stove</p>
-                  {{usage2}} kwH
+                  <p>Bathroom 2</p>
+                  {{usage2}} m3
                 </div>
               </div>
             </div>
             <div>
               <hr />
-              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Updating Live</div>
+              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Detecting Water Pressure </div>
             </div>
           </div>
         </card>
@@ -275,14 +277,14 @@
               </div>
               <div class="col-7 ">
                 <div class="numbers ">
-                  <p>Oven</p>
-                  {{usage3}} kwH
+                  <p>Gas Stove 1</p>
+                  {{usage3}} kWh
                 </div>
               </div>
             </div>
             <div>
               <hr />
-              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Updating Live</div>
+              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Detecting Gas Pressure</div>
             </div>
           </div>
         </card>
@@ -298,14 +300,14 @@
               </div>
               <div class="col-7">
                 <div class="numbers">
-                  <p>Air-Conditioner</p>
-                  {{usage4}} kwH
+                  <p>Gas Stove 2</p>
+                  {{usage4}} kWh
                 </div>
               </div>
             </div>
             <div>
               <hr />
-              <div class="stats"><i class="tim-icons icon-refresh-01"></i> Updating Live</div>
+              <div class="stats"><i class="tim-icons icon-refresh-01"></i> Detecting Gas Pressure</div>
             </div>
           </div>
         </card>
@@ -433,7 +435,7 @@ export default {
               pointHoverBorderWidth: 15,
               pointRadius: 4,
               data: [90, 27, 60, 12, 80],
-              labelString: 'kwh'
+              labelString: 'kWh'
             },
           ],
         },
@@ -578,7 +580,7 @@ export default {
               pointHoverBorderWidth: 15,
               pointRadius: 1,
               data:this.smallrandomData2,
-              labelString: 'kwh'
+              labelString: 'kWh'
               
             },
           ],labels: this.smalltimeLabel
