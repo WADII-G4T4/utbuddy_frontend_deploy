@@ -3,8 +3,10 @@
     <thead :class="theadClasses">
       <tr>
         <slot name="columns">
+          
           <th v-for="column in columns" class="text-center col" :key="column" >
-            {{ column }}
+            
+            {{column}}
           </th>
         </slot>
       </tr>
@@ -44,7 +46,7 @@
               <span v-else-if="index == 'replies'">
                 {{ column }}
               </span>
-              <span v-else-if="index == 'thread'">
+              <span v-else-if="index == 'thread'" >
               
                 {{column}}
                 

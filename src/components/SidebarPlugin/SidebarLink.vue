@@ -7,7 +7,7 @@
     <a class="nav-link">
       <slot>
         <i v-if="icon" :class="icon"></i>
-        <p>{{name}}</p>
+        <p style="font-size: 16px; font-weight: 300; color: white;">{{name}}</p>
       </slot>
     </a>
   </component>
