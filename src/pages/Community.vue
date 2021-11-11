@@ -44,7 +44,7 @@
               </template>
               <div class="form-floating">
                 <textarea
-                  class="form-control border-dark border rounded-1"
+                  class="form-control border-dark text-dark border rounded-1"
                   placeholder="Leave your post here"
                   v-model="posttext"
                   id="floatingTextarea"
@@ -69,6 +69,8 @@
               :data="posts"
               :columns="table1.columns"
               thead-classes="text-light"
+              community="yes"
+              :fulldata="fulldata"
               @modal="openUserInfo"
               @delete="removePost"
             >
@@ -166,7 +168,8 @@ export default {
       description: null,
       tips: null,
       url: null,
-      gender: null
+      gender: null,
+      fulldata: []
     };
   },
   computed: {
@@ -289,10 +292,16 @@ export default {
           thread: data[i].thread,
           username: data[i].username,
           replies: String(data[i].replies),
+          
+        });
+        this.fulldata.unshift({
+          thread: data[i].thread,
+          username: data[i].username,
+          replies: String(data[i].replies),
           id: data[i].id,
           isUser: data[i].isUser,
           post_id: data[i].post_id
-        });
+        })
       }
       
     } catch (error) {

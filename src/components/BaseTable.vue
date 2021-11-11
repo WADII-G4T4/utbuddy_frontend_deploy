@@ -1,18 +1,30 @@
 <template>
   <table style="table-layout:fixed;" class="table tablesorter" :class="tableClass">
     <thead :class="theadClasses">
-      <tr>
+      <tr v-if="community !== 'yes'">
         <slot name="columns">
-          
-          <th v-for="column in columns" class="text-center col" :key="column" >
+         
+           
+            <th v-for="column in columns" :key="column"  class="text-center col"  >
             
             {{column}}
+            
           </th>
+          
+          
+          
+            
+          
         </slot>
+      </tr>
+      <tr v-else>
+        <th class="text-center col-8">THREAD</th>
+            <th class="text-center col-2">USERNAME</th>
+            <th class="text-center col-2">REPLIES</th>
       </tr>
     </thead>
     <tbody :class="tbodyClasses">
-      <tr v-for="(item, index) in data" class="text-center" :key="index">
+      <tr v-for="(item, num) in data" class="text-center" :key="num">
         <slot :row="item">
           <td v-for="(column, index) in item" :key="index">
             
@@ -20,8 +32,8 @@
                 <base-button
                   slot="footer"
                   type="primary"
-                  v-if="!item.paid"
-                  @click="bills(item)"
+                  v-if="!fulldata[num].paid"
+                  @click="bills(fulldata[num])"
                   >Pay</base-button
                 >
                 <base-button slot="footer" type="primary" v-else disabled="true"
@@ -37,8 +49,8 @@
               <span v-else-if="index == 'username'">
                 <button
                   type="button"
-                  class="btn btn-"
-                  @click="emit(item)"
+                  class="btn btn-secondary"
+                  @click="emit(fulldata[num])"
                 >
                   {{ column }}
                 </button>
@@ -50,11 +62,11 @@
               
                 {{column}}
                 
-                <span v-if="item.isUser"
+                <span v-if="fulldata[num].isUser"
                   > <i
                     class="tim-icons icon-trash-simple add ml-4"
                     style="cursor: pointer"
-                    @click="remove(item)"
+                    @click="remove(fulldata[num])"
                   ></i
                 ></span>
                 
@@ -90,6 +102,8 @@ export default {
     };
   },
   props: {
+    fulldata: null,
+    community: null,
     columns: {
       type: Array,
       default: () => [],

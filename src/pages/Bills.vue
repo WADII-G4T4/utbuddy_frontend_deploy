@@ -24,7 +24,7 @@
 
   <div class="row">
     <div class="col-12">
-      <card :title="table1.title" class="relative">
+      <card :title="year" class="relative">
         <div class="table">
           <!-- <loading :loaded="isLoading"/> -->
           <div v-if="!isLoading" class="loader">
@@ -34,7 +34,7 @@
             :data="table1.data"
             :columns="table1.columns"
             thead-classes="text-primary"
-            
+            :fulldata="fulldata"
             @goTo="goTo"
           >
           </base-table>
@@ -67,8 +67,15 @@ export default {
         data: []
       },
       isLoading: false,
-      
+      fulldata: []
     };
+  },
+  computed:{
+    year(){
+      const date = new Date();
+      
+      return "Bills (" + date.getFullYear() + ")"
+    }
   },
   methods: {
     async goTo(item) {
@@ -89,6 +96,7 @@ export default {
       
       
       try {
+        
         const result = API.stripeupdate({ count, date: string_date }, token);
       } catch (error) {
         console.log(error);
@@ -136,20 +144,14 @@ export default {
           price = "$" + price.substring(0,price.length-2) + "." + price.substr(price.length-2, 2)
           result.data.extracted[index].price = price
           this.table1.data.push(result.data.extracted[index])
+          this.fulldata.push(result.data.extracted[index])
         }
       }
-      var last_year = result.data.extracted.splice(month, 12-month)
-      last_year = last_year.reverse()
-      for (var i in last_year){
-        
-          var price = String(last_year[i].price);
-          price = "$" + price.substring(0,price.length-2) + "." + price.substr(price.length-2, 2)
-          last_year[i].price = price
-          this.table1.data.unshift(last_year[i])
-        
-      }
+      
       
       this.table1.data = this.table1.data.reverse()
+      this.fulldata = this.fulldata.reverse()
+      
     } catch (error) {
       console.log(error)
     }

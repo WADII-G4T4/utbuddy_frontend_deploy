@@ -34,7 +34,7 @@
                 </div>
               </div>
               <div class="col-9">
-                <div class="numbers">
+                <div class="numbers bill-cards" >
                   <p>Outstanding Bill ({{ billMonth }})</p>
                   <h3 style="margin-bottom: 0px">{{ billAmount }}</h3>
                 </div>
@@ -62,8 +62,8 @@
                 </div>
               </div>
               <div class="col-9">
-                <div class="numbers">
-                  <p>Electricity Consumption</p>
+                <div class="numbers number-cards" >
+                  <p>Electricity Consumption (kwh)</p>
                   <h3 style="margin-bottom: 0px">{{ kpi1 }}</h3>
                 </div>
               </div>
@@ -98,8 +98,8 @@
                 </div>
               </div>
               <div class="col-9">
-                <div class="numbers">
-                  <p>Water Consumption</p>
+                <div class="numbers number-cards" >
+                  <p>Water Consumption (L)</p>
                   <h3 style="margin-bottom: 0px">{{ kpi2 }}</h3>
                 </div>
               </div>
@@ -134,8 +134,8 @@
                 </div>
               </div>
               <div class="col-9">
-                <div class="numbers">
-                  <p>Gas Consumption</p>
+                <div class="numbers number-cards" >
+                  <p>Gas Consumption (kwh)</p>
                   <h3 style="margin-bottom: 0px">{{ kpi3 }}</h3>
                 </div>
               </div>
@@ -524,14 +524,14 @@ export default {
       setTimeout(() => (this.elecDis = null), 3000);
       var elec_list = [423, 467, 541, 392, 453];
       var random = Math.floor(Math.random() * elec_list.length);
-      this.kpi1 = elec_list[random] + " kWh";
+      this.kpi1 = elec_list[random] ;
     },
     waterKPI() {
       this.waterDis = true;
       setTimeout(() => (this.waterDis = null), 3000);
       var water_list = [4230, 4670, 5410, 3920, 4530];
       var random = Math.floor(Math.random() * water_list.length);
-      this.kpi2 = water_list[random] + " L";
+      this.kpi2 = water_list[random] ;
     },
     gasKPI() {
       this.gasDis = true;
@@ -539,8 +539,7 @@ export default {
       var gas_list = [270123, 284032, 210203, 252123, 192830];
       var random = Math.floor(Math.random() * gas_list.length);
       this.kpi3 =
-        gas_list[random].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-        " BTU";
+        gas_list[random].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
 
     showModal() {
@@ -597,6 +596,18 @@ export default {
   position: absolute;
   top: 250%;
 }
+
+
+
+@media screen and (min-width: 1200px) {
+  .number-cards{
+    height: 100px;
+  }
+  .bill-cards{
+    height: 80px;
+  }
+}
+
 @media screen and (max-width: 1800px) {
   .kpi-card {
     height: 15em;
