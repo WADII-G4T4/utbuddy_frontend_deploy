@@ -21,103 +21,7 @@
             </template>
           </modal>
            </div>
-    <div class="row">
-      <div class="col-xl-3 col-md-6 d-flex text-white">
-        <card class="card-body flex-fill">
-          <div>
-            <div class="row">
-              <div class="col-5">
-                <div class="icon-big text-success">
-                  <i class="tim-icons tim-icons-32 icon-atom text-success"></i>
-                </div>
-              </div>
-              <div class="col-7">
-                <div class="numbers text-white">
-                  <p>Television</p>
-                  {{usage1}} kwH
-                </div>
-              </div>
-            </div>
-            <div>
-              <hr />
-              <div class="stats text-white">
-            
-                <i class="tim-icons icon-refresh-02"></i> Updating Live</div>
-              
-            </div>
-          </div>
-        </card>
-      </div>
-      <div class="col-xl-3 col-md-6 d-flex text-white ">
-        <card class="card-body flex-fill">
-          <div>
-            <div class="row">
-              <div class="col-5">
-                <div class="icon-big text-center">
-                  <i class="tim-icons tim-icons-32 icon-mobile text-success"></i>
-                </div>
-              </div>
-              <div class="col-7">
-                <div class="numbers">
-                  <p>Electrical Stove</p>
-                  {{usage2}} kwH
-                </div>
-              </div>
-            </div>
-            <div>
-              <hr />
-              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Updating Live</div>
-            </div>
-          </div>
-        </card>
-      </div>
-      <div class="col-xl-3 col-md-6 d-flex text-white" >
-        <card class="card-body flex-fill" >
-          <div>
-            <div class="row">
-              <div class="col-5">
-                <div class="icon-large text-center">
-                  <i class="tim-icons tim-icons-32 icon-spaceship text-success "></i>
-                </div>
-              </div>
-              <div class="col-7 ">
-                <div class="numbers ">
-                  <p>Oven</p>
-                  {{usage3}} kwH
-                </div>
-              </div>
-            </div>
-            <div>
-              <hr />
-              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Updating Live</div>
-            </div>
-          </div>
-        </card>
-      </div>
-      <div class="col-xl-3 col-md-6 d-flex text-white">
-        <card class="card-body flex-fill ">
-          <div>
-            <div class="row">
-              <div class="col-5">
-                <div class="icon-big text-center">
-                  <i class="tim-icons tim-icons-32 icon-laptop text-success"></i>
-                </div>
-              </div>
-              <div class="col-7">
-                <div class="numbers">
-                  <p>Air-Conditioner</p>
-                  {{usage4}} kwH
-                </div>
-              </div>
-            </div>
-            <div>
-              <hr />
-              <div class="stats"><i class="tim-icons icon-refresh-01"></i> Updating Live</div>
-            </div>
-          </div>
-        </card>
-      </div>
-    </div>
+    
     <div class="row">
       <div class="col-12">
         <card type="chart">
@@ -125,10 +29,10 @@
             <div class="row">
               <!-- big line graph -->
               <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
-                <h5 class="card-category text-white">
-                  {{ $t("dashboard.totalShipments") }}
-                </h5>
-                <h2 class="card-title">{{ $t("dashboard.monthlyUtilConsumption") }}: {{total}} </h2>
+                <h3 class="card-category text-white">
+                  Current Consumption
+                </h3>
+                <h2 class="card-title"> <i class="fas fa-bolt text-success"></i>Electricity : {{total}} kWh</h2>
               </div>
               <div class="col-sm-6">
                 <div
@@ -158,37 +62,117 @@
         </card>
       </div>
     </div>
-    <div class="row">
-<!-- first mini line graph -->
-      <div class="col-xl-4 col-md-12 " :class="{ 'text-right': isRTL }">
-        <card type="chart">
-          <template slot="header">
-            <h5 class="card-category text-white">{{ $t("dashboard.electricityBreakdown") }}</h5>
-            <h3 class="card-title ">
-              <i class="fas fa-bolt text-success"></i> {{usage1}}
-            </h3>
-          </template>
-          <div class="chart-area">
-            <line-chart
-              style="height: 100%"
-              chart-id="green-line-chart"
-              :chart-data="greenLineChart1.chartData"
-              :gradient-stops="greenLineChart1.gradientStops"
-              :extra-options="greenLineChart1.extraOptions"
-            >
-            </line-chart>
+
+  <div class="row">
+      <div class="col-xl-3 col-md-6 d-flex text-white">
+        <card class="card-body flex-fill">
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-success">
+                  <i class="tim-icons tim-icons-32 icon-atom text-success"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers text-white">
+                  <p>Television</p>
+                  {{usage1}} kWh
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats text-white">
+            
+                <i class="tim-icons icon-refresh-02"></i> Updating Live</div>
+              
+            </div>
           </div>
         </card>
       </div>
+      <div class="col-xl-3 col-md-6 d-flex text-white ">
+        <card class="card-body flex-fill">
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-center">
+                  <i class="tim-icons tim-icons-32 icon-mobile text-success"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers">
+                  <p>Electrical Stove</p>
+                  {{usage2}} kWh
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Updating Live</div>
+            </div>
+          </div>
+        </card>
+      </div>
+      <div class="col-xl-3 col-md-6 d-flex text-white" >
+        <card class="card-body flex-fill" >
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-large text-center">
+                  <i class="tim-icons tim-icons-32 icon-spaceship text-success "></i>
+                </div>
+              </div>
+              <div class="col-7 ">
+                <div class="numbers ">
+                  <p>Oven</p>
+                  {{usage3}} kWh
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Updating Live</div>
+            </div>
+          </div>
+        </card>
+      </div>
+      <div class="col-xl-3 col-md-6 d-flex text-white">
+        <card class="card-body flex-fill ">
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-center">
+                  <i class="tim-icons tim-icons-32 icon-laptop text-success"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers">
+                  <p>Air-Conditioner</p>
+                  {{usage4}} kWh
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats"><i class="tim-icons icon-refresh-01"></i> Updating Live</div>
+            </div>
+          </div>
+        </card>
+      </div>
+    </div>
+    <div class="row">
+<!-- first mini line graph -->
 
+
+      
     <!-- second mini line graph -->
 
-      <div class="col-xl-4 col-md-12" :class="{ 'text-right': isRTL }">
+      <div class="col-xl-6 col-md-12" :class="{ 'text-right': isRTL }">
         <card type="chart">
           <template slot="header">
             <h5 class="card-category text-white">{{ $t("dashboard.waterBreakdown") }}</h5>
             <h3 class="card-title">
-              <i class="fa fa-tint text-success"></i> {{usage2}}
+              <i class="fa fa-tint text-success"></i> {{usage1 +usage2}}
             </h3>
           </template>
           <div class="chart-area">
@@ -206,12 +190,12 @@
 
 <!-- third mini line graph-->
 
-      <div class="col-xl-4 col-md-12 " :class="{ 'text-right': isRTL }">
+      <div class="col-xl-6 col-md-12 " :class="{ 'text-right': isRTL }">
         <card type="chart ">
           <template slot="header">
             <h5 class="card-category text-white">{{ $t("dashboard.gasBreakdown") }}</h5>
             <h3 class="card-title">
-              <i class="fas fa-burn text-success"></i> {{usage3}}
+              <i class="fas fa-burn text-success"></i> {{usage3 +usage4}}
             </h3>
           </template>
 
@@ -228,7 +212,107 @@
         </card>
       </div>
     </div>
+
+
+<!-- the card row for water breakdown and gas breakdown  -->
     
+    <div class="row">
+      <div class="col-xl-3 col-md-6 d-flex text-white">
+        <card class="card-body flex-fill">
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-success">
+                  <i class="tim-icons tim-icons-32 icon-atom text-success"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers text-white">
+                  <p>Bathroom 1</p>
+                  {{usage1}} m3
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats text-white">
+            
+                <i class="tim-icons icon-refresh-02"></i> Detecting Water Pressure </div>
+              
+            </div>
+          </div>
+        </card>
+      </div>
+      <div class="col-xl-3 col-md-6 d-flex text-white ">
+        <card class="card-body flex-fill">
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-center">
+                  <i class="tim-icons tim-icons-32 icon-mobile text-success"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers">
+                  <p>Bathroom 2</p>
+                  {{usage2}} m3
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Detecting Water Pressure </div>
+            </div>
+          </div>
+        </card>
+      </div>
+      <div class="col-xl-3 col-md-6 d-flex text-white" >
+        <card class="card-body flex-fill" >
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-large text-center">
+                  <i class="tim-icons tim-icons-32 icon-spaceship text-success "></i>
+                </div>
+              </div>
+              <div class="col-7 ">
+                <div class="numbers ">
+                  <p>Gas Stove 1</p>
+                  {{usage3}} kWh
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Detecting Gas Pressure</div>
+            </div>
+          </div>
+        </card>
+      </div>
+      <div class="col-xl-3 col-md-6 d-flex text-white">
+        <card class="card-body flex-fill ">
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-center">
+                  <i class="tim-icons tim-icons-32 icon-laptop text-success"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers">
+                  <p>Gas Stove 2</p>
+                  {{usage4}} kWh
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats"><i class="tim-icons icon-refresh-01"></i> Detecting Gas Pressure</div>
+            </div>
+          </div>
+        </card>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -254,6 +338,7 @@ export default {
   data() {
     return {
       timeLabel :[],
+      gasTimeLabel :[],
       smalltimeLabel :[],
       randomData:[],
       timeLabel :[],
@@ -299,7 +384,7 @@ export default {
       },
       
       greenLineChart1: {
-        extraOptions: chartConfigs.greenChartOptions,
+        extraOptions: chartConfigs.greenChartOptions1,
         chartData: {
           labels: ["", "", "", "", ""],
           datasets: [
@@ -331,7 +416,7 @@ export default {
       },
       
       greenLineChart2: {
-        extraOptions: chartConfigs.greenChartOptions,
+        extraOptions: chartConfigs.greenChartOptions2,
         chartData: {
           labels: ["", "", "", "", ""],
           datasets: [
@@ -350,6 +435,7 @@ export default {
               pointHoverBorderWidth: 15,
               pointRadius: 4,
               data: [90, 27, 60, 12, 80],
+              labelString: 'kWh'
             },
           ],
         },
@@ -362,11 +448,12 @@ export default {
       },
       
       greenLineChart3: {
-        extraOptions: chartConfigs.greenChartOptions,
+        extraOptions: chartConfigs.greenChartOptions3,
         chartData: {
           labels: ["", "", "", "", ""],
           datasets: [
             {
+              
               label: "My First dataset",
               fill: true,
               borderColor: config.colors.secondary,
@@ -461,6 +548,7 @@ export default {
               pointHoverBorderWidth: 15,
               pointRadius: 1,
               data:this.smallrandomData,
+               labelString: 'Date'
             },
           ],labels: this.smalltimeLabel
         }
@@ -477,7 +565,7 @@ export default {
           datasets: [
             {
               lineTension :0,
-            bezierCurve: false, 
+              bezierCurve: false, 
               label: "My First dataset",
               fill: true,
               borderColor: config.colors.secondary,
@@ -492,6 +580,8 @@ export default {
               pointHoverBorderWidth: 15,
               pointRadius: 1,
               data:this.smallrandomData2,
+              labelString: 'kWh'
+              
             },
           ],labels: this.smalltimeLabel
         }
@@ -524,7 +614,9 @@ export default {
               pointRadius: 1,
               data:this.smallrandomData3,
             },
-          ],labels: this.smalltimeLabel
+          ],
+          
+          labels: this.gasTimeLabel, 
         }
             // this.$refs.bigChart.updateGradients(chartData);
       this.greenLineChart3.chartData = chartData;
@@ -532,53 +624,21 @@ export default {
        }, 1100);
     },
 
-
-
-    getUsage1(){
-      setInterval(() => {
-      var usage_list = [100, 200, 3000, 400, 550, 300, 400, 700, 676, 765, 233];
-      var random =  Math.floor(Math.random() * usage_list.length);
-      this.usage1 = usage_list[random];
-       }, 1100);
-    },
-    getUsage2(){
-      setInterval(() => {
-      var usage_list = [100, 200, 3000, 400, 550, 300, 400, 700, 676, 765, 233];
-      var random =  Math.floor(Math.random() * usage_list.length);
-      this.usage2 = usage_list[random];
-       }, 1100);
-    },
-    getUsage3(){
-      setInterval(() => {
-      var usage_list = [100, 200, 3000, 400, 550, 300, 400, 700, 676, 765, 233, 5000, 670, 563, 5498, 3874, 2763, 465, 579,];
-      var random =  Math.floor(Math.random() * usage_list.length);
-      this.usage3 = usage_list[random];
-       }, 1100);
-    },
     
-    getUsage4(){
-      setInterval(() => {
-      var usage_list = [100, 200, 3000, 400, 550, 300, 400, 700, 676, 765, 233];
-      var random =  Math.floor(Math.random() * usage_list.length);
-      this.usage4 = usage_list[random];
-       }, 1100);
-    },
+    // 
 
-    getTotal(){
-      setInterval(() => {
-            this.total =  Math.floor(Math.random()*1000);
-       }, 1100);
-    },
+   
 
     getRandomDatapoints(){
      
-      let randnum =0
+      // let randnum =0
       this.randomData =[]
       // while (this.randomData.length <10){
       setInterval(() => {
         
-           randnum = Math.floor(Math.random()*1000);
-           this.randomData.push(randnum)
+          //  randnum = Math.floor(Math.random()*1000);
+           this.randomData.push(this.usage1+ this.usage2 + this.usage3 + this.usage4)
+           this.total = this.usage1+ this.usage2 + this.usage3 + this.usage4
         
       // console.log((this.randomData))
       }, 1100)}
@@ -595,6 +655,7 @@ export default {
         
            randnum = Math.floor(Math.random()*100);
            this.smallrandomData.push(randnum)
+           this.usage1 = randnum
         
       // console.log((this.randomData))
       }, 1100)}
@@ -610,6 +671,7 @@ export default {
         
            randnum = Math.floor(Math.random()*100);
            this.smallrandomData2.push(randnum)
+           this.usage2 = randnum
         
       // console.log((this.randomData))
       }, 1100);
@@ -626,9 +688,27 @@ export default {
         
            randnum = Math.floor(Math.random()*100);
            this.smallrandomData3.push(randnum)
+           this.usage3 =randnum
         
       // console.log((this.randomData))
       }, 1100)
+
+    },
+
+
+    getRandomDatapointssmall4(){
+    
+      let randnum =0
+      this.smallrandomData4 =[]
+      // while (this.randomData.length <10){
+      setInterval(() => {
+        
+           randnum = Math.floor(Math.random()*100);
+          //  this.smallrandomData3.push(randnum)
+           this.usage4 =randnum
+        
+      // console.log((this.randomData))
+      }, 1000)
 
     },
 
@@ -640,7 +720,6 @@ export default {
 
       
     },
-
 
     getTimeLabel(){
       this.timeLabel =[]
@@ -666,6 +745,19 @@ export default {
         var today = new Date()
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
         this.smalltimeLabel.push(time)
+      
+      // console.log((this.randomData))
+      }, 1100)},
+      
+    getGasTimeLabel(){
+      this.gasTimeLabel =[]
+      // randnum = 0
+
+      // while (this.randomData.length <10){
+      setInterval(() => {
+        var today = new Date()
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+        this.gasTimeLabel.push(time)
       
       // console.log((this.randomData))
       }, 1100)},
@@ -698,13 +790,10 @@ export default {
       this.getRandomDatapointssmall();
       this.getRandomDatapointssmall2();
       this.getRandomDatapointssmall3();
+      this.getRandomDatapointssmall4();
       this.getTimeLabel();
       this.getSmallTimeLabel();
-      this.getUsage1();
-      this.getTotal();
-      this.getUsage2();
-      this.getUsage3();
-      this.getUsage4();
+      this.getGasTimeLabel();
       if (this.enableRTL) {
         this.i18n.locale = "ar";
         this.$rtl.enableRTL();
