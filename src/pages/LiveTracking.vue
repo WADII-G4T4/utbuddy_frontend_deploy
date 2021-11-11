@@ -21,7 +21,49 @@
             </template>
           </modal>
            </div>
+    
     <div class="row">
+      <div class="col-12">
+        <card type="chart">
+          <template slot="header">
+            <div class="row">
+              <!-- big line graph -->
+              <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
+                <h3 class="card-category text-white">
+                  Current Consumption
+                </h3>
+                <h2 class="card-title">Electricity : {{total}} kwH</h2>
+              </div>
+              <div class="col-sm-6">
+                <div
+                  class="btn-group btn-group-toggle"
+                  :class="isRTL ? 'float-left' : 'float-right'"
+                  data-toggle="buttons"
+                >
+                  
+                </div>
+              </div>
+            </div>
+          </template>
+
+
+          <div class="chart-area">
+            <line-chart
+              style="height: 100%"
+              ref="bigChart"
+              chart-id="big-line-chart"
+              :chart-data="bigLineChart.chartData"
+              :gradient-colors="bigLineChart.gradientColors"
+              :gradient-stops="bigLineChart.gradientStops"
+              :extra-options="bigLineChart.extraOptions"
+            >
+            </line-chart>
+          </div>
+        </card>
+      </div>
+    </div>
+
+  <div class="row">
       <div class="col-xl-3 col-md-6 d-flex text-white">
         <card class="card-body flex-fill">
           <div>
@@ -119,71 +161,13 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
-        <card type="chart">
-          <template slot="header">
-            <div class="row">
-              <!-- big line graph -->
-              <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
-                <h5 class="card-category text-white">
-                  {{ $t("dashboard.totalShipments") }}
-                </h5>
-                <h2 class="card-title">{{ $t("dashboard.monthlyUtilConsumption") }}: {{total}} </h2>
-              </div>
-              <div class="col-sm-6">
-                <div
-                  class="btn-group btn-group-toggle"
-                  :class="isRTL ? 'float-left' : 'float-right'"
-                  data-toggle="buttons"
-                >
-                  
-                </div>
-              </div>
-            </div>
-          </template>
-
-
-          <div class="chart-area">
-            <line-chart
-              style="height: 100%"
-              ref="bigChart"
-              chart-id="big-line-chart"
-              :chart-data="bigLineChart.chartData"
-              :gradient-colors="bigLineChart.gradientColors"
-              :gradient-stops="bigLineChart.gradientStops"
-              :extra-options="bigLineChart.extraOptions"
-            >
-            </line-chart>
-          </div>
-        </card>
-      </div>
-    </div>
-    <div class="row">
 <!-- first mini line graph -->
-      <div class="col-xl-4 col-md-12 " :class="{ 'text-right': isRTL }">
-        <card type="chart">
-          <template slot="header">
-            <h5 class="card-category text-white">{{ $t("dashboard.electricityBreakdown") }}</h5>
-            <h3 class="card-title ">
-              <i class="fas fa-bolt text-success"></i> {{usage1}}
-            </h3>
-          </template>
-          <div class="chart-area">
-            <line-chart
-              style="height: 100%"
-              chart-id="green-line-chart"
-              :chart-data="greenLineChart1.chartData"
-              :gradient-stops="greenLineChart1.gradientStops"
-              :extra-options="greenLineChart1.extraOptions"
-            >
-            </line-chart>
-          </div>
-        </card>
-      </div>
 
+
+      
     <!-- second mini line graph -->
 
-      <div class="col-xl-4 col-md-12" :class="{ 'text-right': isRTL }">
+      <div class="col-xl-6 col-md-12" :class="{ 'text-right': isRTL }">
         <card type="chart">
           <template slot="header">
             <h5 class="card-category text-white">{{ $t("dashboard.waterBreakdown") }}</h5>
@@ -206,7 +190,7 @@
 
 <!-- third mini line graph-->
 
-      <div class="col-xl-4 col-md-12 " :class="{ 'text-right': isRTL }">
+      <div class="col-xl-6 col-md-12 " :class="{ 'text-right': isRTL }">
         <card type="chart ">
           <template slot="header">
             <h5 class="card-category text-white">{{ $t("dashboard.gasBreakdown") }}</h5>
@@ -228,7 +212,105 @@
         </card>
       </div>
     </div>
+
     
+    <div class="row">
+      <div class="col-xl-3 col-md-6 d-flex text-white">
+        <card class="card-body flex-fill">
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-success">
+                  <i class="tim-icons tim-icons-32 icon-atom text-success"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers text-white">
+                  <p>Television</p>
+                  {{usage1}} kwH
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats text-white">
+            
+                <i class="tim-icons icon-refresh-02"></i> Updating Live</div>
+              
+            </div>
+          </div>
+        </card>
+      </div>
+      <div class="col-xl-3 col-md-6 d-flex text-white ">
+        <card class="card-body flex-fill">
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-center">
+                  <i class="tim-icons tim-icons-32 icon-mobile text-success"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers">
+                  <p>Electrical Stove</p>
+                  {{usage2}} kwH
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Updating Live</div>
+            </div>
+          </div>
+        </card>
+      </div>
+      <div class="col-xl-3 col-md-6 d-flex text-white" >
+        <card class="card-body flex-fill" >
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-large text-center">
+                  <i class="tim-icons tim-icons-32 icon-spaceship text-success "></i>
+                </div>
+              </div>
+              <div class="col-7 ">
+                <div class="numbers ">
+                  <p>Oven</p>
+                  {{usage3}} kwH
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Updating Live</div>
+            </div>
+          </div>
+        </card>
+      </div>
+      <div class="col-xl-3 col-md-6 d-flex text-white">
+        <card class="card-body flex-fill ">
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-center">
+                  <i class="tim-icons tim-icons-32 icon-laptop text-success"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers">
+                  <p>Air-Conditioner</p>
+                  {{usage4}} kwH
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats"><i class="tim-icons icon-refresh-01"></i> Updating Live</div>
+            </div>
+          </div>
+        </card>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -254,6 +336,7 @@ export default {
   data() {
     return {
       timeLabel :[],
+      gasTimeLabel :[],
       smalltimeLabel :[],
       randomData:[],
       timeLabel :[],
@@ -299,7 +382,7 @@ export default {
       },
       
       greenLineChart1: {
-        extraOptions: chartConfigs.greenChartOptions,
+        extraOptions: chartConfigs.greenChartOptions1,
         chartData: {
           labels: ["", "", "", "", ""],
           datasets: [
@@ -331,7 +414,7 @@ export default {
       },
       
       greenLineChart2: {
-        extraOptions: chartConfigs.greenChartOptions,
+        extraOptions: chartConfigs.greenChartOptions2,
         chartData: {
           labels: ["", "", "", "", ""],
           datasets: [
@@ -350,6 +433,7 @@ export default {
               pointHoverBorderWidth: 15,
               pointRadius: 4,
               data: [90, 27, 60, 12, 80],
+              labelString: 'kwh'
             },
           ],
         },
@@ -362,11 +446,12 @@ export default {
       },
       
       greenLineChart3: {
-        extraOptions: chartConfigs.greenChartOptions,
+        extraOptions: chartConfigs.greenChartOptions3,
         chartData: {
           labels: ["", "", "", "", ""],
           datasets: [
             {
+              
               label: "My First dataset",
               fill: true,
               borderColor: config.colors.secondary,
@@ -493,6 +578,7 @@ export default {
               pointHoverBorderWidth: 15,
               pointRadius: 1,
               data:this.smallrandomData2,
+              labelString: 'kwh'
               
             },
           ],labels: this.smalltimeLabel
@@ -526,7 +612,9 @@ export default {
               pointRadius: 1,
               data:this.smallrandomData3,
             },
-          ],labels: this.smalltimeLabel
+          ],
+          
+          labels: this.gasTimeLabel, 
         }
             // this.$refs.bigChart.updateGradients(chartData);
       this.greenLineChart3.chartData = chartData;
@@ -547,8 +635,8 @@ export default {
       setInterval(() => {
         
           //  randnum = Math.floor(Math.random()*1000);
-           this.randomData.push(this.usage1+ this.usage2 + this.usage3)
-           this.total = this.usage1+ this.usage2 + this.usage3
+           this.randomData.push(this.usage1+ this.usage2 + this.usage3 + this.usage4)
+           this.total = this.usage1+ this.usage2 + this.usage3 + this.usage4
         
       // console.log((this.randomData))
       }, 1100)}
@@ -605,6 +693,23 @@ export default {
 
     },
 
+
+    getRandomDatapointssmall4(){
+    
+      let randnum =0
+      this.smallrandomData4 =[]
+      // while (this.randomData.length <10){
+      setInterval(() => {
+        
+           randnum = Math.floor(Math.random()*100);
+          //  this.smallrandomData3.push(randnum)
+           this.usage4 =randnum
+        
+      // console.log((this.randomData))
+      }, 1000)
+
+    },
+
       showModal() {
       this.xModal = true;
     },
@@ -642,6 +747,19 @@ export default {
       // console.log((this.randomData))
       }, 1100)},
       
+    getGasTimeLabel(){
+      this.gasTimeLabel =[]
+      // randnum = 0
+
+      // while (this.randomData.length <10){
+      setInterval(() => {
+        var today = new Date()
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+        this.gasTimeLabel.push(time)
+      
+      // console.log((this.randomData))
+      }, 1100)},
+      
 
 
 
@@ -670,8 +788,10 @@ export default {
       this.getRandomDatapointssmall();
       this.getRandomDatapointssmall2();
       this.getRandomDatapointssmall3();
+      this.getRandomDatapointssmall4();
       this.getTimeLabel();
       this.getSmallTimeLabel();
+      this.getGasTimeLabel();
       if (this.enableRTL) {
         this.i18n.locale = "ar";
         this.$rtl.enableRTL();
