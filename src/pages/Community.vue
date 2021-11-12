@@ -327,7 +327,7 @@ export default {
 .loading {
   position: absolute;
   top: 170%;
-  left: 42%;
+  left: 33%;
 }
 
 .add {
