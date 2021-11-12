@@ -101,7 +101,7 @@
               </div>
               <div class="col-7">
                 <div class="numbers">
-                  <p>Electrical Stove</p>
+                  <p>Fridge</p>
                   {{usage2}} kWh
                 </div>
               </div>
@@ -124,7 +124,7 @@
               </div>
               <div class="col-7 ">
                 <div class="numbers ">
-                  <p>Fan</p>
+                  <p>Fan & Light</p>
                   {{usage3}} kWh
                 </div>
               </div>
@@ -147,7 +147,7 @@
               </div>
               <div class="col-7">
                 <div class="numbers">
-                  <p>Air-Conditioner</p>
+                  <p>AirCon</p>
                   {{usage4}} kWh
                 </div>
               </div>
@@ -166,7 +166,7 @@
       
     <!-- water mini line graph -->
 
-      <div class="col-xl-6 col-md-12" :class="{ 'text-right': isRTL }">
+      <div class="col-xl-12 col-md-12" :class="{ 'text-right': isRTL }">
         <card type="chart">
           <template slot="header">
             <h5 class="card-category text-white">Water Real-Time Consumption</h5>
@@ -186,36 +186,8 @@
           </div>
         </card>
       </div>
-
-<!-- gas mini line graph-->
-
-      <div class="col-xl-6 col-md-12 " :class="{ 'text-right': isRTL }">
-        <card type="chart ">
-          <template slot="header">
-            <h5 class="card-category text-white">Gas Real-Time Consumption</h5>
-            <h3 class="card-title">
-              <i class="fas fa-burn text-success"></i> {{usage3 +usage4}}
-            </h3>
-          </template>
-
-          <div class="chart-area">
-            <line-chart
-              style="height: 100%"
-              chart-id="green-line-chart"
-              :chart-data="greenLineChart3.chartData"
-              :gradient-stops="greenLineChart3.gradientStops"
-              :extra-options="greenLineChart3.extraOptions"
-            >
-            </line-chart>
-          </div>
-        </card>
-      </div>
-    </div>
-
-
-<!-- the card row for water breakdown and gas breakdown  -->
-    
-    <div class="row">
+<!-- water cards -->
+      <div class="row">
       <div class="col-xl-3 col-md-6 d-flex text-white">
         <card class="card-body flex-fill">
           <div>
@@ -227,7 +199,7 @@
               </div>
               <div class="col-7">
                 <div class="numbers text-white">
-                  <p>Bathroom 1</p>
+                  <p>Common</p>
                   {{usage1}} Cu M
                 </div>
               </div>
@@ -253,7 +225,7 @@
               </div>
               <div class="col-7">
                 <div class="numbers">
-                  <p>Bathroom 2</p>
+                  <p>Master</p>
                   {{usage2}} Cu M
                 </div>
               </div>
@@ -271,12 +243,137 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-large text-center">
+                  <i class="fas fa-water fa-3x text-success "></i>
+                </div>
+              </div>
+              <div class="col-7 ">
+                <div class="numbers ">
+                  <p>Washer</p>
+                  {{usage3}} kWh
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Detecting Water Pressure</div>
+            </div>
+          </div>
+        </card>
+      </div>
+      <div class="col-xl-3 col-md-6 d-flex text-white">
+        <card class="card-body flex-fill ">
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-center">
+                  <i class="fas fa-hand-holding-water fa-3x text-success"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers">
+                  <p>Kitchen</p>
+                  {{usage4}} kWh
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats"><i class="tim-icons icon-refresh-01"></i> Detecting Water Pressure</div>
+            </div>
+          </div>
+        </card>
+      </div>
+    </div>
+
+<!-- gas mini line graph-->
+
+      <div class="col-xl-12 col-md-12 " :class="{ 'text-right': isRTL }">
+        <card type="chart ">
+          <template slot="header">
+            <h5 class="card-category text-white">Gas Real-Time Consumption</h5>
+            <h3 class="card-title">
+              <i class="fas fa-burn text-success"></i> {{usage3 +usage4}}
+            </h3>
+          </template>
+
+          <div class="chart-area">
+            <line-chart
+              style="height: 100%"
+              chart-id="green-line-chart"
+              :chart-data="greenLineChart3.chartData"
+              :gradient-stops="greenLineChart3.gradientStops"
+              :extra-options="greenLineChart3.extraOptions"
+            >
+            </line-chart>
+          </div>
+        </card>
+      </div>
+    </div>
+
+    <!-- gas card rows  -->
+
+    <div class="row">
+      <div class="col-xl-4 col-md-4 d-flex text-white">
+        <card class="card-body flex-fill">
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-success">
+                  <i class="fas fa-gas-pump fa-3x text-success"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers text-white">
+                  <p>Gas Stove 1</p>
+                  {{usage1}} Cu M
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats text-white">
+            
+                <i class="tim-icons icon-refresh-02"></i> Detecting Gas Pressure </div>
+              
+            </div>
+          </div>
+        </card>
+      </div>
+      <div class="col-xl-4 col-md-4 d-flex text-white ">
+        <card class="card-body flex-fill">
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-big text-center">
+                  <i class="fas fa-gas-pump fa-3x text-success"></i>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="numbers">
+                  <p>Gas Stove 2</p>
+                  {{usage2}} Cu M
+                </div>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Detecting Gas Pressure </div>
+            </div>
+          </div>
+        </card>
+      </div>
+      <div class="col-xl-4 col-md-4 d-flex text-white" >
+        <card class="card-body flex-fill" >
+          <div>
+            <div class="row">
+              <div class="col-5">
+                <div class="icon-large text-center">
                   <i class="fas fa-gas-pump fa-3x text-success "></i>
                 </div>
               </div>
               <div class="col-7 ">
                 <div class="numbers ">
-                  <p>Gas Stove 1</p>
+                  <p>Gas Stove 3</p>
                   {{usage3}} kWh
                 </div>
               </div>
@@ -288,30 +385,13 @@
           </div>
         </card>
       </div>
-      <div class="col-xl-3 col-md-6 d-flex text-white">
-        <card class="card-body flex-fill ">
-          <div>
-            <div class="row">
-              <div class="col-5">
-                <div class="icon-big text-center">
-                  <i class="fas fa-burn fa-3x text-success"></i>
-                </div>
-              </div>
-              <div class="col-7">
-                <div class="numbers">
-                  <p>Gas Stove 2</p>
-                  {{usage4}} kWh
-                </div>
-              </div>
-            </div>
-            <div>
-              <hr />
-              <div class="stats"><i class="tim-icons icon-refresh-01"></i> Detecting Gas Pressure</div>
-            </div>
-          </div>
-        </card>
-      </div>
+     
     </div>
+
+
+<!-- the card row for water breakdown and gas breakdown  -->
+    
+    
   </div>
 </template>
 <script>
