@@ -536,7 +536,7 @@ export default {
     gasKPI() {
       this.gasDis = true;
       setTimeout(() => (this.gasDis = null), 3000);
-      var gas_list = [270123, 284032, 210203, 252123, 192830];
+      var gas_list = [645, 342, 432, 589, 473];
       var random = Math.floor(Math.random() * gas_list.length);
       this.kpi3 =
         gas_list[random].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
