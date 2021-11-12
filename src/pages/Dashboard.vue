@@ -99,7 +99,7 @@
               </div>
               <div class="col-9">
                 <div class="numbers number-cards" >
-                  <p>Water Consumption (L)</p>
+                  <p>Water Consumption (Cu M)</p>
                   <h3 style="margin-bottom: 0px">{{ kpi2 }}</h3>
                 </div>
               </div>
@@ -531,7 +531,7 @@ export default {
       setTimeout(() => (this.waterDis = null), 3000);
       var water_list = [4230, 4670, 5410, 3920, 4530];
       var random = Math.floor(Math.random() * water_list.length);
-      this.kpi2 = water_list[random] + " Cu M";
+      this.kpi2 = water_list[random] ;
     },
     gasKPI() {
       this.gasDis = true;
@@ -539,8 +539,7 @@ export default {
       var gas_list = [645, 342, 432, 589, 473];
       var random = Math.floor(Math.random() * gas_list.length);
       this.kpi3 =
-        gas_list[random].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-        " kWh";
+        gas_list[random].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") ;
     },
 
     showModal() {
