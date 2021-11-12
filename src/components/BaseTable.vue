@@ -18,9 +18,9 @@
         </slot>
       </tr>
       <tr v-else>
-        <th class="text-center col-8">THREAD</th>
+        <th class="text-center col-7 col-md-8">THREAD</th>
             <th class="text-center col-3 col-md-2">USERNAME</th>
-            <th class="text-center col-1 col-md-2">REPLIES</th>
+            <th class="text-center col-2 col-md-2">REPLIES</th>
       </tr>
     </thead>
     <tbody :class="tbodyClasses">
