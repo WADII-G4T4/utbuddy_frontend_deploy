@@ -7,7 +7,7 @@ import RTLPlugin from "./RTLPlugin";
 //css assets
 import "@/assets/sass/black-dashboard.scss";
 import "@/assets/css/nucleo-icons.css";
-import "@/assets/demo/demo.css";
+import "@/assets/demo/main.css";
 
 export default {
   install(Vue) {
