@@ -38,14 +38,14 @@
         <span v-if="edit_photo" style="color: red;"
           >Ensure that your picture is square</span
         ><br v-if="edit_photo" />
-        <div @click="edit_photo = true" v-if="!edit_photo" class="mt-4">
+        <div @click.prevent="edit_photo = true" v-if="!edit_photo" class="mt-4">
           <vue-loading-button
             style="font-size: 18px;"
             class="btn btn-primary "
             >Upload</vue-loading-button
           >
         </div>
-        <div @click="save_picture" v-if="edit_photo">
+        <div @click.prevent="save_picture" v-if="edit_photo">
           <vue-loading-button
             :loading="isLoading"
             style="font-size: 18px;"
@@ -187,6 +187,7 @@ export default {
             this.$emit("uploaded", "Image successfully uploaded");
             this.edit_photo = false;
             this.isLoading = false;
+            window.location.reload()
           } catch (err) {
             console.log(err);
           }
