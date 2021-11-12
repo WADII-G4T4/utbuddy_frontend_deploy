@@ -30,9 +30,9 @@
               <!-- big line graph -->
               <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
                 <h3 class="card-category text-white">
-                  Current Consumption
+                  Electricity Real-Time Consumption
                 </h3>
-                <h2 class="card-title"> <i class="fas fa-bolt text-success"></i>Electricity : {{total}} kWh</h2>
+                <h2 class="card-title"> <i class="fas fa-bolt text-success"></i> Electricity : {{total}} kWh</h2>
               </div>
               <div class="col-sm-6">
                 <div
@@ -84,7 +84,7 @@
               <hr />
               <div class="stats text-white">
             
-                <i class="tim-icons icon-refresh-02"></i> Updating Live</div>
+                <i class="tim-icons icon-refresh-02"></i> Detecting Electricity</div>
               
             </div>
           </div>
@@ -108,7 +108,7 @@
             </div>
             <div>
               <hr />
-              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Updating Live</div>
+              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Detecting Electricity</div>
             </div>
           </div>
         </card>
@@ -131,7 +131,7 @@
             </div>
             <div>
               <hr />
-              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Updating Live</div>
+              <div class="stats"><i class="tim-icons icon-refresh-02"></i> Detecting Electricity</div>
             </div>
           </div>
         </card>
@@ -154,7 +154,7 @@
             </div>
             <div>
               <hr />
-              <div class="stats"><i class="tim-icons icon-refresh-01"></i> Updating Live</div>
+              <div class="stats"><i class="tim-icons icon-refresh-01"></i> Detecting Electricity</div>
             </div>
           </div>
         </card>
@@ -171,7 +171,7 @@
           <template slot="header">
             <h5 class="card-category text-white">Water Real-Time Consumption</h5>
             <h3 class="card-title">
-              <i class="fa fa-tint text-success"></i> {{usage1 +usage2}}
+              <i class="fa fa-tint text-success"></i> Water : {{waterTotal}} Cu M
             </h3>
           </template>
           <div class="chart-area">
@@ -200,7 +200,7 @@
               <div class="col-7">
                 <div class="numbers text-white">
                   <p>Common</p>
-                  {{usage1}} Cu M
+                  {{waterUsage1}} Cu M
                 </div>
               </div>
             </div>
@@ -226,7 +226,7 @@
               <div class="col-7">
                 <div class="numbers">
                   <p>Master</p>
-                  {{usage2}} Cu M
+                  {{waterUsage2}} Cu M
                 </div>
               </div>
             </div>
@@ -249,7 +249,7 @@
               <div class="col-7 ">
                 <div class="numbers ">
                   <p>Washer</p>
-                  {{usage3}} kWh
+                  {{waterUsage3}} Cu M
                 </div>
               </div>
             </div>
@@ -272,7 +272,7 @@
               <div class="col-7">
                 <div class="numbers">
                   <p>Kitchen</p>
-                  {{usage4}} kWh
+                  {{waterUsage4}} Cu M
                 </div>
               </div>
             </div>
@@ -292,7 +292,7 @@
           <template slot="header">
             <h5 class="card-category text-white">Gas Real-Time Consumption</h5>
             <h3 class="card-title">
-              <i class="fas fa-burn text-success"></i> {{usage3 +usage4}}
+              <i class="fas fa-burn text-success"></i> Gas : {{gasTotal}} kWh
             </h3>
           </template>
 
@@ -325,7 +325,7 @@
               <div class="col-7">
                 <div class="numbers text-white">
                   <p>Gas Stove 1</p>
-                  {{usage1}} Cu M
+                  {{gasUsage1}} kWh
                 </div>
               </div>
             </div>
@@ -351,7 +351,7 @@
               <div class="col-7">
                 <div class="numbers">
                   <p>Gas Stove 2</p>
-                  {{usage2}} Cu M
+                  {{gasUsage2}} kWh
                 </div>
               </div>
             </div>
@@ -374,7 +374,7 @@
               <div class="col-7 ">
                 <div class="numbers ">
                   <p>Gas Stove 3</p>
-                  {{usage3}} kWh
+                  {{gasUsage3}} kWh
                 </div>
               </div>
             </div>
@@ -418,17 +418,26 @@ export default {
     return {
       timeLabel :[],
       gasTimeLabel :[],
+      waterTimeLabel :[],
       smalltimeLabel :[],
       randomData:[],
       timeLabel :[], 
-      smallrandomData:[],
-      smallrandomData2:[],
-      smallrandomData3:[],
-      total:'',
-      usage1:'',
-      usage2:'',
-      usage3:'',
-      usage4:'',
+      waterRandomData:[],
+      gasRandomData:[],
+      total:100,
+      usage1:100,
+      usage2:200,
+      usage3:234,
+      usage4:123,
+      waterTotal:90,
+      waterUsage1:45,
+      waterUsage2:57,
+      waterUsage3:89,
+      waterUsage4:90,
+      gasTotal:87,
+      gasUsage1:23,
+      gasUsage2:12,
+      gasUsage3:0,
       xModal: false,
     
       
@@ -499,7 +508,7 @@ export default {
               pointHoverBorderWidth: 15,
               pointRadius: 4,
               data: [90, 27, 60, 12, 80],
-              labelString: 'kWh'
+              
             },
           ],
         },
@@ -582,45 +591,12 @@ export default {
         ],
         labels: this.timeLabel
       };
-      // this.$refs.bigChart.updateGradients(chartData);
       this.bigLineChart.chartData = chartData;
-      // this.bigLineChart.activeIndex = index;
        }, 1100);
     },
 
 
-    initGreenChart1(index) {
-      setInterval(() => {
-      let chartData = {
-        
-          datasets: [
-            {
-              lineTension :0,
-            bezierCurve: false, 
-    
-              fill: true,
-              borderColor: config.colors.secondary,
-              borderWidth: 2,
-              borderDash: [],
-              borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.secondary,
-              pointBorderColor: "rgba(255,255,255,0)",
-              pointHoverBackgroundColor: config.colors.secondary,
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 1,
-              data:this.smallrandomData,
-               
-            },
-          ],labels: this.smalltimeLabel
-        }
-            // this.$refs.bigChart.updateGradients(chartData);
-      this.greenLineChart1.chartData = chartData;
-      // this.LineChart.activeIndex = index;
-       }, 1100);
-    },
-
+// water chart
     initGreenChart2(index) {
       setInterval(() => {
       let chartData = {
@@ -629,7 +605,6 @@ export default {
             {
               lineTension :0,
               bezierCurve: false, 
-              
               fill: true,
               borderColor: config.colors.secondary,
               borderWidth: 2,
@@ -642,18 +617,15 @@ export default {
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
               pointRadius: 1,
-              data:this.smallrandomData2,
-              labelString: 'kWh'
+              data:this.waterRandomData,
               
             },
-          ],labels: this.smalltimeLabel
+          ],labels: this.waterTimeLabel
         }
-            // this.$refs.bigChart.updateGradients(chartData);
       this.greenLineChart2.chartData = chartData;
-      // this.LineChart.activeIndex = index;
-       }, 1100);
+       }, 6000);
     },
-
+// gas chart
     initGreenChart3(index) {
       setInterval(() => {
       let chartData = {
@@ -674,7 +646,7 @@ export default {
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
               pointRadius: 1,
-              data:this.smallrandomData3,
+              data:this.gasRandomData,
             },
           ],
           
@@ -683,32 +655,136 @@ export default {
             // this.$refs.bigChart.updateGradients(chartData);
       this.greenLineChart3.chartData = chartData;
       // this.LineChart.activeIndex = index;
-       }, 1100);
+       }, 5000);
     },
 
     
     // 
 
-   
-
+//  this is the big bar chart graph
     getRandomDatapoints(){
      
       // let randnum =0
       this.randomData =[]
-      // while (this.randomData.length <10){
       setInterval(() => {
         
-          //  randnum = Math.floor(Math.random()*1000);
            this.randomData.push(this.usage1+ this.usage2 + this.usage3 + this.usage4)
            this.total = this.usage1+ this.usage2 + this.usage3 + this.usage4
         
-      // console.log((this.randomData))
       }, 1100)}
-      
-      // this.randomData =[]}
       
     ,
 
+    // get water graph data
+    getWaterDatapoints(){
+     
+      this.waterRandomData =[]
+      setInterval(() => {
+        
+           this.waterRandomData.push(this.waterUsage1+ this.waterUsage2 + this.waterUsage3+ this.waterUsage4 )
+
+           this.waterTotal = this.waterUsage1+ this.waterUsage2 + this.waterUsage3+ this.waterUsage4
+        
+      }, 6000)}
+      
+      
+    ,
+    // get gas datapoints random number
+    getWaterDatapoints1(){
+    let  randnum =0
+      setInterval(() => {
+        
+           randnum = Math.floor(Math.random()*100);
+           this.waterUsage1 = randnum
+        
+      }, 6000)},
+
+    getWaterDatapoints2(){
+     let randnum =0
+      
+      setInterval(() => {
+        
+           randnum = Math.floor(Math.random()*100);
+           this.waterUsage2 = randnum
+        
+      }, 6000)},
+
+    getWaterDatapoints3(){
+     let randnum =0
+
+      
+      setInterval(() => {
+        
+           randnum = Math.floor(Math.random()*100);
+           
+           this.waterUsage3 = randnum
+        
+      }, 6000)},
+
+    getWaterDatapoints4(){
+     let randnum =0
+
+    
+    setInterval(() => {
+      
+          randnum = Math.floor(Math.random()*100);
+          
+          this.waterUsage4 = randnum
+      
+    }, 6000)},
+
+
+   
+    // get gas graph data
+    
+    getGasDatapoints(){
+    let  randnum =0
+     
+      this.gasRandomData =[]
+      setInterval(() => {
+        
+           this.gasRandomData.push(this.gasUsage1+ this.gasUsage2 + this.gasUsage3 )
+           this.gasTotal = this.gasUsage1+ this.gasUsage2 + this.gasUsage3
+        
+      }, 5000)}
+      
+      
+    ,
+    // get gas datapoints random number
+    getGasDatapoints1(){
+    let  randnum =0
+      
+      setInterval(() => {
+        
+           randnum = Math.floor(Math.random()*100);
+           this.gasUsage1 = randnum
+        
+      }, 5000)},
+
+    getGasDatapoints2(){
+    let  randnum =0
+      
+      setInterval(() => {
+        
+           randnum = Math.floor(Math.random()*100);
+           this.gasUsage2 = randnum
+        
+      }, 5000)},
+
+    getGasDatapoints3(){
+     let randnum =0
+      
+      setInterval(() => {
+        
+           randnum = Math.floor(Math.random()*100);
+           
+           this.gasUsage3 = randnum
+        
+      }, 5000)},
+
+   
+
+// this is the television data 
     getRandomDatapointssmall(){
       let randnum =0
       this.smallrandomData =[]
@@ -724,22 +800,22 @@ export default {
 
       
     ,
+// this is the fridge data
 
     getRandomDatapointssmall2(){
       let randnum =0
       this.smallrandomData2 =[]
-      // while (this.randomData.length <10){
       setInterval(() => {
         
            randnum = Math.floor(Math.random()*100);
            this.smallrandomData2.push(randnum)
            this.usage2 = randnum
         
-      // console.log((this.randomData))
       }, 1100);
 
       
     },
+// this is the fan n light data
 
     getRandomDatapointssmall3(){
     
@@ -757,19 +833,16 @@ export default {
 
     },
 
-
+//  this is the aircon data 
     getRandomDatapointssmall4(){
     
       let randnum =0
       this.smallrandomData4 =[]
-      // while (this.randomData.length <10){
       setInterval(() => {
         
            randnum = Math.floor(Math.random()*100);
-          //  this.smallrandomData3.push(randnum)
            this.usage4 =randnum
         
-      // console.log((this.randomData))
       }, 1100)
 
     },
@@ -822,7 +895,20 @@ export default {
         this.gasTimeLabel.push(time)
       
       // console.log((this.randomData))
-      }, 1100)},
+      }, 5000)}
+      
+      ,getWaterTimeLabel(){
+      this.waterTimeLabel =[]
+      // randnum = 0
+
+      // while (this.randomData.length <10){
+      setInterval(() => {
+        var today = new Date()
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+        this.waterTimeLabel.push(time)
+      
+      // console.log((this.randomData))
+      }, 6000)}
       
 
 
@@ -856,12 +942,25 @@ export default {
       this.getTimeLabel();
       this.getSmallTimeLabel();
       this.getGasTimeLabel();
+      this.getWaterDatapoints();
+      this.getWaterTimeLabel();
+      this.getGasDatapoints3();
+      this.getGasDatapoints2();
+      this.getGasDatapoints1();
+      this.getGasDatapoints();
+      this.getWaterDatapoints();
+      this.getWaterDatapoints1();
+      this.getWaterDatapoints2();
+      this.getWaterDatapoints3();
+      this.getWaterDatapoints4();
+
+
+
       if (this.enableRTL) {
         this.i18n.locale = "ar";
         this.$rtl.enableRTL();
       }
       this.initBigChart(0);
-      this.initGreenChart1(0);
       this.initGreenChart2(0);
       this.initGreenChart3(0);
 
