@@ -104,13 +104,13 @@
     <p></p>
     <p class="card-description"></p>
     <div slot="footer" class="button-container">
-      <base-button icon round class="btn-facebook">
+      <base-button icon round class="btn-facebook" @click="tab('facebook')">
         <i class="fab fa-facebook"></i>
       </base-button>
-      <base-button icon round class="btn-twitter">
+      <base-button icon round class="btn-twitter" @click="tab('twitter')">
         <i class="fab fa-twitter"></i>
       </base-button>
-      <base-button icon round class="btn-google">
+      <base-button icon round class="btn-google" @click="tab('google')">
         <i class="fab fa-google-plus"></i>
       </base-button>
     </div>
@@ -191,6 +191,15 @@ export default {
             console.log(err);
           }
         };
+      }
+    },
+    tab(name){
+      if (name == "facebook"){
+        window.open("https://www.facebook.com/")
+      } else if (name == "twitter"){
+        window.open("https://twitter.com")
+      } else {
+        window.open("https://google.com")
       }
     }
   }
