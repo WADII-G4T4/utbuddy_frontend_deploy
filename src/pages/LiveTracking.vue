@@ -70,7 +70,7 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-big text-success">
-                  <i class="tim-icons tim-icons-32 icon-atom text-success"></i>
+                  <i class="fas fa-tv fa-3x text-success"></i>
                 </div>
               </div>
               <div class="col-7">
@@ -96,7 +96,7 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-big text-center">
-                  <i class="tim-icons tim-icons-32 icon-mobile text-success"></i>
+                  <i class="fas fa-concierge-bell fa-3x text-success"></i>
                 </div>
               </div>
               <div class="col-7">
@@ -119,12 +119,12 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-large text-center">
-                  <i class="tim-icons tim-icons-32 icon-spaceship text-success "></i>
+                  <i class="fas fa-fan fa-3x text-success "></i>
                 </div>
               </div>
               <div class="col-7 ">
                 <div class="numbers ">
-                  <p>Oven</p>
+                  <p>Fan</p>
                   {{usage3}} kWh
                 </div>
               </div>
@@ -142,7 +142,7 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-big text-center">
-                  <i class="tim-icons tim-icons-32 icon-laptop text-success"></i>
+                  <i class="fas fa-snowflake fa-3x snowflake text-success"></i>
                 </div>
               </div>
               <div class="col-7">
@@ -161,16 +161,15 @@
       </div>
     </div>
     <div class="row">
-<!-- first mini line graph -->
 
 
       
-    <!-- second mini line graph -->
+    <!-- water mini line graph -->
 
       <div class="col-xl-6 col-md-12" :class="{ 'text-right': isRTL }">
         <card type="chart">
           <template slot="header">
-            <h5 class="card-category text-white">{{ $t("dashboard.waterBreakdown") }}</h5>
+            <h5 class="card-category text-white">Water Real-Time Consumption</h5>
             <h3 class="card-title">
               <i class="fa fa-tint text-success"></i> {{usage1 +usage2}}
             </h3>
@@ -188,12 +187,12 @@
         </card>
       </div>
 
-<!-- third mini line graph-->
+<!-- gas mini line graph-->
 
       <div class="col-xl-6 col-md-12 " :class="{ 'text-right': isRTL }">
         <card type="chart ">
           <template slot="header">
-            <h5 class="card-category text-white">{{ $t("dashboard.gasBreakdown") }}</h5>
+            <h5 class="card-category text-white">Gas Real-Time Consumption</h5>
             <h3 class="card-title">
               <i class="fas fa-burn text-success"></i> {{usage3 +usage4}}
             </h3>
@@ -223,13 +222,13 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-big text-success">
-                  <i class="tim-icons tim-icons-32 icon-atom text-success"></i>
+                  <i class="fas fa-shower fa-3x text-success"></i>
                 </div>
               </div>
               <div class="col-7">
                 <div class="numbers text-white">
                   <p>Bathroom 1</p>
-                  {{usage1}} m3
+                  {{usage1}} Cu M
                 </div>
               </div>
             </div>
@@ -249,13 +248,13 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-big text-center">
-                  <i class="tim-icons tim-icons-32 icon-mobile text-success"></i>
+                  <i class="fas fa-faucet fa-3x text-success"></i>
                 </div>
               </div>
               <div class="col-7">
                 <div class="numbers">
                   <p>Bathroom 2</p>
-                  {{usage2}} m3
+                  {{usage2}} Cu M
                 </div>
               </div>
             </div>
@@ -272,7 +271,7 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-large text-center">
-                  <i class="tim-icons tim-icons-32 icon-spaceship text-success "></i>
+                  <i class="fas fa-gas-pump fa-3x text-success "></i>
                 </div>
               </div>
               <div class="col-7 ">
@@ -295,7 +294,7 @@
             <div class="row">
               <div class="col-5">
                 <div class="icon-big text-center">
-                  <i class="tim-icons tim-icons-32 icon-laptop text-success"></i>
+                  <i class="fas fa-burn fa-3x text-success"></i>
                 </div>
               </div>
               <div class="col-7">
@@ -341,7 +340,7 @@ export default {
       gasTimeLabel :[],
       smalltimeLabel :[],
       randomData:[],
-      timeLabel :[],
+      timeLabel :[], 
       smallrandomData:[],
       smallrandomData2:[],
       smallrandomData3:[],
@@ -361,7 +360,7 @@ export default {
         ],
         // activeIndex: 0,
         chartData: {
-          labels: ["", "", "", "", ""],
+          
           datasets: [{data: [90, 27, 60, 12, 80,100,20,19,40,80,19,50]}],
           labels: [
             "",
@@ -389,21 +388,7 @@ export default {
           labels: ["", "", "", "", ""],
           datasets: [
             {
-              
-              label: "My First dataset",
-              fill: true,
-              borderColor: config.colors.secondary,
-              borderWidth: 2,
-              borderDash: [],
-              borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.secondary,
-              pointBorderColor: "rgba(255,255,255,0)",
-              pointHoverBackgroundColor: config.colors.secondary,
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 0,
-              data: [90, 27, 60, 12, 80],
+              data: [90, 27, 60, 12, 80]
             },
           ],
         },
@@ -421,7 +406,6 @@ export default {
           labels: ["", "", "", "", ""],
           datasets: [
             {
-              label: "My First dataset",
               fill: true,
               borderColor: config.colors.secondary,
               borderWidth: 2,
@@ -454,7 +438,6 @@ export default {
           datasets: [
             {
               
-              label: "My First dataset",
               fill: true,
               borderColor: config.colors.secondary,
               borderWidth: 2,
@@ -499,7 +482,7 @@ export default {
       setInterval(() => {
       let chartData = {
         datasets: [
-          {
+          {           
             lineTension :0,
             bezierCurve: false, 
             fill: true,
@@ -509,7 +492,7 @@ export default {
             borderDashOffset: 0.0,
             pointBackgroundColor: config.colors.secondary,
             pointBorderColor: "rgba(255,255,255,0)",
-            pointHoverBackgroundColor: config.colors.secondary,
+            pointHoverBackgroundColor: config.colors.primary,
             pointBorderWidth: 20,
             pointHoverRadius: 4,
             pointHoverBorderWidth: 15,
@@ -534,7 +517,7 @@ export default {
             {
               lineTension :0,
             bezierCurve: false, 
-              label: "My First dataset",
+    
               fill: true,
               borderColor: config.colors.secondary,
               borderWidth: 2,
@@ -548,7 +531,7 @@ export default {
               pointHoverBorderWidth: 15,
               pointRadius: 1,
               data:this.smallrandomData,
-               labelString: 'Date'
+               
             },
           ],labels: this.smalltimeLabel
         }
@@ -566,7 +549,7 @@ export default {
             {
               lineTension :0,
               bezierCurve: false, 
-              label: "My First dataset",
+              
               fill: true,
               borderColor: config.colors.secondary,
               borderWidth: 2,
@@ -599,7 +582,6 @@ export default {
             {
               lineTension :0,
             bezierCurve: false, 
-              label: "My First dataset",
               fill: true,
               borderColor: config.colors.secondary,
               borderWidth: 2,
@@ -708,7 +690,7 @@ export default {
            this.usage4 =randnum
         
       // console.log((this.randomData))
-      }, 1000)
+      }, 1100)
 
     },
 

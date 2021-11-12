@@ -44,7 +44,7 @@
               </template>
               <div class="form-floating">
                 <textarea
-                  class="form-control border-dark border rounded-1"
+                  class="form-control border-secondary border rounded-1"
                   placeholder="Leave your post here"
                   v-model="posttext"
                   id="floatingTextarea"
@@ -331,4 +331,9 @@ div {
   font-size: 13px;
   color: #c0c1c2;
 }
+
+
+#floatingTextarea::placeholder{
+    color:black
+ }
 </style>

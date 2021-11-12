@@ -89,6 +89,7 @@ export let doughnutChartOptions = {
 export let bigBarChartOptions = {
   ...basicOptions,
   tooltips: {
+    displayColors:false,
     backgroundColor: '#f5f5f5',
     titleFontColor: '#333',
     bodyFontColor: '#666',
@@ -152,6 +153,7 @@ export let bigBarChartOptions = {
 export let purpleChartOptions = {
   ...basicOptions,
   tooltips: {
+    displayColors:false,
     backgroundColor: '#f5f5f5',
     titleFontColor: '#000000',
     bodyFontColor: '#666',
@@ -166,7 +168,7 @@ export let purpleChartOptions = {
     yAxes: [{
       scaleLabel: {
         display: true,
-        labelString : 'Total Consumption',
+        labelString : 'Consumption (kWh)',
         fontColor: "white"},
       barPercentage: 1.6,
       gridLines: {
@@ -175,6 +177,7 @@ export let purpleChartOptions = {
         zeroLineColor: "transparent",
       },
       ticks: {
+      
         suggestedMin: 60,
         suggestedMax: 125,
         padding: 20,
@@ -201,7 +204,8 @@ export let purpleChartOptions = {
 export let greenChartOptions1 = {
   ...basicOptions,
   tooltips: {
-    backgroundColor: '#f5f5f5',
+    displayColors:false,
+    backgroundColor: '#000000',
     titleFontColor: '#000000',
     bodyFontColor: '#000000',
     bodySpacing: 4,
@@ -250,6 +254,7 @@ export let greenChartOptions1 = {
 export let greenChartOptions2 = {
   ...basicOptions,
   tooltips: {
+    displayColors:false,
     backgroundColor: '#f5f5f5',
     titleFontColor: '#000000',
     bodyFontColor: '#000000',
@@ -263,7 +268,7 @@ export let greenChartOptions2 = {
     yAxes: [{
       scaleLabel: {
         display: true,
-        labelString : 'Water Breakdown (m3)',
+        labelString : 'Consumption (Cu M)',
         fontColor: "white"
 
         },
@@ -299,6 +304,7 @@ export let greenChartOptions2 = {
 export let greenChartOptions3 = {
   ...basicOptions,
   tooltips: {
+    displayColors:false,
     backgroundColor: '#f5f5f5',
     titleFontColor: '#000000',
     bodyFontColor: '#000000',
@@ -312,7 +318,7 @@ export let greenChartOptions3 = {
     yAxes: [{
       scaleLabel: {
         display: true,
-        labelString : 'Gas Breakdown (p)',
+        labelString : 'Gas Breakdown (kWh)',
         fontColor: "white"
 
         },
@@ -348,6 +354,7 @@ export let greenChartOptions3 = {
 export let barChartOptions = {
   ...basicOptions,
   tooltips: {
+    displayColors:false,
     backgroundColor: '#f5f5f5',
     titleFontColor: '#333',
     bodyFontColor: '#666',

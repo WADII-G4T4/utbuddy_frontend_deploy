@@ -531,7 +531,7 @@ export default {
       setTimeout(() => (this.waterDis = null), 3000);
       var water_list = [4230, 4670, 5410, 3920, 4530];
       var random = Math.floor(Math.random() * water_list.length);
-      this.kpi2 = water_list[random] + " L";
+      this.kpi2 = water_list[random] + " Cu M";
     },
     gasKPI() {
       this.gasDis = true;
@@ -540,7 +540,7 @@ export default {
       var random = Math.floor(Math.random() * gas_list.length);
       this.kpi3 =
         gas_list[random].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-        " BTU";
+        " kWh";
     },
 
     showModal() {
