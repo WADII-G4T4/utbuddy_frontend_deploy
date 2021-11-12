@@ -12,7 +12,7 @@
             </template>
               <h2 class='text-success'>This is the Live Tracking Page</h2>
 
-            <h4>Under this page, you will be able to view your utility at real time.</h4>
+            <h4 class='text-dark'>Under this page, you will be able to view your utility at real time.</h4>
             
             <br>
             <h4 class='text-primary'>Click anywhere to continue </h4>
