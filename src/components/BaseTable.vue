@@ -19,8 +19,8 @@
       </tr>
       <tr v-else>
         <th class="text-center col-8">THREAD</th>
-            <th class="text-center col-2">USERNAME</th>
-            <th class="text-center col-2">REPLIES</th>
+            <th class="text-center col-3 col-md-2">USERNAME</th>
+            <th class="text-center col-1 col-md-2">REPLIES</th>
       </tr>
     </thead>
     <tbody :class="tbodyClasses">
@@ -51,6 +51,7 @@
                   type="button"
                   class="btn btn-secondary"
                   @click="emit(fulldata[num])"
+                  style="width: 100%; padding: auto;"
                 >
                   {{ column }}
                 </button>

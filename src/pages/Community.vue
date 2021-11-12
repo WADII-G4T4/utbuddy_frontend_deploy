@@ -61,7 +61,7 @@
           </div>
           <div v-if="isLoading" class="loading">
             <vue-simple-spinner
-              message="Please wait while we retrieve your bills"
+              message="Please wait while we retrieve the community posts"
             ></vue-simple-spinner>
           </div>
           <div class="table relative">
@@ -191,8 +191,10 @@ export default {
           this.table1.data.splice(index, 1);
         }
       }
+      
       try {
         const res1 = await API.deletePost({ id: item.post_id }, token);
+        window.location.reload()
       } catch (error) {
         console.log(error);
       }
@@ -240,7 +242,7 @@ export default {
         const { name } = res1.data[0];
         var username = name.split(" ")[0];
 
-        this.table1.data.unshift({ thread: t, username, replies: random });
+        
       } catch (error) {
         console.log(error);
       }
@@ -250,6 +252,7 @@ export default {
           { date, post: t, username, replies: random },
           token
         );
+        window.location.reload()
       } catch (error) {
         this.error = true;
       }

@@ -92,7 +92,7 @@
     <button @click="addTip" class="btn btn-black btn-sm">
       <i class="tim-icons icon-simple-add add m-auto"></i>
     </button>
-    <div @click="save" class="mt-4" >
+    <div @click.prevent="save" class="mt-4" >
         <vue-loading-button
           :loading="isLoading"
           style="font-size: 18px;"
@@ -134,16 +134,20 @@ export default {
       var address = this.address;
       var zip = this.zip;
       var description = this.description;
+      
       try {
         const res1 = await API.updateProfile(
           { name, address, zip, description },
           token
         );
+        
         const res = await API.addTip({ tips: this.tips }, token);
         
         this.Save = "Saved!"
         this.$emit("modal", "Successfully Saved!")
         this.isLoading = false;
+        
+        window.location.reload()
       } catch (err) {
         this.$emit("modal", "Error has occurred. Please try again")
         

@@ -149,7 +149,7 @@ export default {
   methods: {
     uploadFile() {
       this.images = this.$refs.file.files[0];
-      console.log(this.images);
+      
       this.image_name = this.images.name;
     },
     async save_occupation() {
@@ -158,7 +158,7 @@ export default {
       var occupation = this.change_occupation;
       try {
         const res = await API.occupation({ occupation }, token);
-        this.occupation = occupation;
+        window.location.reload();
       } catch (err) {
         console.log(err);
       }
@@ -169,7 +169,7 @@ export default {
       var status = this.change_status;
       try {
         const res = await API.status({ status }, token);
-        this.status = status;
+        window.location.reload();
       } catch (err) {
         console.log(err);
       }
