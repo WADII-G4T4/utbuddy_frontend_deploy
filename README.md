@@ -1,211 +1,66 @@
-# [Vue-Black Dashboard](https://demos.creative-tim.com/vue-black-dashboard) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=Black%20Dashboard%20by%20Creative%20Tim&url=https%3A%2F%2Fdemos.creative-tim.com%2Fblack-dashboard%2Fexamples%2Fdashboard.html&via=CreativeTim)
+# [UT BUDDY](https://main.d3gzi5eplp517x.amplifyapp.com/#/home/live-tracking)
 
 
- ![version](https://img.shields.io/badge/version-1.1.1-blue.svg)  ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/black-dashboard/issues.svg?maxAge=2592000)](https://github.com/creativetimofficial/black-dashboard/issues/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/black-dashboard/issues.svg?maxAge=2592000)](https://github.com/creativetimofficial/black-dashboard/issues/issues?q=is%3Aissue+is%3Aclosed) [![Join the chat at https://gitter.im/NIT-dgp/General](https://badges.gitter.im/NIT-dgp/General.svg)](https://gitter.im/creative-tim-general/Lobby) [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)
+
+**UT Buddy** is an utilities Super App that allows a user to access several services from one single web application. **UT Buddy** is an integrated utility tracker for appliances at home that includes bill payments and live-tracking of the appliances. Currently, there is shortage of integrated utility apps and users will need to pay utility bills separately which can be a huge hassle. Moreover, the utilities bill only comes once a month, and users do not have the visibility over their consumption rate, which makes tracking of the bills difficult. 
 
 
-![Product Gif](https://github.com/creativetimofficial/vue-black-dashboard/blob/live-demo/src/assets/demo/product-gif.gif?raw=true)
 
-**Vue Black Dashboard** is a beautiful Bootstrap 4 Admin Dashboard with a huge number of components built to fit together and look amazing. If you are looking for a tool to manage and visualize data about your business, this dashboard is the thing for you. It combines colors that are easy on the eye, spacious cards, beautiful typography, and graphics.
-
-**Vue Black Dashboard** comes packed with all plugins that you might need inside a project and documentation on how to get started. It is light and easy to use, and also very powerful.
-
-Vue Black Dashboard features over 16 individual components, giving you the freedom of choosing and combining. This means that there are thousands of possible combinations. All components can take variations in color, that you can easily modify using SASS files. You will save a lot of time going from prototyping to full-functional code because all elements are implemented.
-We thought about everything, so this dashboard comes with 2 versions, Dark Mode and Light Mode.
-
-We are very excited to share this dashboard with you and we look forward to hearing your feedback!
+**UT buddy** is therefore established to over the existing limitations, by offering different functionalities integrated seamlessly under 1 application. **UT Buddy** aims to offer the user greater visibility over their consumption behaviour, and  we believe that with greater oversights of their consumption habit, **UT buddy** can encourage the users to be more mindful of their consumption behaviour and help the users save on their utilities. **UT Buddy** consists of 4 main pages, namely the **Dashboard Page**, **Bills Page**, **Community Page**, **Live-Tracking Page** and **Profile Page**
 
 
-## Table of Contents
+
+**Dashboard Page**
+
+****
+
+Under this page users are able to view and detailed breakdown of their utilities bill under the **Dashboard Page**, based on the type of the utility (eg : water, electricity, and gas) and the appliances that are being associated. The users are able to view their historical bill charges under the bar chart and the respective breakdown of the different appliances under the pie chart . 
 
 
-* [Demo](#demo)
-* [Quick Start](#quick-start)
-* [Documentation](#documentation)
-* [File Structure](#file-structure)
-* [Browser Support](#browser-support)
-* [Resources](#resources)
-* [Reporting Issues](#reporting-issues)
-* [Technical Support or Questions](#technical-support-or-questions)
-* [Licensing](#licensing)
-* [Useful Links](#useful-links)
+
+**Bills Page**
+
+****
+
+The **Bills Page** allows users to pay their utility bills within the application. The users will be redirected to a secured payment terminal to complete their payment. Once the user complete the payment, the payment status will be reflected on the **Bills Page**. 
 
 
-## Demo
 
-- [Start page](https://demos.creative-tim.com/vue-black-dashboard)
-- [User profile page](https://demos.creative-tim.com/vue-black-dashboard/#/profile)
-- [Tables page ](https://demos.creative-tim.com/vue-black-dashboard/#/table-list)
-- [Maps Page](https://demos.creative-tim.com/vue-black-dashboard/#/maps)
-- [Notifications page](https://demos.creative-tim.com//vue-black-dashboard/#/notifications)
+**Community Page**
 
-[View More](https://demos.creative-tim.com/vue-black-dashboard).
+****
+
+The **Community Page** simulate a social-media discussion forum Through the **Community Page** Users are able to engage and  exchange ideas and with other users and share tips on how they save their utilities. Users will also be able to view the profile of the user under the **Community Page** 
 
 
-## Quick start
 
-- Clone the repo: `git clone https://github.com/creativetimofficial/vue-black-dashboard.git`.
-- [Download from Github](https://github.com/creativetimofficial/vue-black-dashboard/archive/master.zip).
-- [Download from Creative Tim](https://www.creative-tim.com/product/vue-black-dashboard).
+**Live-Tracking Page**
 
+****
 
-## Documentation
-The documentation for the Vue Black Dashboard is hosted at our [website](https://demos.creative-tim.com/vue-black-dashboard/documentation).
+The Live Tracking Page serves to help users to gain a better visualisation of their household consumption and their consumption behaviour of the utilities throughout the day. It consists of detailed breakdown of all 3 utilities and the respective appliances. With that, the users are able to gain a better understanding of which appliance consume the most utilities and etc 
 
 
-## File Structure
-Within the download you'll find the following directories and files:
 
-```
-|-- Vue Black Dashboard
-    |-- .babelrc  
-    |-- .env
-    |-- .eslintrc
-    |-- .gitattributes
-    |-- .gitignore
-    |-- CHANGELOG.md
-    |-- CONTRIBUTING.md
-    |-- LICENSE.md
-    |-- README.md
-    |-- package.json
-    |-- vue.config.js
-    |-- src
-        |-- App.vue
-        |-- i18n.js
-        |-- main.js
-        |-- assets
-        |   |-- css
-        |   |   |-- nucleo-icons.css
-        |   |-- demo
-        |   |   |-- demo.css
-        |   |-- fonts
-        |   |   |-- nucleo.eot
-        |   |   |-- nucleo.ttf
-        |   |   |-- nucleo.woff
-        |   |   |-- nucleo.woff2
-        |   |-- sass
-        |       |-- black-dashboard.scss
-        |       |-- black-dashboard
-        |           |-- bootstrap
-        |           |-- custom
-        |           |-- plugins
-        |-- components
-        |   |-- BaseAlert.vue
-        |   |-- BaseButton.vue
-        |   |-- BaseCheckbox.vue
-        |   |-- BaseDropdown.vue
-        |   |-- BaseNav.vue
-        |   |-- BaseTable.vue
-        |   |-- CloseButton.vue
-        |   |-- Modal.vue
-        |   |-- NavbarToggleButton.vue
-        |   |-- index.js
-        |   |-- Cards
-        |   |   |-- Card.vue
-        |   |   |-- StatsCard.vue
-        |   |-- Charts
-        |   |   |-- BarChart.js
-        |   |   |-- LineChart.js
-        |   |   |-- config.js
-        |   |   |-- utils.js
-        |   |-- Inputs
-        |   |   |-- BaseInput.vue
-        |   |-- NotificationPlugin
-        |   |   |-- Notification.vue
-        |   |   |-- Notifications.vue
-        |   |   |-- index.js
-        |   |-- SidebarPlugin
-        |       |-- SideBar.vue
-        |       |-- SidebarLink.vue
-        |       |-- index.js
-        |-- directives
-        |   |-- click-ouside.js
-        |-- layout
-        |   |-- dashboard
-        |       |-- Content.vue
-        |       |-- ContentFooter.vue
-        |       |-- DashboardLayout.vue
-        |       |-- MobileMenu.vue
-        |       |-- SidebarSharePlugin.vue
-        |       |-- TopNavbar.vue
-        |-- locales
-        |   |-- ar.json
-        |   |-- en.json
-        |-- pages
-        |   |-- Dashboard.vue
-        |   |-- Icons.vue
-        |   |-- Maps.vue
-        |   |-- NotFoundPage.vue
-        |   |-- Notifications.vue
-        |   |-- Profile.vue
-        |   |-- TableList.vue
-        |   |-- Typography.vue
-        |   |-- Dashboard
-        |   |   |-- TaskList.vue
-        |   |   |-- UserTable.vue
-        |   |-- Notifications
-        |   |   |-- NotificationTemplate.vue
-        |   |-- Profile
-        |       |-- EditProfileForm.vue
-        |       |-- UserCard.vue
-        |-- plugins
-        |   |-- RTLPlugin.js
-        |   |-- blackDashboard.js
-        |   |-- globalComponents.js
-        |   |-- globalDirectives.js
-        |   |-- liveDemo.js
-        |-- router
-            |-- index.js
-            |-- routes.js
+**Profile Page**
 
+****
+
+The **Profile Page** allows user to update their Profile Picture and their personal details. Users will also be able to update their utilities-saving tips that they would like to share with other users
+
+
+
+## Installation
+
+Use the package manager npm to install UT Buddy.
+
+```bash
+npm install 
 ```
 
+## Running the Application 
 
-## Browser Support
+```python
+npm run serve
+```
 
-At present, we officially aim to support the last two versions of the following browsers:
-
-<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/firefox.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/edge.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/safari.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/opera.png" width="64" height="64">
-
-
-
-## Reporting Issues
-
-We use GitHub Issues as the official bug tracker for the Vue Black Dashboard. Here are some advices for our users that want to report an issue:
-
-1. Make sure that you are using the latest version of the Vue Black Dashboard. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/).
-2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
-
-
-## Technical Support or Questions
-
-If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us) instead of opening an issue.
-
-
-## Licensing
-
-- Copyright 2018 Creative Tim (https://www.creative-tim.com/)
-
-- Licensed under MIT (https://github.com/creativetimofficial/vue-black-dashboard/issues/blob/master/LICENSE.md)
-
-
-
-## Useful Links
-
-- [More products](https://www.creative-tim.com/bootstrap-themes) from Creative Tim
-- [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
-- [Freebies](https://www.creative-tim.com/bootstrap-themes/free) from Creative Tim
-- [Affiliate Program](https://www.creative-tim.com/affiliates/new) (earn money)
-
-##### Social Media
-
-Twitter: <https://twitter.com/CreativeTim>
-
-Facebook: <https://www.facebook.com/CreativeTim>
-
-Dribbble: <https://dribbble.com/creativetim>
-
-Google+: <https://plus.google.com/+CreativetimPage>
-
-Instagram: <https://instagram.com/creativetimofficial>
