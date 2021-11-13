@@ -235,7 +235,7 @@ export default {
     async addPost() {
       var t = this.posttext;
       var date = new Date();
-      const random = Math.ceil(Math.random() * 101);
+      
       const token = window.localStorage.getItem("token");
       try {
         const res1 = await API.findProfile(token);
@@ -247,9 +247,9 @@ export default {
         console.log(error);
       }
       try {
-        const random = Math.ceil(Math.random() * 101);
+        
         const result = await API.addPost(
-          { date, post: t, username, replies: random },
+          { date, post: t, username, replies: 0 },
           token
         );
         window.location.reload()
@@ -285,7 +285,7 @@ export default {
     try {
       const result = await API.findPost(token);
       var data = result.data;
-
+      
       data.sort(function(a, b) {
         return b.date - a.date;
       });
