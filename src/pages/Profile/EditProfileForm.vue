@@ -9,7 +9,7 @@
           type="email"
           placeholder="mike@email.com"
           v-model="email"
-          disabled
+          status=true
         >
         </base-input>
       </div>
@@ -64,6 +64,17 @@
         </textarea>
       </div>
     </div>
+    <div @click.prevent="saveinfo" class="mt-4" >
+        <vue-loading-button
+          :loading="isLoading1"
+          style="font-size: 18px;"
+          class="btn btn-primary "
+          
+          >{{Save}}</vue-loading-button
+        >
+        </div>
+    <hr>
+
     <label class="control-label">
       Tips
     </label>
@@ -89,16 +100,16 @@
         ></i>
       </div>
     </div>
-    <button @click="addTip" class="btn btn-black btn-sm">
+    <button @click.prevent="addTip" class="btn btn-black btn-sm">
       <i class="tim-icons icon-simple-add add m-auto"></i>
     </button>
     <div @click.prevent="save" class="mt-4" >
         <vue-loading-button
-          :loading="isLoading"
+          :loading="isLoading2"
           style="font-size: 18px;"
           class="btn btn-primary "
           
-          >{{Save}}</vue-loading-button
+          >{{SaveTips}}</vue-loading-button
         >
         </div>
   </card>
@@ -117,10 +128,17 @@ export default {
   },
   data() {
     return {
-      Save: "Save",
-      isLoading: false
+      Save: "Save Information",
+      SaveTips: "Save Tips",
+      isLoading1: false,
+      isLoading2: false
       
     };
+  },
+  computed:{
+    descrip(){
+      return this.description
+    }
   },
 
   methods: {
@@ -128,7 +146,28 @@ export default {
       this.tips.push({ words: "" });
     },
     async save() {
-      this.isLoading = true;
+      this.isLoading2 = true;
+      const token = window.localStorage.getItem("token");
+      
+      
+      try {
+        
+        
+        const res = await API.addTip({ tips: this.tips }, token);
+        
+        this.SaveTips = "Saved!"
+        this.$emit("modal", "Successfully Saved Tips!")
+        this.isLoading2 = false;
+        
+        window.location.reload()
+      } catch (err) {
+        this.$emit("modal", "Error has occurred. Please try again")
+        
+        console.log(err);
+      }
+    },
+    async saveinfo() {
+      this.isLoading1 = true;
       const token = window.localStorage.getItem("token");
       var name = this.firstName + " " + this.lastName;
       var address = this.address;
@@ -141,11 +180,11 @@ export default {
           token
         );
         
-        const res = await API.addTip({ tips: this.tips }, token);
+        
         
         this.Save = "Saved!"
-        this.$emit("modal", "Successfully Saved!")
-        this.isLoading = false;
+        this.$emit("modal", "Successfully Saved Information!")
+        this.isLoading1 = false;
         
         window.location.reload()
       } catch (err) {

@@ -23,7 +23,8 @@
         v-on="listeners"
         class="form-control"
         aria-describedby="addon-right addon-left"
-        :type="type">
+        :type="type"
+        :READONLY="status">
         
     </slot>
     <slot name="addonRight">
@@ -41,6 +42,7 @@
     inheritAttrs: false,
     name: "base-input",
     props: {
+      status: null,
       label: {
         type: String,
         description: "Input label"
