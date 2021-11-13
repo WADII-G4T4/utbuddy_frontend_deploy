@@ -24,6 +24,10 @@ const Bills = () =>
 const routes = [
   {
     path: "/",
+    redirect: "index.html"
+  },
+  {
+    path: "/index.html",
     name: "landing",
     component: Landing
   },
