@@ -10,7 +10,7 @@
         <template v-slot:header class="bg-gradient-dark"> </template>
         <h2 class="text-success">Welcome to the Community Page</h2>
 
-        <h4>
+        <h4 class='text-dark'>
           Under this page, you will be view what the other users have to share
         </h4>
 
