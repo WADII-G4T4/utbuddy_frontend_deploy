@@ -52,13 +52,13 @@ The **Profile Page** allows user to update their Profile Picture and their perso
 
 ## Installation
 
-Use the package manager npm to install UT Buddy.
+Clone our repository or download the zip file.
 
 ```bash
-git clone 
+git clone https://github.com/WADII-G4T4/utbuddy_frontend_deploy.git
 ```
 
-Use the package manager npm to install UT Buddy.
+Go to the folder of the files in your local and use the package manager npm to install UT Buddy.
 
 ```bash
 npm install 
