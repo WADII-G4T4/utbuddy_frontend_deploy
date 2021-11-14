@@ -1,4 +1,4 @@
-# [UT BUDDY](https://main.d3gzi5eplp517x.amplifyapp.com/#/home/live-tracking)
+# [UT BUDDY](https://main.d3gzi5eplp517x.amplifyapp.com/#/)
 
 
 
