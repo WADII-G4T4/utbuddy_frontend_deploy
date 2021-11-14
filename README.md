@@ -2,7 +2,7 @@
 
 
 
-**UT Buddy** is an utilities Super App that allows a user to access several services from one single web application. **UT Buddy** is an integrated utility tracker for appliances at home that includes bill payments and live-tracking of the appliances. Currently, there is shortage of integrated utility apps and users will need to pay utility bills separately which can be a huge hassle. Moreover, the utilities bill only comes once a month, and users do not have the visibility over their consumption rate, which makes tracking of the bills difficult. 
+**UT Buddy** is an utilities Super App that allows a user to access several services from one single web application. It is also an integrated utility tracker for appliances at home that includes bill payments and live-tracking of the appliances. Currently, there is shortage of integrated utility apps and users will need to pay utility bills separately which can be a huge hassle. Moreover, the utilities bill only comes once a month, and users do not have the visibility over their consumption rate, which makes tracking of the bills difficult. 
 
 
 
@@ -55,12 +55,18 @@ The **Profile Page** allows user to update their Profile Picture and their perso
 Use the package manager npm to install UT Buddy.
 
 ```bash
+git clone 
+```
+
+Use the package manager npm to install UT Buddy.
+
+```bash
 npm install 
 ```
 
 ## Running the Application 
 
-```python
+```bash
 npm run serve
 ```
 
